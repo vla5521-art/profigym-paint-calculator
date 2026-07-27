@@ -1,14 +1,80 @@
-<!doctype html><html lang='ru'><meta charset='utf-8'>
-<title>AI-агент ЛКМ v1.0</title>
-<style>
-body{margin:0;background:#0d1b2a;color:#fff;font-family:Arial;display:flex;justify-content:center;align-items:center;height:100vh}
-.c{background:#16283d;padding:32px;border-radius:16px;width:430px;text-align:center}
-img{max-width:220px}input,button{width:100%;padding:12px;margin:8px 0;box-sizing:border-box}
-button{background:#f47a20;color:#fff;border:0}
-</style>
-<div class=c>
-<img src='logo.jpg'><h2>AI-агент расчета расхода ЛКМ v1.0</h2>
-<input id=n placeholder='Норма расхода' type=number step=0.001>
-<input id=s placeholder='Площадь окраски' type=number step=0.01>
-<button onclick='r.textContent="Итог: "+((+n.value||0)*(+s.value||0)).toFixed(3)'>Рассчитать</button>
-<h3 id=r>Итог: —</h3></div></html>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#06172a">
+  <meta name="description" content="Калькулятор теоретического расхода лакокрасочных материалов PROFiGYM">
+  <title>Калькулятор расхода краски — версия 1.0.1</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="calculator" aria-labelledby="page-title">
+      <header class="hero">
+        <img class="brand-logo" src="assets/logo-transparent.png" alt="PROFiGYM">
+        <h1 id="page-title">КАЛЬКУЛЯТОР РАСХОДА КРАСКИ</h1>
+        <p class="version">Версия 1.0.1</p>
+      </header>
+
+      <form id="paint-form" novalidate>
+        <div class="fields-grid">
+          <label class="field-card" for="consumption">
+            <span class="field-title">Норма расхода (кг/м²)</span>
+            <input
+              id="consumption"
+              name="consumption"
+              type="number"
+              min="0"
+              step="0.01"
+              inputmode="decimal"
+              placeholder="Введите значение"
+              aria-describedby="consumption-error"
+            >
+            <span id="consumption-error" class="field-error" aria-live="polite"></span>
+          </label>
+
+          <label class="field-card" for="area">
+            <span class="field-title">Площадь окраски (м²)</span>
+            <input
+              id="area"
+              name="area"
+              type="number"
+              min="0"
+              step="0.01"
+              inputmode="decimal"
+              placeholder="Введите значение"
+              aria-describedby="area-error"
+            >
+            <span id="area-error" class="field-error" aria-live="polite"></span>
+          </label>
+        </div>
+
+        <button class="calculate-button" type="submit">
+          <span class="calc-icon" aria-hidden="true">▦</span>
+          <span>РАССЧИТАТЬ РАСХОД КРАСКИ</span>
+        </button>
+      </form>
+
+      <section class="result-card" aria-live="polite">
+        <h2>Результат</h2>
+        <div class="result-value">
+          <span id="result">0.00</span>
+          <span class="result-unit">кг</span>
+        </div>
+        <p>Общий теоретический расход краски</p>
+      </section>
+
+      <aside class="formula-card">
+        <div class="info-icon" aria-hidden="true">i</div>
+        <div>
+          <p>Общий расход краски рассчитывается по формуле:</p>
+          <strong>Норма расхода (кг/м²) × Площадь окраски (м²) = Общий расход (кг)</strong>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
