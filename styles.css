@@ -45,6 +45,19 @@ body {
   padding: 0 16px 18px;
 }
 
+
+.brand-logo-backdrop {
+  width: fit-content;
+  margin: 0 auto 8px;
+  padding: 8px 12px;
+  background: #ffffff;
+  border-radius: 14px;
+}
+
+.brand-logo-backdrop .brand-logo {
+  margin: 0;
+}
+
 .brand-logo {
   width: clamp(180px, 19vw, 285px);
   max-height: 175px;
@@ -233,7 +246,7 @@ input[aria-invalid="true"] {
 
 @media (min-width: 1200px) {
   .calculator {
-    width: 90vw;
+    width: 80vw;
     max-width: none;
     margin-left: auto;
     margin-right: auto;
@@ -318,5 +331,60 @@ input[aria-invalid="true"] {
     height: 48px;
     font-size: 1.55rem;
     border-width: 3px;
+  }
+}
+
+
+@media (min-width: 1200px) and (min-height: 900px) {
+  .page-shell {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .calculator {
+    padding-top: 0;
+    padding-bottom: 8px;
+  }
+
+  .hero {
+    padding-bottom: 8px;
+  }
+
+  .brand-logo-backdrop {
+    margin-bottom: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .version {
+    margin-top: 4px;
+  }
+
+  .field-card {
+    gap: 8px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .calculate-button {
+    margin-top: 10px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .result-card {
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+  }
+
+  .result-card p {
+    margin-top: 2px;
+  }
+
+  .formula-card {
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
