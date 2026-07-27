@@ -334,57 +334,48 @@ input[aria-invalid="true"] {
   }
 }
 
-/* v1.0.4: весь интерфейс помещается в один экран на компьютере */
-@media (min-width: 1200px) {
-  html,
-  body {
-    height: 100%;
-    overflow: hidden;
-  }
 
+@media (min-width: 1200px) and (min-height: 900px) {
   .page-shell {
-    min-height: 100vh;
-    height: 100vh;
-    padding-top: clamp(4px, 0.7vh, 10px);
-    padding-bottom: clamp(4px, 0.7vh, 10px);
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   .calculator {
-    max-height: 100vh;
     padding-top: 0;
-    padding-bottom: clamp(4px, 0.7vh, 8px);
+    padding-bottom: 8px;
   }
 
   .hero {
-    padding-bottom: clamp(4px, 0.8vh, 8px);
+    padding-bottom: 8px;
   }
 
   .brand-logo-backdrop {
-    margin-bottom: clamp(2px, 0.5vh, 4px);
-    padding-top: clamp(3px, 0.6vh, 5px);
-    padding-bottom: clamp(3px, 0.6vh, 5px);
+    margin-bottom: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   .version {
-    margin-top: clamp(2px, 0.5vh, 4px);
+    margin-top: 4px;
   }
 
   .field-card {
-    gap: clamp(4px, 0.8vh, 8px);
-    padding-top: clamp(8px, 1.4vh, 14px);
-    padding-bottom: clamp(8px, 1.4vh, 14px);
+    gap: 8px;
+    padding-top: 14px;
+    padding-bottom: 14px;
   }
 
   .calculate-button {
-    margin-top: clamp(6px, 1vh, 10px);
-    padding-top: clamp(9px, 1.3vh, 14px);
-    padding-bottom: clamp(9px, 1.3vh, 14px);
+    margin-top: 10px;
+    padding-top: 14px;
+    padding-bottom: 14px;
   }
 
   .result-card {
-    margin-top: clamp(6px, 1vh, 10px);
-    padding-top: clamp(6px, 1vh, 10px);
-    padding-bottom: clamp(5px, 0.8vh, 8px);
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 8px;
   }
 
   .result-card p {
@@ -392,61 +383,8 @@ input[aria-invalid="true"] {
   }
 
   .formula-card {
-    margin-top: clamp(6px, 1vh, 10px);
-    padding-top: clamp(7px, 1.1vh, 10px);
-    padding-bottom: clamp(7px, 1.1vh, 10px);
-  }
-}
-
-@media (min-width: 1200px) and (max-height: 800px) {
-  .page-shell {
-    padding-top: 2px;
-    padding-bottom: 2px;
-  }
-
-  .calculator {
-    padding-bottom: 2px;
-  }
-
-  .hero {
-    padding-bottom: 2px;
-  }
-
-  .brand-logo-backdrop {
-    margin-bottom: 2px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-  }
-
-  .version {
-    margin-top: 1px;
-  }
-
-  .field-card {
-    gap: 2px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
-
-  .calculate-button {
-    margin-top: 4px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-  }
-
-  .result-card {
-    margin-top: 4px;
-    padding-top: 4px;
-    padding-bottom: 3px;
-  }
-
-  .result-card p {
-    margin-top: 0;
-  }
-
-  .formula-card {
-    margin-top: 4px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
