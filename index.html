@@ -1,100 +1,14 @@
 <!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#06172a">
-  <meta name="description" content="Калькулятор теоретического расхода лакокрасочных материалов PROFiGYM">
-  <title>Калькулятор расхода краски — версия 1.1.15</title>
-  <link rel="stylesheet" href="styles.css?v=1.1.15">
-</head>
-<body>
-  <main class="page-shell">
-    <section class="calculator" aria-labelledby="page-title">
-      <header class="hero">
-        <div class="brand-logo-backdrop">
-          <img class="brand-logo" src="assets/logo-transparent.png" alt="PROFiGYM">
-        </div>
-        <h1 id="page-title">КАЛЬКУЛЯТОР РАСХОДА КРАСКИ</h1>
-        <p class="version">Версия 1.1.15</p>
-      </header>
-
-      <form id="paint-form" novalidate>
-        <div class="fields-grid">
-          <label class="field-card" for="consumption">
-            <span class="field-title">Норма расхода</span>
-            <select id="unit" class="unit-select">
-              <option value="kg" selected>кг/м²</option>
-              <option value="g">г/м²</option>
-              <option value="l">л/м²</option>
-              <option value="ml">мл/м²</option>
-            </select>
-            <input
-              id="consumption"
-              name="consumption"
-              type="number"
-              min="0"
-              step="0.01"
-              inputmode="decimal"
-              placeholder="Введите значение"
-              aria-describedby="consumption-error"
-            >
-            <span id="consumption-error" class="field-error" aria-live="polite"></span>
-          </label>
-
-          <label class="field-card" for="area">
-            <span class="field-title">Площадь окраски (м²)</span>
-            <input
-              id="area"
-              name="area"
-              type="number"
-              min="0"
-              step="0.01"
-              inputmode="decimal"
-              placeholder="Введите значение"
-              aria-describedby="area-error"
-            >
-            <span id="area-error" class="field-error" aria-live="polite"></span>
-          </label>
-        </div>
-
-        <button class="calculate-button" type="submit">
-          <span class="calc-icon" aria-hidden="true">▦</span>
-          <span>РАССЧИТАТЬ РАСХОД КРАСКИ</span>
-        </button>
-      
-
-</form>
-
-      <section class="result-card" aria-live="polite">
-        <h2>Результат</h2>
-        <div class="result-value">
-          <span id="result">0.00</span>
-          <span class="result-unit">кг</span>
-        </div>
-        <p>Общий теоретический расход краски</p>
-      </section>
-
-<section class="history-card">
-<h2>История расчетов</h2>
-<input id="history-search" type="search" placeholder="Поиск расчетов">
-<div id="history-list"></div>
-<button type="button" id="repeat-btn">Повторить последний расчет</button>
-<button type="button" id="favorite-btn">★ Сохранить расчет</button>
-<button type="button" id="print-btn">Печать</button>
-<button type="button" id="pdf-btn">Сохранить PDF</button>
-</section>
-
-      <aside class="formula-card">
-        <div class="info-icon" aria-hidden="true">i</div>
-        <div>
-          <p>Общий расход краски рассчитывается по формуле:</p>
-          <strong>Норма расхода (кг/м²) × Площадь окраски (м²) = Общий расход (кг)</strong>
-        </div>
-      </aside>
-    </section>
-  </main>
-
-  <script src="script.js?v=1.1.15"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#071a2e" />
+    <meta name="description" content="Калькулятор расхода лакокрасочных материалов PROFiGYM" />
+    <title>PROFiGYM — калькулятор расхода краски</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
