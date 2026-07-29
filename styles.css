@@ -410,3 +410,67 @@ input[aria-invalid="true"] {
  background:rgba(255,255,255,.08);
  border-radius:10px;
 }
+
+
+/* PROFiGYM v1.1.4 header and height optimization */
+
+@media (min-width: 768px) {
+
+  body {
+    margin: 0;
+  }
+
+  .header,
+  header,
+  .hero {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    min-height: 70px;
+  }
+
+  .logo {
+    flex-shrink: 0;
+  }
+
+  h1,
+  .title {
+    font-size: 28px !important;
+    line-height: 1.1;
+    margin: 0 !important;
+    white-space: nowrap;
+  }
+
+  .version {
+    font-size: 18px !important;
+    margin: 0 !important;
+    white-space: nowrap;
+  }
+
+  h2 {
+    font-size: 18px !important;
+  }
+
+  p,
+  label,
+  span {
+    font-size: 14px;
+  }
+
+  .card,
+  section,
+  .history-card {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+  }
+
+  input,
+  select,
+  button {
+    min-height: 36px;
+  }
+}
