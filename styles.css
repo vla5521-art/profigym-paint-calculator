@@ -465,3 +465,83 @@ html, body {
         zoom: 1;
     }
 }
+
+
+/* PROFiGYM v1.1.2 - compact one screen layout */
+
+@media (min-width: 768px) {
+    html, body {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .container,
+    .app-container,
+    main {
+        width: 90%;
+        max-height: 100vh;
+        overflow: hidden;
+    }
+
+    /* compact top area */
+    header, .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px !important;
+    }
+
+    /* two column desktop layout */
+    .calculator,
+    .main-content,
+    .content-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        align-items: start;
+    }
+
+    section,
+    .card,
+    .history-card {
+        margin: 4px 0 !important;
+        padding: 10px !important;
+    }
+
+    h1 {
+        font-size: clamp(22px, 2vw, 34px) !important;
+        margin: 4px 0 !important;
+    }
+
+    h2 {
+        font-size: 18px !important;
+        margin: 4px 0 !important;
+    }
+
+    p {
+        margin: 3px 0 !important;
+    }
+
+    button,
+    input,
+    select {
+        padding: 8px !important;
+    }
+
+    .history-card {
+        max-height: 170px;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 767px) {
+    html, body {
+        overflow-y: auto;
+    }
+}
