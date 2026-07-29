@@ -59,7 +59,7 @@ body {
 }
 
 .brand-logo {
-  width: clamp(180px, 19vw, 285px);
+  width: clamp(144px, 15.2vw, 228px);
   max-height: 175px;
   object-fit: contain;
   display: block;
@@ -481,14 +481,4 @@ input[aria-invalid="true"] {
 select#unit,
 #unit {
     font-size: 20px;
-}
-
-
-/* PROFiGYM v1.1.7 - logo height reduced by 20%, aspect ratio preserved */
-.logo,
-.brand-logo,
-img.logo,
-img.brand-logo {
-    height: 80% !important;
-    width: auto !important;
 }
