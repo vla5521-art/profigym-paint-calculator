@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#06172a">
   <meta name="description" content="Калькулятор теоретического расхода лакокрасочных материалов PROFiGYM">
-  <title>Калькулятор расхода краски — версия 1.0.3</title>
+  <title>Калькулятор расхода краски — версия 1.1</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,13 +16,19 @@
           <img class="brand-logo" src="assets/logo-transparent.png" alt="PROFiGYM">
         </div>
         <h1 id="page-title">КАЛЬКУЛЯТОР РАСХОДА КРАСКИ</h1>
-        <p class="version">Версия 1.0.3</p>
+        <p class="version">Версия 1.1</p>
       </header>
 
       <form id="paint-form" novalidate>
         <div class="fields-grid">
           <label class="field-card" for="consumption">
-            <span class="field-title">Норма расхода (кг/м²)</span>
+            <span class="field-title">Норма расхода</span>
+            <select id="unit" class="unit-select">
+              <option value="kg" selected>кг/м²</option>
+              <option value="g">г/м²</option>
+              <option value="l">л/м²</option>
+              <option value="ml">мл/м²</option>
+            </select>
             <input
               id="consumption"
               name="consumption"
@@ -56,7 +62,17 @@
           <span class="calc-icon" aria-hidden="true">▦</span>
           <span>РАССЧИТАТЬ РАСХОД КРАСКИ</span>
         </button>
-      </form>
+      
+<section class="history-card">
+<h2>История расчетов</h2>
+<input id="history-search" type="search" placeholder="Поиск расчетов">
+<div id="history-list"></div>
+<button type="button" id="repeat-btn">Повторить последний расчет</button>
+<button type="button" id="favorite-btn">★ Сохранить расчет</button>
+<button type="button" id="print-btn">Печать</button>
+<button type="button" id="csv-btn">Экспорт CSV</button>
+</section>
+</form>
 
       <section class="result-card" aria-live="polite">
         <h2>Результат</h2>

@@ -388,3 +388,25 @@ input[aria-invalid="true"] {
     padding-bottom: 10px;
   }
 }
+
+
+.history-card{
+ margin-top:18px;
+ padding:22px;
+ background:linear-gradient(160deg,rgba(10,34,57,.88),rgba(4,21,38,.86));
+ border:1px solid var(--line);
+ border-radius:22px;
+}
+.history-card h2{text-align:center}
+.history-card button,.unit-select{
+ margin:8px;
+ padding:12px 18px;
+ border-radius:12px;
+ border:0;
+}
+.history-item{
+ padding:12px;
+ margin:8px 0;
+ background:rgba(255,255,255,.08);
+ border-radius:10px;
+}
