@@ -476,7 +476,7 @@ input[aria-invalid="true"] {
 }
 
 
-/* PROFiGYM v1.1.11 - unit selector font size */
+/* PROFiGYM v1.1.12 - unit selector font size */
 .unit-select,
 select#unit,
 #unit {
@@ -484,8 +484,41 @@ select#unit,
 }
 
 
-/* PROFiGYM v1.1.11 - logo size */
+/* PROFiGYM v1.1.12 - logo size */
 .brand-logo {
     width: clamp(144px, 15.2vw, 228px);
     height: auto;
+}
+
+/* PROFiGYM v1.1.12 - compact input cards */
+.field-card {
+  gap: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.field-title {
+  font-size: clamp(1.3125rem, calc(2.25vw - 3px), 2.3125rem);
+}
+
+@media (max-width: 860px) {
+  .field-card {
+    gap: 10px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+  }
+}
+
+@media (max-width: 520px) {
+  .field-title {
+    font-size: 1.1625rem;
+  }
+}
+
+@media (min-width: 1200px) and (min-height: 900px) {
+  .field-card {
+    gap: 7px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
 }
