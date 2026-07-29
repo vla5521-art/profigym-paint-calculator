@@ -476,7 +476,7 @@ input[aria-invalid="true"] {
 }
 
 
-/* PROFiGYM v1.1.10 - unit selector font size only */
+/* PROFiGYM v1.1.11 - unit selector font size */
 .unit-select,
 select#unit,
 #unit {
@@ -484,7 +484,7 @@ select#unit,
 }
 
 
-/* PROFiGYM v1.1.10 - logo reduced by 20% from v1.1.10 baseline */
+/* PROFiGYM v1.1.11 - logo size */
 .brand-logo {
     width: clamp(144px, 15.2vw, 228px);
     height: auto;

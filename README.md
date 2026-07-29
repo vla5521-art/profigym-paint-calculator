@@ -1,4 +1,2 @@
-# PROFiGYM v1.1
-Версия с улучшенным калькулятором расхода краски.
-
-Version 1.1.4: compact header layout and height optimization.
+# PROFiGYM v1.1.11
+Версия с исправленным отображением номера версии в заголовке и интерфейсе.
