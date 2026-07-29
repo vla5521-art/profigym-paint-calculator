@@ -410,3 +410,58 @@ input[aria-invalid="true"] {
  background:rgba(255,255,255,.08);
  border-radius:10px;
 }
+
+
+/* PROFiGYM v1.1.1 compact screen mode */
+html, body {
+    overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+    body {
+        zoom: 0.88;
+    }
+
+    .container,
+    main,
+    .app-container {
+        max-height: 100vh;
+    }
+
+    .card,
+    .history-card,
+    section {
+        margin-top: 8px !important;
+        margin-bottom: 8px !important;
+        padding-top: 12px !important;
+        padding-bottom: 12px !important;
+    }
+
+    h1 {
+        margin-top: 8px !important;
+        margin-bottom: 8px !important;
+    }
+
+    h2 {
+        margin-top: 6px !important;
+        margin-bottom: 6px !important;
+    }
+
+    button,
+    input,
+    select {
+        min-height: 36px;
+    }
+}
+
+@media (min-width: 768px) and (max-height: 850px) {
+    body {
+        zoom: 0.78;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        zoom: 1;
+    }
+}
