@@ -1,5 +1,6 @@
 import type { ConsumptionCalculation } from "../services/calculations";
 import { formatNumber } from "../utils/formatNumber";
+import { printCalculation } from "../utils/printCalculation";
 
 export interface CalculationResultView {
   manufacturerName: string;
@@ -33,6 +34,13 @@ export function ResultCard({ result }: ResultCardProps): React.JSX.Element {
             <div><dt>Коэффициент потерь</dt><dd>{formatNumber(result.lossFactor, 2)}</dd></div>
             <div><dt>Теоретический расход</dt><dd>{formatNumber(result.calculation.theoreticalConsumption, 2)} {result.resultUnit}</dd></div>
           </dl>
+          <div className="result-actions no-print">
+            <button className="print-button" type="button" onClick={printCalculation}>
+              <span aria-hidden="true">▣</span>
+              <span>Печать расчёта</span>
+            </button>
+          </div>
+          <p className="print-note print-only">Расчёт сформирован в PROFiGYM</p>
         </>
       ) : (
         <>
