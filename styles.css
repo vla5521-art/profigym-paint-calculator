@@ -476,7 +476,7 @@ input[aria-invalid="true"] {
 }
 
 
-/* PROFiGYM v1.1.12 - unit selector font size */
+/* PROFiGYM v1.1.13 - unit selector font size */
 .unit-select,
 select#unit,
 #unit {
@@ -484,13 +484,13 @@ select#unit,
 }
 
 
-/* PROFiGYM v1.1.12 - logo size */
+/* PROFiGYM v1.1.13 - logo size */
 .brand-logo {
     width: clamp(144px, 15.2vw, 228px);
     height: auto;
 }
 
-/* PROFiGYM v1.1.12 - compact input cards */
+/* PROFiGYM v1.1.13 - compact input cards */
 .field-card {
   gap: 10px;
   padding-top: 20px;
@@ -520,5 +520,49 @@ select#unit,
     gap: 7px;
     padding-top: 12px;
     padding-bottom: 12px;
+  }
+}
+
+
+/* PROFiGYM v1.1.13 - 10% smaller input cards and 15% smaller controls */
+.field-card {
+  gap: 9px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.field-card input {
+  padding: 18.7px 20.4px;
+  font-size: clamp(1.1475rem, 1.7vw, 1.7rem);
+  min-height: 30.6px;
+}
+
+.field-card .unit-select {
+  margin: 6.8px;
+  padding: 10.2px 15.3px;
+  font-size: 17px;
+  min-height: 30.6px;
+}
+
+@media (max-width: 860px) {
+  .field-card {
+    gap: 9px;
+    padding-top: 15.3px;
+    padding-bottom: 15.3px;
+  }
+}
+
+@media (max-width: 520px) {
+  .field-card input {
+    padding: 15.3px;
+    font-size: 1.02rem;
+  }
+}
+
+@media (min-width: 1200px) and (min-height: 900px) {
+  .field-card {
+    gap: 6.3px;
+    padding-top: 10.8px;
+    padding-bottom: 10.8px;
   }
 }
