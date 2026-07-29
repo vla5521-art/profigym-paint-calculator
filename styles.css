@@ -59,7 +59,7 @@ body {
 }
 
 .brand-logo {
-  width: clamp(144px, 15.2vw, 228px);
+  width: clamp(180px, 19vw, 285px);
   max-height: 175px;
   object-fit: contain;
   display: block;
@@ -476,9 +476,16 @@ input[aria-invalid="true"] {
 }
 
 
-/* PROFiGYM v1.1.6 - unit selector font size only */
+/* PROFiGYM v1.1.9 - unit selector font size only */
 .unit-select,
 select#unit,
 #unit {
     font-size: 20px;
+}
+
+
+/* PROFiGYM v1.1.9 - logo reduced by 20% from v1.1.9 baseline */
+.brand-logo {
+    width: clamp(144px, 15.2vw, 228px);
+    height: auto;
 }
