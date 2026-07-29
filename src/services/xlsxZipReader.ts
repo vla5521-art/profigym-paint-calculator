@@ -66,7 +66,11 @@ function parseCentralDirectory(bytes: Uint8Array): Map<string, ZipEntry> {
 }
 
 async function inflateRaw(data: Uint8Array): Promise<Uint8Array> {
-  const stream = new Blob([data]).stream().pipeThrough(new DecompressionStream("deflate-raw"));
+  const blobBytes = new Uint8Array(data.byteLength);
+  blobBytes.set(data);
+  const stream = new Blob([blobBytes.buffer])
+    .stream()
+    .pipeThrough(new DecompressionStream("deflate-raw"));
   return new Uint8Array(await new Response(stream).arrayBuffer());
 }
 
