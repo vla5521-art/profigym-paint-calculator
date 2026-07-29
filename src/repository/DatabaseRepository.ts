@@ -6,7 +6,7 @@ import type {
   Material,
   Metadata,
   Unit,
-} from "../types/database";
+} from "../types/database.ts";
 
 export interface DatabaseRepository {
   load(): Promise<void>;

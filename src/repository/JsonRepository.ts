@@ -1,5 +1,5 @@
-import { DATABASE_URL } from "../config/database";
-import type { DatabaseRepository } from "./DatabaseRepository";
+import { DATABASE_URL } from "../config/database.ts";
+import type { DatabaseRepository } from "./DatabaseRepository.ts";
 import type {
   ConsumptionNorm,
   Database,
@@ -8,9 +8,9 @@ import type {
   Material,
   Metadata,
   Unit,
-} from "../types/database";
-import { logDatabaseSummary } from "../utils/logger";
-import { parseAndValidateDatabase } from "../utils/validator";
+} from "../types/database.ts";
+import { logDatabaseSummary } from "../utils/logger.ts";
+import { parseAndValidateDatabase } from "../utils/validator.ts";
 
 export class RepositoryNotLoadedError extends Error {
   public constructor() {
@@ -23,7 +23,11 @@ export class JsonRepository implements DatabaseRepository {
   private database: Database | null = null;
   private loadingPromise: Promise<void> | null = null;
 
-  public constructor(private readonly databaseUrl: string = DATABASE_URL) {}
+  private readonly databaseUrl: string;
+
+  public constructor(databaseUrl: string = DATABASE_URL) {
+    this.databaseUrl = databaseUrl;
+  }
 
   public async load(): Promise<void> {
     if (this.database !== null) return;

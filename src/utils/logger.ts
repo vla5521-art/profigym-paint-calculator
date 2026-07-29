@@ -1,4 +1,4 @@
-import type { Database } from "../types/database";
+import type { Database } from "../types/database.ts";
 
 export function logDatabaseSummary(database: Database): void {
   console.info("PROFiGYM: база загружена", {

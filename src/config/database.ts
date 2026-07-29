@@ -1,4 +1,4 @@
-const configuredUrl = import.meta.env.VITE_DATABASE_URL as string | undefined;
-
-/** Единственная точка настройки источника данных. */
-export const DATABASE_URL = configuredUrl?.trim() || "/data/database.json";
+interface ImportMetaEnvironment { VITE_DATABASE_URL?: string; }
+const environment = (import.meta as ImportMeta & { env?: ImportMetaEnvironment }).env;
+const configuredUrl = environment?.VITE_DATABASE_URL?.trim();
+export const DATABASE_URL = configuredUrl || "/data/database.json";

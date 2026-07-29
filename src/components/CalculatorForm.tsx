@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
-import type { DatabaseRepository } from "../repository/DatabaseRepository";
-import { calculateConsumption } from "../services/calculations";
-import type { Material } from "../types/database";
-import { parseNumberInput } from "../utils/formatNumber";
-import type { CalculationResultView } from "./ResultCard";
+import type { DatabaseRepository } from "../repository/DatabaseRepository.ts";
+import { calculateConsumption } from "../services/calculations.ts";
+import type { Material } from "../types/database.ts";
+import { parseNumberInput } from "../utils/formatNumber.ts";
+import type { CalculationResultView } from "./ResultCard.tsx";
 
 interface FormErrors {
   manufacturer?: string;

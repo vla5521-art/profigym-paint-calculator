@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { CalculatorForm } from "../components/CalculatorForm";
-import { DemoWarning } from "../components/DemoWarning";
-import { ErrorState } from "../components/ErrorState";
-import { Header } from "../components/Header";
-import { LoadingState } from "../components/LoadingState";
-import { ResultCard, type CalculationResultView } from "../components/ResultCard";
-import { useDatabase } from "../hooks/useDatabase";
+import { CalculatorForm } from "../components/CalculatorForm.tsx";
+import { DemoWarning } from "../components/DemoWarning.tsx";
+import { ErrorState } from "../components/ErrorState.tsx";
+import { ExcelImportPanel } from "../components/ExcelImportPanel.tsx";
+import { Header } from "../components/Header.tsx";
+import { LoadingState } from "../components/LoadingState.tsx";
+import { ResultCard, type CalculationResultView } from "../components/ResultCard.tsx";
+import { useDatabase } from "../hooks/useDatabase.ts";
 
 export function CalculatorPage(): React.JSX.Element {
   const { loading, error, repository, reload } = useDatabase();
@@ -20,6 +21,7 @@ export function CalculatorPage(): React.JSX.Element {
         {!loading && !error && repository && (
           <>
             <DemoWarning metadata={repository.getMetadata()} />
+            <ExcelImportPanel repository={repository} onDatabaseChanged={reload} />
             <CalculatorForm repository={repository} onResult={setResult} />
             <ResultCard result={result} />
             <aside className="formula-card">

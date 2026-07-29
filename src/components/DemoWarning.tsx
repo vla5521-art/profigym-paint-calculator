@@ -1,4 +1,4 @@
-import type { Metadata } from "../types/database";
+import type { Metadata } from "../types/database.ts";
 
 interface DemoWarningProps { metadata: Metadata; }
 

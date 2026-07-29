@@ -1,6 +1,6 @@
-import type { ConsumptionCalculation } from "../services/calculations";
-import { formatNumber } from "../utils/formatNumber";
-import { printCalculation } from "../utils/printCalculation";
+import type { ConsumptionCalculation } from "../services/calculations.ts";
+import { formatNumber } from "../utils/formatNumber.ts";
+import { printCalculation } from "../utils/printCalculation.ts";
 
 export interface CalculationResultView {
   manufacturerName: string;

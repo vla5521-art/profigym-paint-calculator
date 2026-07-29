@@ -2,7 +2,7 @@
   "metadata": {
     "dataset_name": "PROFiGYM Demo Dataset",
     "dataset_type": "demo",
-    "schema_version": "1.1",
+    "schema_version": "1.2",
     "demo_version": "1.0.0",
     "generated_for": "prototype",
     "generated_at": "2026-07-29T16:34:00+03:00",
@@ -879,6 +879,11 @@
       "substrate_id": "substrate_gypsum",
       "name": "Гипсовое основание",
       "is_active": true
+    },
+    {
+      "substrate_id": "substrate_unspecified",
+      "name": "Поверхность не указана",
+      "is_active": true
     }
   ],
   "materials": [
@@ -1339,6 +1344,12 @@
       "name_en": "Demo source",
       "is_active": true,
       "is_demo": true
+    },
+    {
+      "document_type_id": "user_excel_import",
+      "name_ru": "Пользовательский импорт Excel",
+      "name_en": "User Excel import",
+      "is_active": true
     }
   ],
   "statuses": [
@@ -1507,6 +1518,76 @@
       "change_type": "architecture_update",
       "description": "Исправлена структура по результатам архитектурного аудита",
       "status": "draft"
+    },
+    {
+      "version": "1.2",
+      "released_at": "2026-07-29T16:34:00+03:00",
+      "change_type": "minor",
+      "description": "Добавлены связи материалов с поверхностями и журнал пакетов импорта Excel.",
+      "status": "active"
     }
-  ]
+  ],
+  "material_substrates": [
+    {
+      "material_substrate_id": "material_substrate_mat_001__substrate_carbon_steel",
+      "material_id": "mat_001",
+      "substrate_id": "substrate_carbon_steel",
+      "is_primary": true,
+      "status": "active",
+      "source_document_id": "demo_doc_001",
+      "created_at": "2026-07-29T16:34:00+03:00",
+      "updated_at": "2026-07-29T16:34:00+03:00",
+      "record_version": 1,
+      "notes": "Создано автоматически при миграции схемы 1.1→1.2."
+    },
+    {
+      "material_substrate_id": "material_substrate_mat_002__substrate_carbon_steel",
+      "material_id": "mat_002",
+      "substrate_id": "substrate_carbon_steel",
+      "is_primary": true,
+      "status": "active",
+      "source_document_id": "demo_doc_002",
+      "created_at": "2026-07-29T16:34:00+03:00",
+      "updated_at": "2026-07-29T16:34:00+03:00",
+      "record_version": 1,
+      "notes": "Создано автоматически при миграции схемы 1.1→1.2."
+    },
+    {
+      "material_substrate_id": "material_substrate_mat_003__substrate_carbon_steel",
+      "material_id": "mat_003",
+      "substrate_id": "substrate_carbon_steel",
+      "is_primary": true,
+      "status": "active",
+      "source_document_id": "demo_doc_003",
+      "created_at": "2026-07-29T16:34:00+03:00",
+      "updated_at": "2026-07-29T16:34:00+03:00",
+      "record_version": 1,
+      "notes": "Создано автоматически при миграции схемы 1.1→1.2."
+    },
+    {
+      "material_substrate_id": "material_substrate_mat_004__substrate_carbon_steel",
+      "material_id": "mat_004",
+      "substrate_id": "substrate_carbon_steel",
+      "is_primary": true,
+      "status": "active",
+      "source_document_id": "demo_doc_004",
+      "created_at": "2026-07-29T16:34:00+03:00",
+      "updated_at": "2026-07-29T16:34:00+03:00",
+      "record_version": 1,
+      "notes": "Создано автоматически при миграции схемы 1.1→1.2."
+    },
+    {
+      "material_substrate_id": "material_substrate_mat_005__substrate_carbon_steel",
+      "material_id": "mat_005",
+      "substrate_id": "substrate_carbon_steel",
+      "is_primary": true,
+      "status": "active",
+      "source_document_id": "demo_doc_005",
+      "created_at": "2026-07-29T16:34:00+03:00",
+      "updated_at": "2026-07-29T16:34:00+03:00",
+      "record_version": 1,
+      "notes": "Создано автоматически при миграции схемы 1.1→1.2."
+    }
+  ],
+  "import_batches": []
 }

@@ -1,4 +1,4 @@
-import type { ConsumptionNorm } from "../types/database";
+import type { ConsumptionNorm } from "../types/database.ts";
 
 export interface ConsumptionCalculation {
   theoreticalConsumption: number;

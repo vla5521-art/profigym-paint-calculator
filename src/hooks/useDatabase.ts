@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
-import type { DatabaseRepository } from "../repository/DatabaseRepository";
-import { databaseRepository } from "../repository/JsonRepository";
+import type { WritableDatabaseRepository } from "../repository/WritableDatabaseRepository.ts";
+import { databaseRepository } from "../repository/PersistentDatabaseRepository.ts";
 
 export interface UseDatabaseResult {
   loading: boolean;
   error: string | null;
-  repository: DatabaseRepository | null;
+  repository: WritableDatabaseRepository | null;
   reload: () => Promise<void>;
 }
 
@@ -16,7 +16,7 @@ function getErrorMessage(error: unknown): string {
 export function useDatabase(): UseDatabaseResult {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [repository, setRepository] = useState<DatabaseRepository | null>(null);
+  const [repository, setRepository] = useState<WritableDatabaseRepository | null>(null);
 
   const load = useCallback(async (forceReload: boolean): Promise<void> => {
     setLoading(true);

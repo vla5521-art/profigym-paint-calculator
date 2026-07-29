@@ -1,4 +1,11 @@
-import type { Database } from "../types/database";
+import type { Database } from "../types/database.ts";
+import {
+  migrateDatabaseToLatest,
+  SCHEMA_VERSION_1_1,
+  SCHEMA_VERSION_1_2,
+  SUBSTRATE_UNSPECIFIED_ID,
+  USER_EXCEL_IMPORT_DOCUMENT_TYPE_ID,
+} from "./migration.ts";
 
 export class DatabaseValidationError extends Error {
   public readonly issues: readonly string[];
@@ -13,7 +20,7 @@ export class DatabaseValidationError extends Error {
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
 
-const requiredArrays = [
+const baseRequiredArrays = [
   "manufacturers",
   "categories",
   "technologies",
@@ -31,6 +38,8 @@ const requiredArrays = [
   "database_versions",
 ] as const;
 
+const schema12RequiredArrays = ["material_substrates", "import_batches"] as const;
+
 export function parseAndValidateDatabase(value: unknown): Database {
   const issues: string[] = [];
 
@@ -42,17 +51,33 @@ export function parseAndValidateDatabase(value: unknown): Database {
     issues.push("отсутствует объект metadata");
   }
 
-  for (const section of requiredArrays) {
-    if (!Array.isArray(value[section])) {
-      issues.push(`отсутствует массив ${section}`);
+  for (const section of baseRequiredArrays) {
+    if (!Array.isArray(value[section])) issues.push(`отсутствует массив ${section}`);
+  }
+
+  if (issues.length > 0) throw new DatabaseValidationError(issues);
+
+  const schemaVersion = isRecord(value.metadata) ? value.metadata.schema_version : undefined;
+  if (schemaVersion !== SCHEMA_VERSION_1_1 && schemaVersion !== SCHEMA_VERSION_1_2) {
+    throw new DatabaseValidationError([`неподдерживаемая версия схемы ${String(schemaVersion)}`]);
+  }
+
+  if (schemaVersion === SCHEMA_VERSION_1_2) {
+    for (const section of schema12RequiredArrays) {
+      if (!Array.isArray(value[section])) issues.push(`для схемы 1.2 отсутствует массив ${section}`);
     }
   }
 
-  if (issues.length > 0) {
-    throw new DatabaseValidationError(issues);
+  if (issues.length > 0) throw new DatabaseValidationError(issues);
+
+  let database: Database;
+  try {
+    database = migrateDatabaseToLatest(value as unknown as Database);
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "неизвестная ошибка миграции";
+    throw new DatabaseValidationError([message]);
   }
 
-  const database = value as unknown as Database;
   validateContent(database);
   return database;
 }
@@ -78,13 +103,17 @@ function validateContent(database: Database): void {
     }
   }
 
+  if (database.metadata.schema_version !== SCHEMA_VERSION_1_2) {
+    issues.push(`после миграции ожидалась схема ${SCHEMA_VERSION_1_2}`);
+  }
+
+  validateServiceRecords(database, issues);
   validateUniqueIds(database, issues);
   validateReferences(database, issues);
   validateDefaultNorms(database, issues);
+  validateImportBatches(database, issues);
 
-  if (issues.length > 0) {
-    throw new DatabaseValidationError(issues);
-  }
+  if (issues.length > 0) throw new DatabaseValidationError(issues);
 }
 
 function findDuplicates(values: readonly string[]): string[] {
@@ -97,6 +126,17 @@ function findDuplicates(values: readonly string[]): string[] {
   return [...duplicates];
 }
 
+function validateServiceRecords(database: Database, issues: string[]): void {
+  if (!database.substrates.some((item) => item.substrate_id === SUBSTRATE_UNSPECIFIED_ID)) {
+    issues.push(`отсутствует служебная поверхность ${SUBSTRATE_UNSPECIFIED_ID}`);
+  }
+  if (!database.document_types.some(
+    (item) => item.document_type_id === USER_EXCEL_IMPORT_DOCUMENT_TYPE_ID,
+  )) {
+    issues.push(`отсутствует служебный тип документа ${USER_EXCEL_IMPORT_DOCUMENT_TYPE_ID}`);
+  }
+}
+
 function validateUniqueIds(database: Database, issues: string[]): void {
   const checks: ReadonlyArray<[string, readonly string[]]> = [
     ["manufacturer_id", database.manufacturers.map((item) => item.manufacturer_id)],
@@ -107,15 +147,15 @@ function validateUniqueIds(database: Database, issues: string[]): void {
     ["method_id", database.application_methods.map((item) => item.method_id)],
     ["substrate_id", database.substrates.map((item) => item.substrate_id)],
     ["material_id", database.materials.map((item) => item.material_id)],
+    ["material_substrate_id", database.material_substrates.map((item) => item.material_substrate_id)],
+    ["import_batch_id", database.import_batches.map((item) => item.import_batch_id)],
     ["norm_id", database.consumption_norms.map((item) => item.norm_id)],
     ["document_id", database.documents.map((item) => item.document_id)],
   ];
 
   for (const [field, values] of checks) {
     const duplicates = findDuplicates(values);
-    if (duplicates.length > 0) {
-      issues.push(`дубли ${field}: ${duplicates.join(", ")}`);
-    }
+    if (duplicates.length > 0) issues.push(`дубли ${field}: ${duplicates.join(", ")}`);
   }
 }
 
@@ -146,6 +186,15 @@ function validateReferences(database: Database, issues: string[]): void {
     }
   }
 
+  for (const relation of database.material_substrates) {
+    if (!materials.has(relation.material_id)) {
+      issues.push(`связь ${relation.material_substrate_id}: неизвестный материал ${relation.material_id}`);
+    }
+    if (!substrates.has(relation.substrate_id)) {
+      issues.push(`связь ${relation.material_substrate_id}: неизвестная поверхность ${relation.substrate_id}`);
+    }
+  }
+
   for (const norm of database.consumption_norms) {
     if (!materials.has(norm.material_id)) issues.push(`норма ${norm.norm_id}: неизвестный материал`);
     if (!units.has(norm.unit_id)) issues.push(`норма ${norm.norm_id}: неизвестная единица ${norm.unit_id}`);
@@ -161,6 +210,14 @@ function validateReferences(database: Database, issues: string[]): void {
     if (!materials.has(document.material_id)) issues.push(`документ ${document.document_id}: неизвестный материал`);
     if (!documentTypes.has(document.document_type_id)) issues.push(`документ ${document.document_id}: неизвестный тип документа`);
   }
+
+  for (const relation of database.material_substrates) {
+    if (relation.source_import_batch_id != null && !database.import_batches.some(
+      (batch) => batch.import_batch_id === relation.source_import_batch_id,
+    )) {
+      issues.push(`связь ${relation.material_substrate_id}: неизвестный пакет импорта ${relation.source_import_batch_id}`);
+    }
+  }
 }
 
 function validateDefaultNorms(database: Database, issues: string[]): void {
@@ -175,5 +232,17 @@ function validateDefaultNorms(database: Database, issues: string[]): void {
     ].join("|");
     if (contexts.has(key)) issues.push(`дублирующая default-норма для контекста ${key}`);
     contexts.add(key);
+  }
+}
+
+function validateImportBatches(database: Database, issues: string[]): void {
+  for (const batch of database.import_batches) {
+    const counts = [batch.rows_total, batch.rows_imported, batch.rows_rejected];
+    if (counts.some((value) => !Number.isInteger(value) || value < 0)) {
+      issues.push(`пакет импорта ${batch.import_batch_id}: счётчики строк должны быть целыми и неотрицательными`);
+    }
+    if (batch.rows_imported + batch.rows_rejected !== batch.rows_total) {
+      issues.push(`пакет импорта ${batch.import_batch_id}: rows_imported + rows_rejected не равно rows_total`);
+    }
   }
 }

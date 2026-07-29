@@ -71,6 +71,29 @@ export interface Substrate {
   is_active: boolean;
 }
 
+
+export interface MaterialSubstrate {
+  material_substrate_id: string;
+  material_id: string;
+  substrate_id: string;
+  created_at: string;
+  source_import_batch_id: Nullable<string>;
+}
+
+export interface ImportBatch {
+  import_batch_id: string;
+  file_name: string;
+  file_size: number;
+  checksum: string;
+  imported_at: string;
+  rows_total: number;
+  rows_imported: number;
+  rows_rejected: number;
+  status: RecordStatus;
+  database_version_before: string;
+  database_version_after: string;
+}
+
 export interface Material {
   material_id: string;
   name: string;
@@ -205,6 +228,8 @@ export interface Database {
   application_methods: ApplicationMethod[];
   substrates: Substrate[];
   materials: Material[];
+  material_substrates: MaterialSubstrate[];
+  import_batches: ImportBatch[];
   consumption_norms: ConsumptionNorm[];
   documents: Document[];
   document_types: DocumentType[];
