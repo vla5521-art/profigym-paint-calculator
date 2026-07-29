@@ -474,3 +474,11 @@ input[aria-invalid="true"] {
     min-height: 36px;
   }
 }
+
+
+/* PROFiGYM v1.1.6 - unit selector font size only */
+.unit-select,
+select#unit,
+#unit {
+    font-size: 20px;
+}
