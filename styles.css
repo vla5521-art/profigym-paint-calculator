@@ -476,7 +476,7 @@ input[aria-invalid="true"] {
 }
 
 
-/* PROFiGYM v1.1.13 - unit selector font size */
+/* PROFiGYM v1.1.14 - unit selector font size */
 .unit-select,
 select#unit,
 #unit {
@@ -484,13 +484,13 @@ select#unit,
 }
 
 
-/* PROFiGYM v1.1.13 - logo size */
+/* PROFiGYM v1.1.14 - logo size */
 .brand-logo {
     width: clamp(144px, 15.2vw, 228px);
     height: auto;
 }
 
-/* PROFiGYM v1.1.13 - compact input cards */
+/* PROFiGYM v1.1.14 - compact input cards */
 .field-card {
   gap: 10px;
   padding-top: 20px;
@@ -524,7 +524,7 @@ select#unit,
 }
 
 
-/* PROFiGYM v1.1.13 - 10% smaller input cards and 15% smaller controls */
+/* PROFiGYM v1.1.14 - 10% smaller input cards and 15% smaller controls */
 .field-card {
   gap: 9px;
   padding-top: 18px;

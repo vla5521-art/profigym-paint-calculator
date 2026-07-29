@@ -76,7 +76,7 @@ const searchInput = document.getElementById("history-search");
 const repeatBtn = document.getElementById("repeat-btn");
 const favoriteBtn = document.getElementById("favorite-btn");
 const printBtn = document.getElementById("print-btn");
-const csvBtn = document.getElementById("csv-btn");
+const pdfBtn = document.getElementById("pdf-btn");
 
 let calculations = JSON.parse(localStorage.getItem("paintHistory") || "[]");
 
@@ -116,15 +116,55 @@ favoriteBtn?.addEventListener("click",()=>{
  localStorage.setItem("favoritePaintCalc", JSON.stringify(calculations[0]||{}));
 });
 
-printBtn?.addEventListener("click",()=>window.print());
+function hasCompletedCalculation() {
+  const consumption = readValue(consumptionInput);
+  const area = readValue(areaInput);
+  const displayedResult = Number(result.textContent);
 
-csvBtn?.addEventListener("click",()=>{
- let csv="Дата,Норма,Единица,Площадь,Результат\n"+calculations.map(x=>`${x.date},${x.consumption},${x.unit},${x.area},${x.result}`).join("\n");
- let a=document.createElement("a");
- a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));
- a.download="расчеты.csv";
- a.click();
-});
+  return consumption !== null
+    && area !== null
+    && Number.isFinite(consumption)
+    && Number.isFinite(area)
+    && consumption >= 0
+    && area >= 0
+    && Number.isFinite(displayedResult)
+    && displayedResult === Number((consumption * area).toFixed(2));
+}
+
+function openPrintDialog() {
+  if (!hasCompletedCalculation()) {
+    alert("Сначала выполните расчёт");
+    return;
+  }
+
+  const originalTitle = document.title;
+  const now = new Date();
+  const localDate = [
+    now.getFullYear(),
+    String(now.getMonth() + 1).padStart(2, "0"),
+    String(now.getDate()).padStart(2, "0")
+  ].join("-");
+
+  document.title = `PROFiGYM_расчет_краски_${localDate}`;
+
+  const restoreTitle = () => {
+    document.title = originalTitle;
+    window.removeEventListener("afterprint", restoreTitle);
+  };
+
+  window.addEventListener("afterprint", restoreTitle);
+  window.print();
+
+  // Резервное восстановление для браузеров без события afterprint.
+  window.setTimeout(() => {
+    if (document.title !== originalTitle) {
+      restoreTitle();
+    }
+  }, 1000);
+}
+
+printBtn?.addEventListener("click", openPrintDialog);
+pdfBtn?.addEventListener("click", openPrintDialog);
 
 searchInput?.addEventListener("input",renderHistory);
 renderHistory();
