@@ -482,3 +482,13 @@ select#unit,
 #unit {
     font-size: 20px;
 }
+
+
+/* PROFiGYM v1.1.7 - logo height reduced by 20%, aspect ratio preserved */
+.logo,
+.brand-logo,
+img.logo,
+img.brand-logo {
+    height: 80% !important;
+    width: auto !important;
+}
