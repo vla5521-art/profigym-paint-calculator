@@ -1,0 +1,178 @@
+[
+  {
+    "name": "through_hole.step",
+    "totalAreaMm2": 5602.123859659493,
+    "toleranceMm2": 0.05,
+    "expectedTypes": [
+      "through_hole"
+    ],
+    "expectedFeatureCount": 1,
+    "expectedDiameterMm": 8,
+    "expectedDepthMm": 20,
+    "expectedRawFeatureAreaMm2": 502.6548245743669,
+    "expectedUniqueExcludedAreaMm2": 502.6548245743669,
+    "expectedStatus": "confirmed",
+    "expectedPaintableAreaMm2": 5099.469035085126
+  },
+  {
+    "name": "blind_hole.step",
+    "totalAreaMm2": 5401.061929829746,
+    "toleranceMm2": 0.05,
+    "expectedTypes": [
+      "blind_hole"
+    ],
+    "expectedFeatureCount": 1,
+    "expectedDiameterMm": 8,
+    "expectedDepthMm": 8,
+    "expectedSideAreaMm2": 201.06192982974676,
+    "expectedBottomAreaMm2": 50.26548245743669,
+    "expectedStatus": "confirmed",
+    "expectedRawFeatureAreaMm2": 201.06192982974676,
+    "expectedUniqueExcludedAreaMm2": 201.06192982974676,
+    "expectedPaintableAreaMm2": 5199.999999999999
+  },
+  {
+    "name": "stepped_hole.step",
+    "totalAreaMm2": 9004.867198482574,
+    "toleranceMm2": 0.05,
+    "expectedTypes": [
+      "stepped_hole"
+    ],
+    "expectedFeatureCount": 1,
+    "expectedDiametersMm": [
+      6,
+      10,
+      14
+    ],
+    "expectedSegmentCount": 3,
+    "expectedStatus": "confirmed",
+    "expectedRawFeatureAreaMm2": 741.4158662471912,
+    "expectedUniqueExcludedAreaMm2": 741.4158662471912,
+    "expectedPaintableAreaMm2": 8263.451332235383
+  },
+  {
+    "name": "countersunk_hole.step",
+    "totalAreaMm2": 5499.028620584894,
+    "toleranceMm2": 0.05,
+    "expectedTypes": [
+      "countersunk_hole"
+    ],
+    "expectedFeatureCount": 1,
+    "expectedDiameterMm": 12,
+    "expectedStatus": "confirmed",
+    "expectedRawFeatureAreaMm2": 440.40028999643476,
+    "expectedUniqueExcludedAreaMm2": 440.40028999643476,
+    "expectedPaintableAreaMm2": 5058.62833058846
+  },
+  {
+    "name": "counterbored_hole.step",
+    "totalAreaMm2": 5671.2388980384685,
+    "toleranceMm2": 0.05,
+    "expectedTypes": [
+      "counterbored_hole"
+    ],
+    "expectedFeatureCount": 1,
+    "expectedDiametersMm": [
+      6,
+      14
+    ],
+    "expectedSegmentCount": 2,
+    "expectedStatus": "confirmed",
+    "expectedRawFeatureAreaMm2": 527.7875658030853,
+    "expectedUniqueExcludedAreaMm2": 527.7875658030853,
+    "expectedPaintableAreaMm2": 5143.451332235383
+  },
+  {
+    "name": "intersecting_holes.step",
+    "totalAreaMm2": 6250.902543892894,
+    "toleranceMm2": 0.05,
+    "expectedTypes": [
+      "intersecting_holes",
+      "intersecting_holes"
+    ],
+    "expectedFeatureCount": 2,
+    "expectedStatus": "review_required",
+    "expectedRawFeatureAreaMm2": 0,
+    "expectedUniqueExcludedAreaMm2": 0,
+    "expectedPaintableAreaMm2": 6250.902543892894
+  },
+  {
+    "name": "closed_internal_cavity.step",
+    "totalAreaMm2": 5935.999999999999,
+    "toleranceMm2": 0.05,
+    "expectedTypes": [
+      "closed_internal_cavity"
+    ],
+    "expectedFeatureCount": 1,
+    "expectedCavityAreaMm2": 736,
+    "expectedStatus": "confirmed",
+    "expectedRawFeatureAreaMm2": 736,
+    "expectedUniqueExcludedAreaMm2": 736,
+    "expectedPaintableAreaMm2": 5199.999999999999
+  },
+  {
+    "name": "open_internal_cavity.step",
+    "totalAreaMm2": 5879.999999999999,
+    "toleranceMm2": 0.05,
+    "expectedTypes": [
+      "open_internal_cavity"
+    ],
+    "expectedFeatureCount": 1,
+    "expectedStatus": "review_required",
+    "expectedRawFeatureAreaMm2": 0,
+    "expectedUniqueExcludedAreaMm2": 0,
+    "expectedPaintableAreaMm2": 5879.999999999999
+  },
+  {
+    "name": "slot_not_hole.step",
+    "totalAreaMm2": 5360.884901332318,
+    "toleranceMm2": 0.05,
+    "expectedTypes": [
+      "slot"
+    ],
+    "expectedFeatureCount": 1,
+    "expectedStatus": "review_required",
+    "expectedRawFeatureAreaMm2": 0,
+    "expectedUniqueExcludedAreaMm2": 0,
+    "expectedPaintableAreaMm2": 5360.884901332318
+  },
+  {
+    "name": "contact_and_hole_overlap.step",
+    "totalAreaMm2": 6205.309649148733,
+    "toleranceMm2": 0.05,
+    "expectedTypes": [
+      "through_hole"
+    ],
+    "expectedFeatureCount": 1,
+    "expectedContactAreaMm2": 502.6548245743669,
+    "expectedOverlapAreaMm2": 502.6548245743669,
+    "expectedRawFeatureAreaMm2": 502.6548245743669,
+    "expectedUniqueExcludedAreaMm2": 1005.3096491487338,
+    "expectedPaintableAreaMm2": 5199.999999999999
+  },
+  {
+    "name": "multiple_features.step",
+    "totalAreaMm2": 17215.09727524052,
+    "toleranceMm2": 0.05,
+    "expectedTypes": [
+      "blind_hole",
+      "closed_internal_cavity",
+      "through_hole"
+    ],
+    "expectedFeatureCount": 3,
+    "expectedRawFeatureAreaMm2": 1471.645943005142,
+    "expectedUniqueExcludedAreaMm2": 1471.645943005142,
+    "expectedPaintableAreaMm2": 15743.45133223538
+  },
+  {
+    "name": "no_features.step",
+    "totalAreaMm2": 5199.999999999999,
+    "toleranceMm2": 0.05,
+    "expectedTypes": [],
+    "expectedFeatureCount": 0,
+    "expectedStatus": null,
+    "expectedRawFeatureAreaMm2": 0,
+    "expectedUniqueExcludedAreaMm2": 0,
+    "expectedPaintableAreaMm2": 5199.999999999999
+  }
+]

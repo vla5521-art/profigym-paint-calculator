@@ -1,0 +1,10 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+const lock = JSON.parse(await fs.readFile('package-lock.json', 'utf8'));
+const components = Object.entries(lock.packages ?? {}).filter(([key]) => key.startsWith('node_modules/')).map(([key, value]) => ({ type: 'library', name: key.replace(/^node_modules\//, ''), version: value.version ?? 'unknown', purl: `pkg:npm/${encodeURIComponent(key.replace(/^node_modules\//, ''))}@${value.version ?? 'unknown'}`, licenses: value.license ? [{ license: { id: value.license } }] : undefined })).sort((a, b) => a.name.localeCompare(b.name));
+const serial = `urn:uuid:${crypto.randomUUID()}`;
+const sbom = { bomFormat: 'CycloneDX', specVersion: '1.6', serialNumber: serial, version: 1, metadata: { timestamp: new Date().toISOString(), component: { type: 'application', name: lock.name, version: lock.version } }, components };
+await fs.mkdir('artifacts/security', { recursive: true });
+await fs.writeFile('artifacts/security/sbom.cdx.json', `${JSON.stringify(sbom, null, 2)}\n`);
+console.log(JSON.stringify({ status: 'PASS', format: 'CycloneDX 1.6', components: components.length, output: path.resolve('artifacts/security/sbom.cdx.json') }));

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0.0",
+  "suite": "determinism",
+  "files": [
+    "two_plates_partial_overlap.step",
+    "cylindrical_fit.step",
+    "multiple_features.step",
+    "contact_and_hole_overlap.step",
+    "ten_plates_chain_contacts.step"
+  ],
+  "sameProcessRuns": 5,
+  "separateProcessRuns": 3,
+  "mismatches": [],
+  "status": "PASS"
+}

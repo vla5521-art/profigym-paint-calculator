@@ -1,0 +1,63 @@
+{
+  "algorithmVersions": {
+    "geometry": "2.0.0",
+    "contact": "3.0.0",
+    "feature": "4.0.0",
+    "viewerMesh": "1.0.0",
+    "reportSchema": "1.0.0"
+  },
+  "geometryFingerprint": "2607d73657cf1b3a767e23596317afd684783dcc7e7edc8a55cfca81e67ee881",
+  "geometryStatus": "valid",
+  "counts": {
+    "bodies": 2,
+    "shells": 2,
+    "faces": 10,
+    "edges": 18,
+    "vertices": 12
+  },
+  "units": {
+    "source": "mm",
+    "symbol": "mm",
+    "millimetersPerUnit": 1,
+    "normalizedTo": "mm"
+  },
+  "totalAreaMm2": 6205.309649149,
+  "areas": {
+    "contactPhysicalMm2": 502.654824574,
+    "contactExcludedMm2": 1005.309649149,
+    "holeExcludedMm2": 502.654824574,
+    "cavityExcludedMm2": 0,
+    "manualExcludedMm2": 0,
+    "rawExcludedMm2": 1507.964473723,
+    "overlapMm2": 502.654824574,
+    "uniqueExcludedMm2": 1005.309649148,
+    "paintableMm2": 5200.000000001
+  },
+  "contacts": [
+    {
+      "status": "confirmed",
+      "faceIds": [
+        "face_720f518ac5124e5820c9f884",
+        "face_7b07e04e2215ac525373ec61"
+      ]
+    }
+  ],
+  "features": [
+    {
+      "type": "through_hole",
+      "status": "confirmed",
+      "areaMm2": 502.654824574,
+      "faceIds": [
+        "face_7b07e04e2215ac525373ec61"
+      ]
+    }
+  ],
+  "warnings": [
+    "MULTI_BODY_MODEL"
+  ],
+  "errors": [],
+  "mesh": {
+    "faceCount": 10,
+    "triangleCount": 0
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "algorithmVersions": {
+    "geometry": "2.0.0",
+    "contact": "3.0.0",
+    "feature": "4.0.0",
+    "viewerMesh": "1.0.0",
+    "reportSchema": "1.0.0"
+  },
+  "geometryFingerprint": "888c0f6f804700c5ca12759cd70cbe20fb3912c23598b364a237c57acfe22586",
+  "geometryStatus": "valid",
+  "counts": {
+    "bodies": 1,
+    "shells": 1,
+    "faces": 9,
+    "edges": 18,
+    "vertices": 12
+  },
+  "units": {
+    "source": "mm",
+    "symbol": "mm",
+    "millimetersPerUnit": 1,
+    "normalizedTo": "mm"
+  },
+  "totalAreaMm2": 5671.238898039,
+  "areas": {
+    "contactPhysicalMm2": 0,
+    "contactExcludedMm2": 0,
+    "holeExcludedMm2": 527.787565804,
+    "cavityExcludedMm2": 0,
+    "manualExcludedMm2": 0,
+    "rawExcludedMm2": 527.787565804,
+    "overlapMm2": 0,
+    "uniqueExcludedMm2": 527.787565804,
+    "paintableMm2": 5143.451332235
+  },
+  "contacts": [],
+  "features": [
+    {
+      "type": "counterbored_hole",
+      "status": "confirmed",
+      "areaMm2": 527.787565804,
+      "faceIds": [
+        "face_1a75e7db1c573d02d5e9402c",
+        "face_7224aa93d05480e070976aa8",
+        "face_801159d2a0f5f01d389ba2bd",
+        "face_c0c733f1fe901c405c853106",
+        "face_ed820ee06afbf11b7e1a29d2"
+      ]
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "mesh": {
+    "faceCount": 9,
+    "triangleCount": 0
+  }
+}

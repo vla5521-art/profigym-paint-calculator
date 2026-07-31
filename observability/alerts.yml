@@ -1,0 +1,64 @@
+groups:
+  - name: profigym-production
+    rules:
+      - alert: ProfigymApiUnavailable
+        expr: up{job="profigym-app"} == 0
+        for: 2m
+        labels: { severity: critical }
+        annotations: { summary: "PROFiGYM API unavailable" }
+      - alert: ProfigymReadinessFailed
+        expr: probe_success{probe="profigym-readiness"} == 0
+        for: 2m
+        labels: { severity: critical }
+        annotations: { summary: "Readiness check failed" }
+      - alert: ProfigymWorkerMissing
+        expr: cad_worker_heartbeat_age_seconds < 0 or cad_worker_heartbeat_age_seconds > 30
+        for: 1m
+        labels: { severity: critical }
+        annotations: { summary: "CAD worker heartbeat is stale" }
+      - alert: ProfigymQueueGrowing
+        expr: cad_jobs_queued > 10
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "CAD queue is growing" }
+      - alert: ProfigymJobFailures
+        expr: increase(cad_jobs_failed_total[15m]) > 5
+        labels: { severity: warning }
+        annotations: { summary: "Excessive CAD job failures" }
+      - alert: ProfigymJobTimeouts
+        expr: increase(cad_jobs_timed_out_total[15m]) > 2
+        labels: { severity: warning }
+        annotations: { summary: "Excessive CAD job timeouts" }
+      - alert: ProfigymHighMemory
+        expr: process_resident_memory_bytes > 1.35e9
+        for: 5m
+        labels: { severity: warning }
+        annotations: { summary: "Worker or app memory is high" }
+      - alert: ProfigymStorageAlmostFull
+        expr: cad_storage_bytes > 0.9 * 50e9
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "Configured storage budget is almost full" }
+      - alert: ProfigymBackupFailed
+        expr: increase(cad_backup_failure_total[24h]) > 0
+        labels: { severity: critical }
+        annotations: { summary: "Backup failed" }
+      - alert: ProfigymNoSuccessfulBackup
+        expr: increase(cad_backup_success_total[26h]) < 1
+        for: 1h
+        labels: { severity: critical }
+        annotations: { summary: "No successful backup in 26 hours" }
+      - alert: ProfigymCleanupFailure
+        expr: increase(cad_cleanup_failure_total[1h]) > 0
+        labels: { severity: warning }
+        annotations: { summary: "Storage cleanup failed" }
+      - alert: ProfigymElevated5xx
+        expr: sum(rate(http_requests_total{status_class="5xx"}[5m])) / clamp_min(sum(rate(http_requests_total[5m])), 0.001) > 0.05
+        for: 5m
+        labels: { severity: critical }
+        annotations: { summary: "HTTP 5xx ratio exceeds 5%" }
+      - alert: ProfigymHighP95Latency
+        expr: histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le)) > 2
+        for: 10m
+        labels: { severity: warning }
+        annotations: { summary: "API p95 latency is high" }

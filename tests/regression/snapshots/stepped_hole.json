@@ -1,0 +1,59 @@
+{
+  "algorithmVersions": {
+    "geometry": "2.0.0",
+    "contact": "3.0.0",
+    "feature": "4.0.0",
+    "viewerMesh": "1.0.0",
+    "reportSchema": "1.0.0"
+  },
+  "geometryFingerprint": "03169183c0c6045f7c4745a7d8382ab7f6f310535445246c04ae1a02dc447cd9",
+  "geometryStatus": "valid",
+  "counts": {
+    "bodies": 1,
+    "shells": 1,
+    "faces": 11,
+    "edges": 21,
+    "vertices": 14
+  },
+  "units": {
+    "source": "mm",
+    "symbol": "mm",
+    "millimetersPerUnit": 1,
+    "normalizedTo": "mm"
+  },
+  "totalAreaMm2": 9004.867198483,
+  "areas": {
+    "contactPhysicalMm2": 0,
+    "contactExcludedMm2": 0,
+    "holeExcludedMm2": 741.415866247,
+    "cavityExcludedMm2": 0,
+    "manualExcludedMm2": 0,
+    "rawExcludedMm2": 741.415866247,
+    "overlapMm2": 0,
+    "uniqueExcludedMm2": 741.415866247,
+    "paintableMm2": 8263.451332236
+  },
+  "contacts": [],
+  "features": [
+    {
+      "type": "stepped_hole",
+      "status": "confirmed",
+      "areaMm2": 741.415866247,
+      "faceIds": [
+        "face_255356eb274c2b215793615e",
+        "face_365753853d1365a9295bc867",
+        "face_44b12ef67f08351d71bb4665",
+        "face_5eb570b66046ee60bdcc379b",
+        "face_cd7065c73573c7c942b2fc10",
+        "face_dfd27396b76df039f1c28e93",
+        "face_ec7c6b771930e13a80cbe83f"
+      ]
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "mesh": {
+    "faceCount": 11,
+    "triangleCount": 0
+  }
+}

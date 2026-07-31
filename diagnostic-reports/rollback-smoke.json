@@ -1,0 +1,12 @@
+{
+  "applicationVersion": "2.0.0",
+  "generatedAt": "2026-07-31T13:43:03.629Z",
+  "status": "PASS",
+  "releaseAStarted": true,
+  "releaseBStarted": true,
+  "simulatedBFailure": true,
+  "returnedToReleaseA": true,
+  "verifiedBackupRestore": true,
+  "dataIntegrity": "ok",
+  "binaryCompatibilityAcrossDistinctImages": "NOT_TESTED_RELEASE_MARKERS_ONLY"
+}

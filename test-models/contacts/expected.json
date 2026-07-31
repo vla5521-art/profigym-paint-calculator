@@ -1,0 +1,126 @@
+[
+  {
+    "name": "two_plates_full_contact.step",
+    "generatedTotalAreaMm2": 1040,
+    "totalAreaMm2": 1040,
+    "expectedPhysicalContactAreaMm2": 200,
+    "expectedExcludedPaintAreaMm2": 400,
+    "expectedPaintableAreaMm2": 640,
+    "expectedContactCount": 1,
+    "expectedClassifications": [
+      "full_planar_contact"
+    ]
+  },
+  {
+    "name": "two_plates_partial_overlap.step",
+    "generatedTotalAreaMm2": 1040,
+    "totalAreaMm2": 1040,
+    "expectedPhysicalContactAreaMm2": 100,
+    "expectedExcludedPaintAreaMm2": 200,
+    "expectedPaintableAreaMm2": 840,
+    "expectedContactCount": 1,
+    "expectedClassifications": [
+      "partial_planar_contact"
+    ]
+  },
+  {
+    "name": "cylindrical_fit.step",
+    "generatedTotalAreaMm2": 4926.017280828796,
+    "totalAreaMm2": 4926.017280828796,
+    "expectedPhysicalContactAreaMm2": 1256.6370614359173,
+    "expectedExcludedPaintAreaMm2": 2513.2741228718346,
+    "expectedPaintableAreaMm2": 2412.7431579569616,
+    "expectedContactCount": 1,
+    "expectedClassifications": [
+      "cylindrical_contact"
+    ]
+  },
+  {
+    "name": "tangent_contact.step",
+    "generatedTotalAreaMm2": 2513.2741228718346,
+    "totalAreaMm2": 2513.2741228718346,
+    "expectedPhysicalContactAreaMm2": 0,
+    "expectedExcludedPaintAreaMm2": 0,
+    "expectedPaintableAreaMm2": 2513.2741228718346,
+    "expectedContactCount": 1,
+    "expectedClassifications": [
+      "tangent_contact"
+    ]
+  },
+  {
+    "name": "tangent_line_contact.step",
+    "generatedTotalAreaMm2": 6684.955592153876,
+    "expectedPhysicalContactAreaMm2": 0,
+    "expectedExcludedPaintAreaMm2": 0,
+    "expectedContactCountMinimum": 1,
+    "expectedClassifications": [
+      "tangent_contact"
+    ]
+  },
+  {
+    "name": "small_gap_below_tolerance.step",
+    "generatedTotalAreaMm2": 1040,
+    "totalAreaMm2": 1040,
+    "expectedPhysicalContactAreaMm2": 0,
+    "expectedReviewRequiredAreaMm2": 200,
+    "expectedExcludedPaintAreaMm2": 0,
+    "expectedPaintableAreaMm2": 1040,
+    "expectedContactCount": 1,
+    "expectedClassifications": [
+      "near_gap"
+    ]
+  },
+  {
+    "name": "gap_above_tolerance.step",
+    "generatedTotalAreaMm2": 1040,
+    "totalAreaMm2": 1040,
+    "expectedPhysicalContactAreaMm2": 0,
+    "expectedExcludedPaintAreaMm2": 0,
+    "expectedPaintableAreaMm2": 1040,
+    "expectedContactCount": 0,
+    "expectedClassifications": []
+  },
+  {
+    "name": "multiple_contacts.step",
+    "generatedTotalAreaMm2": 1560,
+    "totalAreaMm2": 1560,
+    "expectedPhysicalContactAreaMm2": 400,
+    "expectedExcludedPaintAreaMm2": 800,
+    "expectedPaintableAreaMm2": 760,
+    "expectedContactCount": 2,
+    "expectedClassifications": [
+      "full_planar_contact",
+      "full_planar_contact"
+    ]
+  },
+  {
+    "name": "multi_body_no_contact.step",
+    "generatedTotalAreaMm2": 5999.999999999999,
+    "totalAreaMm2": 6000,
+    "expectedPhysicalContactAreaMm2": 0,
+    "expectedExcludedPaintAreaMm2": 0,
+    "expectedPaintableAreaMm2": 6000,
+    "expectedContactCount": 0,
+    "expectedClassifications": []
+  },
+  {
+    "name": "ten_plates_chain_contacts.step",
+    "generatedTotalAreaMm2": 5200,
+    "totalAreaMm2": 5200,
+    "expectedPhysicalContactAreaMm2": 1800,
+    "expectedExcludedPaintAreaMm2": 3600,
+    "expectedPaintableAreaMm2": 1600,
+    "expectedContactCount": 9,
+    "expectedClassifications": [
+      "full_planar_contact",
+      "full_planar_contact",
+      "full_planar_contact",
+      "full_planar_contact",
+      "full_planar_contact",
+      "full_planar_contact",
+      "full_planar_contact",
+      "full_planar_contact",
+      "full_planar_contact"
+    ]
+  }
+]

@@ -1,16 +1,24 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { rm } from "node:fs/promises";
 import test from "node:test";
-import { XlsxArchive } from "../src/services/xlsxZipReader.ts";
+import { build as viteBuild } from "vite";
+import {
+  TEMPLATE_FILE_NAME,
+  TEMPLATE_RELATIVE_PATH,
+  verifyTemplatePackaging,
+} from "../scripts/verify-template-packaging.mjs";
 
-const templatePath = new URL("../public/templates/PROFiGYM_шаблон_импорта.xlsx", import.meta.url);
+test("Excel-шаблон имеет точное UTF-8 имя и идентичную production-копию", {
+  timeout: 120_000,
+}, async () => {
+  assert.equal(TEMPLATE_FILE_NAME, "PROFiGYM_шаблон_импорта.xlsx");
+  assert.equal(TEMPLATE_RELATIVE_PATH, "templates/PROFiGYM_шаблон_импорта.xlsx");
 
-test("минимальный шаблон является корректным XLSX-архивом", async () => {
-  const file = await readFile(templatePath);
-  const buffer = file.buffer.slice(file.byteOffset, file.byteOffset + file.byteLength);
-  const archive = await XlsxArchive.fromArrayBuffer(buffer);
+  await verifyTemplatePackaging({ requireDist: false });
 
-  assert.equal(archive.has("xl/workbook.xml"), true);
-  assert.equal(archive.has("xl/_rels/workbook.xml.rels"), true);
-  assert.match(await archive.readText("xl/workbook.xml"), /<(?:\w+:)?workbook/);
+  await rm(new URL("../dist", import.meta.url), { recursive: true, force: true });
+  await viteBuild({ logLevel: "silent" });
+
+  const result = await verifyTemplatePackaging();
+  assert.equal(result.sourceSha256, result.productionSha256);
 });

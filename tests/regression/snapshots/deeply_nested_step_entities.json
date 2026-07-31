@@ -1,0 +1,110 @@
+{
+  "algorithmVersions": {
+    "geometry": "2.0.0",
+    "contact": "3.0.0",
+    "feature": "4.0.0",
+    "viewerMesh": "1.0.0",
+    "reportSchema": "1.0.0"
+  },
+  "geometryFingerprint": "8b29c4a5fbe0a9d23b5f10bc585db68a76bd1caf5d2620d77ae6d3c6fe456e95",
+  "geometryStatus": "valid",
+  "counts": {
+    "bodies": 10,
+    "shells": 10,
+    "faces": 60,
+    "edges": 120,
+    "vertices": 80
+  },
+  "units": {
+    "source": "mm",
+    "symbol": "mm",
+    "millimetersPerUnit": 1,
+    "normalizedTo": "mm"
+  },
+  "totalAreaMm2": 5200,
+  "areas": {
+    "contactPhysicalMm2": 1800,
+    "contactExcludedMm2": 3600,
+    "holeExcludedMm2": 0,
+    "cavityExcludedMm2": 0,
+    "manualExcludedMm2": 0,
+    "rawExcludedMm2": 3600,
+    "overlapMm2": 0,
+    "uniqueExcludedMm2": 3600,
+    "paintableMm2": 1600
+  },
+  "contacts": [
+    {
+      "status": "confirmed",
+      "faceIds": [
+        "face_323f7efa3d997cd2101b443e",
+        "face_fd49a67af9d46ae66dc473e7"
+      ]
+    },
+    {
+      "status": "confirmed",
+      "faceIds": [
+        "face_473ed8c2b44f4eeee3673081",
+        "face_f1e77abd421eb92a72b23ae9"
+      ]
+    },
+    {
+      "status": "confirmed",
+      "faceIds": [
+        "face_5486c89df40045f596114562",
+        "face_af369a470c7e9d3d358fa510"
+      ]
+    },
+    {
+      "status": "confirmed",
+      "faceIds": [
+        "face_6a905a20b73e7c1002c007f1",
+        "face_a5e3da68645a466996d9f252"
+      ]
+    },
+    {
+      "status": "confirmed",
+      "faceIds": [
+        "face_7948a399f8e399f40706385e",
+        "face_c96f72958773aa13926f8149"
+      ]
+    },
+    {
+      "status": "confirmed",
+      "faceIds": [
+        "face_8463a8d5f6a8c8dd35b244a0",
+        "face_964bbe3d2589d90c40e2640e"
+      ]
+    },
+    {
+      "status": "confirmed",
+      "faceIds": [
+        "face_baa25052397b36d8ddb1389a",
+        "face_f16484b8ff4832b7fcb9e174"
+      ]
+    },
+    {
+      "status": "confirmed",
+      "faceIds": [
+        "face_c0792d021be0977ea3d28345",
+        "face_d2f08da8e8394cd4cf5874d1"
+      ]
+    },
+    {
+      "status": "confirmed",
+      "faceIds": [
+        "face_c3d5ec82a87e42db1c37860b",
+        "face_fe1910c267da6e729cbd644e"
+      ]
+    }
+  ],
+  "features": [],
+  "warnings": [
+    "MULTI_BODY_MODEL"
+  ],
+  "errors": [],
+  "mesh": {
+    "faceCount": 60,
+    "triangleCount": 0
+  }
+}

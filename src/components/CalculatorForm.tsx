@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import type { PaintIntegration } from "../cad/api.ts";
 import type { DatabaseRepository } from "../repository/DatabaseRepository.ts";
 import { calculateConsumption } from "../services/calculations.ts";
 import type { Material } from "../types/database.ts";
@@ -16,6 +17,8 @@ interface FormErrors {
 interface CalculatorFormProps {
   repository: DatabaseRepository;
   onResult: (result: CalculationResultView | null) => void;
+  cadSource?: PaintIntegration | null;
+  onReturnToCad?: () => void;
 }
 
 function resultUnitFromNormSymbol(symbol: string): string {
@@ -26,13 +29,21 @@ function resultUnitFromNormSymbol(symbol: string): string {
   return symbol.replace("/м²", "");
 }
 
-export function CalculatorForm({ repository, onResult }: CalculatorFormProps): React.JSX.Element {
+export function CalculatorForm({ repository, onResult, cadSource, onReturnToCad }: CalculatorFormProps): React.JSX.Element {
   const manufacturers = useMemo(() => repository.getManufacturers(), [repository]);
   const [manufacturerId, setManufacturerId] = useState("");
   const [materialId, setMaterialId] = useState("");
   const [area, setArea] = useState("");
   const [lossFactor, setLossFactor] = useState("1.10");
   const [errors, setErrors] = useState<FormErrors>({});
+  const [cadAreaOverridden, setCadAreaOverridden] = useState(false);
+
+  useEffect(() => {
+    if (!cadSource) return;
+    setArea(String(cadSource.paintableAreaM2));
+    setCadAreaOverridden(false);
+    setErrors({});
+  }, [cadSource]);
 
   const materials: Material[] = useMemo(
     () => manufacturerId ? repository.getMaterialsByManufacturer(manufacturerId) : [],
@@ -106,6 +117,7 @@ export function CalculatorForm({ repository, onResult }: CalculatorFormProps): R
     setManufacturerId("");
     setMaterialId("");
     setArea("");
+    setCadAreaOverridden(Boolean(cadSource));
     setLossFactor("1.10");
     setErrors({});
     onResult(null);
@@ -134,8 +146,14 @@ export function CalculatorForm({ repository, onResult }: CalculatorFormProps): R
         <section className="field-card">
           <h2 className="field-title">Параметры расчёта</h2>
           <label className="field-label" htmlFor="area">Площадь окраски (м²)</label>
-          <input id="area" type="number" min="0.01" step="0.01" inputMode="decimal" placeholder="Например, 125.5" value={area} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setArea(event.target.value); setErrors({}); invalidateResult(); }} aria-invalid={Boolean(errors.area)} aria-describedby="area-error" />
+          <input id="area" data-testid="paint-area-input" type="number" min="0.000001" step="0.000001" inputMode="decimal" placeholder="Например, 125.5" value={area} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setArea(event.target.value); setCadAreaOverridden(Boolean(cadSource) && Number(event.target.value) !== cadSource?.paintableAreaM2); setErrors({}); invalidateResult(); }} aria-invalid={Boolean(errors.area)} aria-describedby="area-error cad-area-source" />
           <span id="area-error" className="field-error">{errors.area}</span>
+          {cadSource && <div id="cad-area-source" data-testid="paint-area-source" data-calculation-id={cadSource.calculationId} data-source-file={cadSource.sourceFileName} data-overridden={cadAreaOverridden} className={`cad-area-source ${cadAreaOverridden ? "is-overridden" : ""}`}>
+            <strong>Источник площади: CAD-расчёт</strong><span>{cadSource.sourceFileName}</span><code>{cadSource.calculationId}</code><span>{new Date(cadSource.calculatedAt).toLocaleString("ru-RU")}</span>
+            {cadAreaOverridden && <em>Площадь изменена вручную после импорта.</em>}
+            {cadSource.warning && <small>{cadSource.warning}</small>}
+            <button type="button" onClick={onReturnToCad}>Вернуться к CAD-расчёту</button>
+          </div>}
 
           <label className="field-label" htmlFor="loss-factor">Коэффициент потерь</label>
           <input id="loss-factor" type="number" min="1" step="0.01" inputMode="decimal" value={lossFactor} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setLossFactor(event.target.value); setErrors({}); invalidateResult(); }} aria-invalid={Boolean(errors.lossFactor)} aria-describedby="loss-error loss-hint" />

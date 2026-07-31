@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://profigym.local/schemas/cad-report-1.0.0.json",
+  "type": "object",
+  "required": ["reportSchemaVersion", "applicationVersion", "algorithmVersion", "calculationId", "sourceFile", "createdAt", "updatedAt", "units", "diagnostics", "settings", "summary", "contacts", "features", "manualExclusions", "reviewDecisions", "warnings", "paintIntegration"]
+}

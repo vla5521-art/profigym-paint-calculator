@@ -1,0 +1,415 @@
+{
+  "id": "efa4d673-8286-4693-93ca-62415ab508ac",
+  "status": "failed",
+  "generatedAt": "2026-07-31T12:24:55.743Z",
+  "source": {
+    "name": "empty.step",
+    "sizeBytes": 105,
+    "format": ".step"
+  },
+  "area": {
+    "mm2": 0,
+    "cm2": 0,
+    "m2": 0
+  },
+  "paintableArea": {
+    "mm2": 0,
+    "cm2": 0,
+    "m2": 0
+  },
+  "diagnostics": {
+    "sourceName": "empty.step",
+    "modelHash": "ad2ea3db9d0d609f8efdb1f791a01098d33d6f20c31dc1d8b0496e28f5b20b6e",
+    "kernel": "Open Cascade Technology 8 (occt-wasm 3.8.1)",
+    "counts": {
+      "bodies": 0,
+      "shells": 0,
+      "faces": 0,
+      "edges": 0,
+      "vertices": 0
+    },
+    "units": {
+      "source": "unknown",
+      "symbol": "mm",
+      "millimetersPerUnit": 1,
+      "normalizedTo": "mm",
+      "assumed": true
+    },
+    "totalArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "bodies": [],
+    "faces": [],
+    "warnings": [
+      {
+        "code": "UNIT_ASSUMED_MM",
+        "message": "Единицы STEP не определены; применено безопасное предположение: миллиметры",
+        "details": null
+      }
+    ],
+    "errors": [
+      {
+        "code": "EMPTY_MODEL",
+        "message": "STEP-файл не содержит геометрических сущностей",
+        "details": null
+      }
+    ],
+    "validation": {
+      "isValid": false,
+      "openShellCount": 0,
+      "multiBody": false
+    },
+    "contacts": {
+      "contacts": [],
+      "summary": {
+        "totalAreaMm2": 0,
+        "confirmedPhysicalContactAreaMm2": 0,
+        "confirmedExcludedPaintAreaMm2": 0,
+        "reviewRequiredPhysicalAreaMm2": 0,
+        "paintableAreaMm2": 0,
+        "totalArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "confirmedPhysicalContactArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "confirmedExcludedPaintArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "reviewRequiredPhysicalArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "paintableArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        }
+      },
+      "statistics": {
+        "bodyCount": 0,
+        "potentialBodyPairCount": 0,
+        "broadPhaseBodyPairCount": 0,
+        "narrowPhaseCandidateCount": 0,
+        "exactCheckCount": 0,
+        "broadPhaseMs": 0,
+        "narrowPhaseMs": 0,
+        "classificationMs": 0,
+        "totalContactProcessingMs": 0
+      }
+    },
+    "features": {
+      "features": [],
+      "summary": {
+        "totalAreaMm2": 0,
+        "confirmedPhysicalContactAreaMm2": 0,
+        "confirmedContactExcludedAreaMm2": 0,
+        "confirmedHoleExcludedAreaMm2": 0,
+        "confirmedCavityExcludedAreaMm2": 0,
+        "confirmedManualExcludedAreaMm2": 0,
+        "reviewRequiredFeatureAreaMm2": 0,
+        "rawContactExcludedAreaMm2": 0,
+        "rawFeatureExcludedAreaMm2": 0,
+        "rawExcludedAreaMm2": 0,
+        "overlapAreaMm2": 0,
+        "uniqueConfirmedExcludedAreaMm2": 0,
+        "paintableAreaMm2": 0,
+        "totalArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "confirmedPhysicalContactArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "confirmedContactExcludedArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "confirmedHoleExcludedArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "confirmedCavityExcludedArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "confirmedManualExcludedArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "reviewRequiredFeatureArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "rawExcludedArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "overlapArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "uniqueConfirmedExcludedArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "paintableArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        }
+      },
+      "statistics": {
+        "candidateExtractionMs": 0,
+        "holeRecognitionMs": 0,
+        "cavityRecognitionMs": 0,
+        "ruleEvaluationMs": 0,
+        "overlapResolutionMs": 0,
+        "totalFeatureProcessingMs": 0,
+        "featureCandidateCount": 0,
+        "confirmedFeatureCount": 0,
+        "reviewRequiredCount": 0
+      }
+    },
+    "exclusions": {
+      "totalAreaMm2": 0,
+      "confirmedPhysicalContactAreaMm2": 0,
+      "confirmedContactExcludedAreaMm2": 0,
+      "confirmedHoleExcludedAreaMm2": 0,
+      "confirmedCavityExcludedAreaMm2": 0,
+      "confirmedManualExcludedAreaMm2": 0,
+      "reviewRequiredFeatureAreaMm2": 0,
+      "rawContactExcludedAreaMm2": 0,
+      "rawFeatureExcludedAreaMm2": 0,
+      "rawExcludedAreaMm2": 0,
+      "overlapAreaMm2": 0,
+      "uniqueConfirmedExcludedAreaMm2": 0,
+      "paintableAreaMm2": 0,
+      "totalArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "confirmedPhysicalContactArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "confirmedContactExcludedArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "confirmedHoleExcludedArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "confirmedCavityExcludedArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "confirmedManualExcludedArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "reviewRequiredFeatureArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "rawExcludedArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "overlapArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "uniqueConfirmedExcludedArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "paintableArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      }
+    },
+    "performance": {
+      "importMs": 0.007621,
+      "calculationMs": 0,
+      "uploadMs": 2.381,
+      "totalMs": 10.492
+    }
+  },
+  "contacts": [],
+  "contactSummary": {
+    "totalAreaMm2": 0,
+    "confirmedPhysicalContactAreaMm2": 0,
+    "confirmedExcludedPaintAreaMm2": 0,
+    "reviewRequiredPhysicalAreaMm2": 0,
+    "paintableAreaMm2": 0,
+    "totalArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "confirmedPhysicalContactArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "confirmedExcludedPaintArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "reviewRequiredPhysicalArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "paintableArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    }
+  },
+  "contactStatistics": {
+    "bodyCount": 0,
+    "potentialBodyPairCount": 0,
+    "broadPhaseBodyPairCount": 0,
+    "narrowPhaseCandidateCount": 0,
+    "exactCheckCount": 0,
+    "broadPhaseMs": 0,
+    "narrowPhaseMs": 0,
+    "classificationMs": 0,
+    "totalContactProcessingMs": 0
+  },
+  "features": [],
+  "featureSummary": {
+    "totalAreaMm2": 0,
+    "confirmedPhysicalContactAreaMm2": 0,
+    "confirmedContactExcludedAreaMm2": 0,
+    "confirmedHoleExcludedAreaMm2": 0,
+    "confirmedCavityExcludedAreaMm2": 0,
+    "confirmedManualExcludedAreaMm2": 0,
+    "reviewRequiredFeatureAreaMm2": 0,
+    "rawContactExcludedAreaMm2": 0,
+    "rawFeatureExcludedAreaMm2": 0,
+    "rawExcludedAreaMm2": 0,
+    "overlapAreaMm2": 0,
+    "uniqueConfirmedExcludedAreaMm2": 0,
+    "paintableAreaMm2": 0,
+    "totalArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "confirmedPhysicalContactArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "confirmedContactExcludedArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "confirmedHoleExcludedArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "confirmedCavityExcludedArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "confirmedManualExcludedArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "reviewRequiredFeatureArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "rawExcludedArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "overlapArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "uniqueConfirmedExcludedArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "paintableArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    }
+  },
+  "featureStatistics": {
+    "candidateExtractionMs": 0,
+    "holeRecognitionMs": 0,
+    "cavityRecognitionMs": 0,
+    "ruleEvaluationMs": 0,
+    "overlapResolutionMs": 0,
+    "totalFeatureProcessingMs": 0,
+    "featureCandidateCount": 0,
+    "confirmedFeatureCount": 0,
+    "reviewRequiredCount": 0
+  },
+  "featureRules": {
+    "autoExcludeEnabled": true,
+    "holeMinDiameterMm": 0.5,
+    "holeMaxDiameterMm": 1000,
+    "holeMinDepthMm": 0.5,
+    "holeMaxDepthMm": 1000,
+    "excludeThrough": true,
+    "excludeBlind": true,
+    "excludeBottomFace": false,
+    "excludeCountersink": true,
+    "excludeCounterbore": true,
+    "excludeClosedCavity": true,
+    "openCavityReviewRequired": true,
+    "confidenceThreshold": 0.9,
+    "areaToleranceMm2": 0.01,
+    "axisToleranceMm": 0.05,
+    "angleToleranceDeg": 1
+  }
+}

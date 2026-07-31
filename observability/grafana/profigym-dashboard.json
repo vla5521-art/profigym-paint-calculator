@@ -1,0 +1,27 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "graphTooltip": 1,
+  "panels": [
+    { "id": 1, "title": "API traffic", "type": "timeseries", "targets": [{ "expr": "sum(rate(http_requests_total[5m]))", "refId": "A" }], "gridPos": { "h": 8, "w": 8, "x": 0, "y": 0 } },
+    { "id": 2, "title": "Status codes", "type": "timeseries", "targets": [{ "expr": "sum by (status_class) (rate(http_requests_total[5m]))", "refId": "A" }], "gridPos": { "h": 8, "w": 8, "x": 8, "y": 0 } },
+    { "id": 3, "title": "Latency p50/p95/p99", "type": "timeseries", "targets": [{ "expr": "histogram_quantile(0.50, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))", "refId": "A" }, { "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))", "refId": "B" }, { "expr": "histogram_quantile(0.99, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))", "refId": "C" }], "gridPos": { "h": 8, "w": 8, "x": 16, "y": 0 } },
+    { "id": 4, "title": "Queue depth", "type": "stat", "targets": [{ "expr": "cad_jobs_queued", "refId": "A" }], "gridPos": { "h": 6, "w": 4, "x": 0, "y": 8 } },
+    { "id": 5, "title": "Processing jobs", "type": "stat", "targets": [{ "expr": "cad_jobs_processing", "refId": "A" }], "gridPos": { "h": 6, "w": 4, "x": 4, "y": 8 } },
+    { "id": 6, "title": "Job success/failure", "type": "timeseries", "targets": [{ "expr": "rate(cad_jobs_completed_total[5m])", "refId": "A" }, { "expr": "rate(cad_jobs_failed_total[5m])", "refId": "B" }], "gridPos": { "h": 6, "w": 8, "x": 8, "y": 8 } },
+    { "id": 7, "title": "CAD stage duration", "type": "timeseries", "targets": [{ "expr": "cad_step_import_duration_seconds_sum / clamp_min(cad_step_import_duration_seconds_count, 1)", "refId": "A" }, { "expr": "cad_contact_duration_seconds_sum / clamp_min(cad_contact_duration_seconds_count, 1)", "refId": "B" }, { "expr": "cad_feature_duration_seconds_sum / clamp_min(cad_feature_duration_seconds_count, 1)", "refId": "C" }, { "expr": "cad_viewer_duration_seconds_sum / clamp_min(cad_viewer_duration_seconds_count, 1)", "refId": "D" }], "gridPos": { "h": 6, "w": 8, "x": 16, "y": 8 } },
+    { "id": 8, "title": "Memory / CPU", "type": "timeseries", "targets": [{ "expr": "process_resident_memory_bytes", "refId": "A" }, { "expr": "process_cpu_seconds_total", "refId": "B" }], "gridPos": { "h": 8, "w": 8, "x": 0, "y": 14 } },
+    { "id": 9, "title": "Storage / SQLite", "type": "timeseries", "targets": [{ "expr": "cad_storage_bytes", "refId": "A" }, { "expr": "cad_database_size_bytes", "refId": "B" }], "gridPos": { "h": 8, "w": 8, "x": 8, "y": 14 } },
+    { "id": 10, "title": "Cleanup / backups", "type": "timeseries", "targets": [{ "expr": "increase(cad_cleanup_deleted_total[1h])", "refId": "A" }, { "expr": "increase(cad_backup_success_total[24h])", "refId": "B" }, { "expr": "increase(cad_backup_failure_total[24h])", "refId": "C" }], "gridPos": { "h": 8, "w": 4, "x": 16, "y": 14 } },
+    { "id": 11, "title": "Worker heartbeat age", "type": "stat", "targets": [{ "expr": "cad_worker_heartbeat_age_seconds", "refId": "A" }], "gridPos": { "h": 8, "w": 4, "x": 20, "y": 14 } }
+  ],
+  "refresh": "15s",
+  "schemaVersion": 41,
+  "tags": ["profigym", "cad"],
+  "templating": { "list": [] },
+  "time": { "from": "now-6h", "to": "now" },
+  "timezone": "browser",
+  "title": "PROFiGYM Production",
+  "uid": "profigym-production",
+  "version": 1
+}

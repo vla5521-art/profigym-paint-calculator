@@ -1,0 +1,13 @@
+{
+  "applicationVersion": "2.0.0",
+  "generatedAt": "2026-07-31T13:43:03.550Z",
+  "status": "PASS",
+  "backupId": "2026-07-31T13-43-03-520Z-2bc827e6-73f4-4b37-a97c-c365f32dbb2d",
+  "sha256": "e8dddfb23532c8d2c2dbc79b31138143a8ae9fb440a3267926f392a75fab0a00",
+  "schemaVersion": 2,
+  "calculations": 1,
+  "calculationId": "f3f71538-3fef-4eee-a6f0-925e6a2b05fa",
+  "summaryMatches": true,
+  "reportGenerated": true,
+  "restoredIntoIsolatedDirectory": true
+}

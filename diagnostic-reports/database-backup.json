@@ -1,0 +1,6 @@
+{
+  "ok": true,
+  "source": ".tmp/cad-runtime/database/profigym.sqlite",
+  "backup": ".tmp/backups/calculations.sqlite",
+  "sha256": "a8bb53072cab1c2cb10a3155cd244c29a9bdb3c17e22790e341d30797cf20177"
+}

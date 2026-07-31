@@ -1,0 +1,210 @@
+{
+  "checkedAt": "2026-07-31T12:24:55.787Z",
+  "frontend": {
+    "url": "http://127.0.0.1:5173",
+    "status": 200,
+    "rootFound": true
+  },
+  "backend": {
+    "url": "http://127.0.0.1:8787",
+    "status": 200
+  },
+  "results": [
+    {
+      "file": "cube_10mm.stp",
+      "status": "completed",
+      "areaMm2": 600,
+      "bodies": 1,
+      "faces": 6,
+      "performance": {
+        "importMs": 202.604154,
+        "calculationMs": 31.253433,
+        "broadPhaseMs": 0,
+        "narrowPhaseMs": 0,
+        "contactClassificationMs": 0,
+        "contactDetectionMs": 0,
+        "candidateExtractionMs": 5.373885,
+        "holeRecognitionMs": 0.328018,
+        "cavityRecognitionMs": 0.161861,
+        "featureRuleEvaluationMs": 0.05427,
+        "overlapResolutionMs": 0.25568,
+        "featureProcessingMs": 6.237719,
+        "uploadMs": 9.828,
+        "totalMs": 258.03
+      },
+      "errorCodes": []
+    },
+    {
+      "file": "box_10x20x30mm.step",
+      "status": "completed",
+      "areaMm2": 2200,
+      "bodies": 1,
+      "faces": 6,
+      "performance": {
+        "importMs": 5.907788,
+        "calculationMs": 8.49665,
+        "broadPhaseMs": 0,
+        "narrowPhaseMs": 0,
+        "contactClassificationMs": 0,
+        "contactDetectionMs": 0,
+        "candidateExtractionMs": 1.621743,
+        "holeRecognitionMs": 0.038498,
+        "cavityRecognitionMs": 0.025889,
+        "featureRuleEvaluationMs": 0.005368,
+        "overlapResolutionMs": 0.030615,
+        "featureProcessingMs": 1.751977,
+        "uploadMs": 7.223,
+        "totalMs": 41.806
+      },
+      "errorCodes": []
+    },
+    {
+      "file": "cylinder_r10_h20mm.step",
+      "status": "completed",
+      "areaMm2": 1884.955592154,
+      "bodies": 1,
+      "faces": 3,
+      "performance": {
+        "importMs": 7.568739,
+        "calculationMs": 7.472446,
+        "broadPhaseMs": 0,
+        "narrowPhaseMs": 0,
+        "contactClassificationMs": 0,
+        "contactDetectionMs": 0,
+        "candidateExtractionMs": 0.959167,
+        "holeRecognitionMs": 0.040841,
+        "cavityRecognitionMs": 0.122062,
+        "featureRuleEvaluationMs": 0.005018,
+        "overlapResolutionMs": 0.053059,
+        "featureProcessingMs": 1.205843,
+        "uploadMs": 1.05,
+        "totalMs": 20.517
+      },
+      "errorCodes": []
+    },
+    {
+      "file": "sphere_r10mm.step",
+      "status": "completed",
+      "areaMm2": 1256.637061436,
+      "bodies": 1,
+      "faces": 1,
+      "performance": {
+        "importMs": 3.03138,
+        "calculationMs": 9.67964,
+        "broadPhaseMs": 0,
+        "narrowPhaseMs": 0,
+        "contactClassificationMs": 0,
+        "contactDetectionMs": 0,
+        "candidateExtractionMs": 0.816265,
+        "holeRecognitionMs": 0.019849,
+        "cavityRecognitionMs": 0.057686,
+        "featureRuleEvaluationMs": 0.002875,
+        "overlapResolutionMs": 0.032318,
+        "featureProcessingMs": 0.952277,
+        "uploadMs": 0.784,
+        "totalMs": 15.458
+      },
+      "errorCodes": []
+    },
+    {
+      "file": "two_body.step",
+      "status": "completed",
+      "areaMm2": 1200,
+      "bodies": 2,
+      "faces": 12,
+      "performance": {
+        "importMs": 20.326518,
+        "calculationMs": 20.007043,
+        "broadPhaseMs": 0.045258,
+        "narrowPhaseMs": 0.001592,
+        "contactClassificationMs": 0.112607,
+        "contactDetectionMs": 1.150161,
+        "candidateExtractionMs": 2.723512,
+        "holeRecognitionMs": 0.04085,
+        "cavityRecognitionMs": 0.032258,
+        "featureRuleEvaluationMs": 0.005038,
+        "overlapResolutionMs": 0.048652,
+        "featureProcessingMs": 2.872733,
+        "uploadMs": 6.025,
+        "totalMs": 48.842
+      },
+      "errorCodes": []
+    },
+    {
+      "file": "open_box_shell.step",
+      "status": "failed",
+      "areaMm2": 500,
+      "bodies": 0,
+      "faces": 5,
+      "performance": {
+        "importMs": 8.934301,
+        "calculationMs": 2.784843,
+        "broadPhaseMs": 0,
+        "narrowPhaseMs": 0,
+        "contactClassificationMs": 0,
+        "contactDetectionMs": 0,
+        "candidateExtractionMs": 0,
+        "holeRecognitionMs": 0,
+        "cavityRecognitionMs": 0,
+        "featureRuleEvaluationMs": 0,
+        "overlapResolutionMs": 0,
+        "featureProcessingMs": 0,
+        "uploadMs": 3.188,
+        "totalMs": 26.565
+      },
+      "errorCodes": [
+        "NO_BODIES",
+        "OPEN_SHELLS"
+      ]
+    },
+    {
+      "file": "corrupted.step",
+      "status": "failed",
+      "areaMm2": 0,
+      "bodies": 0,
+      "faces": 0,
+      "performance": {
+        "importMs": 0.004627,
+        "calculationMs": 0,
+        "uploadMs": 2.506,
+        "totalMs": 6.327
+      },
+      "errorCodes": [
+        "INVALID_STEP_FILE"
+      ]
+    },
+    {
+      "file": "empty.step",
+      "status": "failed",
+      "areaMm2": 0,
+      "bodies": 0,
+      "faces": 0,
+      "performance": {
+        "importMs": 0.007621,
+        "calculationMs": 0,
+        "uploadMs": 2.381,
+        "totalMs": 10.492
+      },
+      "errorCodes": [
+        "EMPTY_MODEL"
+      ]
+    }
+  ],
+  "rejectedFormats": [
+    {
+      "file": "part.sldprt",
+      "status": 415,
+      "errorCode": "UNSUPPORTED_FILE_TYPE"
+    },
+    {
+      "file": "assembly.sldasm",
+      "status": 415,
+      "errorCode": "UNSUPPORTED_FILE_TYPE"
+    },
+    {
+      "file": "notes.txt",
+      "status": 415,
+      "errorCode": "UNSUPPORTED_FILE_TYPE"
+    }
+  ]
+}

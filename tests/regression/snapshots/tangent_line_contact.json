@@ -1,0 +1,54 @@
+{
+  "algorithmVersions": {
+    "geometry": "2.0.0",
+    "contact": "3.0.0",
+    "feature": "4.0.0",
+    "viewerMesh": "1.0.0",
+    "reportSchema": "1.0.0"
+  },
+  "geometryFingerprint": "98854efdf4a59258a986e3ab9314f50c9ea1d5c63ad6b76b59e70b116b3addce",
+  "geometryStatus": "valid",
+  "counts": {
+    "bodies": 2,
+    "shells": 2,
+    "faces": 9,
+    "edges": 15,
+    "vertices": 10
+  },
+  "units": {
+    "source": "mm",
+    "symbol": "mm",
+    "millimetersPerUnit": 1,
+    "normalizedTo": "mm"
+  },
+  "totalAreaMm2": 6684.955592154,
+  "areas": {
+    "contactPhysicalMm2": 0,
+    "contactExcludedMm2": 0,
+    "holeExcludedMm2": 0,
+    "cavityExcludedMm2": 0,
+    "manualExcludedMm2": 0,
+    "rawExcludedMm2": 0,
+    "overlapMm2": 0,
+    "uniqueExcludedMm2": 0,
+    "paintableMm2": 6684.955592154
+  },
+  "contacts": [
+    {
+      "status": "rejected",
+      "faceIds": [
+        "face_871b431bee62e6dd44dc964c",
+        "face_b03082614ca3d64673919832"
+      ]
+    }
+  ],
+  "features": [],
+  "warnings": [
+    "MULTI_BODY_MODEL"
+  ],
+  "errors": [],
+  "mesh": {
+    "faceCount": 9,
+    "triangleCount": 0
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "algorithmVersions": {
+    "geometry": "2.0.0",
+    "contact": "3.0.0",
+    "feature": "4.0.0",
+    "viewerMesh": "1.0.0",
+    "reportSchema": "1.0.0"
+  },
+  "geometryFingerprint": "8beba341ce92e916fd9d6f991d5f44019b65afb3adcaebba8cb4708f96d521a9",
+  "geometryStatus": "valid",
+  "counts": {
+    "bodies": 1,
+    "shells": 1,
+    "faces": 11,
+    "edges": 24,
+    "vertices": 16
+  },
+  "units": {
+    "source": "mm",
+    "symbol": "mm",
+    "millimetersPerUnit": 1,
+    "normalizedTo": "mm"
+  },
+  "totalAreaMm2": 5880,
+  "areas": {
+    "contactPhysicalMm2": 0,
+    "contactExcludedMm2": 0,
+    "holeExcludedMm2": 0,
+    "cavityExcludedMm2": 0,
+    "manualExcludedMm2": 0,
+    "rawExcludedMm2": 0,
+    "overlapMm2": 0,
+    "uniqueExcludedMm2": 0,
+    "paintableMm2": 5880
+  },
+  "contacts": [],
+  "features": [
+    {
+      "type": "open_internal_cavity",
+      "status": "review_required",
+      "areaMm2": 0,
+      "faceIds": [
+        "face_075b14fca0df27128ab98df0",
+        "face_0fe57e4893398cb15693e844",
+        "face_9b1e7233a48e90302c6d685d",
+        "face_a6ad84086101c7c3c7c461e9",
+        "face_bf04ecf8296e574bfc7131c5"
+      ]
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "mesh": {
+    "faceCount": 11,
+    "triangleCount": 0
+  }
+}

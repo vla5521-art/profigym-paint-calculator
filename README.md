@@ -1,98 +1,73 @@
-# PROFiGYM — калькулятор расхода краски v1.3.1
+# PROFiGYM — калькулятор расхода краски v2.0.0
 
-React/TypeScript/Vite-прототип с интегрированным Repository и сохранённой концепцией дизайна версии 1.1.15.
+Версия 2.0.0 — production-пакет для Linux VPS. STEP-only CAD pipeline, OCCT/WASM, геометрические эталоны и версии алгоритмов `geometry 2.0 / contact 3.0 / feature 4.0` сохранены. Длительная CAD-обработка вынесена из HTTP-процесса в отдельный worker с durable SQLite queue.
 
-## Локальный запуск
+## Архитектура
+
+```text
+HTTPS reverse proxy
+  → app: frontend, API, auth, rate limits, reports, health, metrics
+  → SQLite durable queue
+  → worker: STEP → OCCT → contacts → features → viewer mesh
+  → /data persistent volumes: database/source-files/viewer-mesh/previews/reports/backups
+```
+
+Один active deployment использует одну общую SQLite. Независимые replica с отдельными локальными БД не поддерживаются. Для горизонтального масштабирования нужны внешняя БД и object storage.
+
+## Поддерживаемые форматы
+
+Только `.stp` и `.step`. Другие форматы, включая `.sldprt`/`.sldasm`/`.asm`, получают HTTP 415.
+
+## Разработка
 
 ```bash
+cp .env.example .env
 npm install
-npm run dev
+npm run db:migrate
+npm run dev:full
 ```
 
-## Проверка и production-сборка
+В development используется inline worker для обратной совместимости тестов. Production всегда задаёт `CAD_PROCESSING_MODE=queue` и запускает `server/worker.js` отдельным процессом.
+
+## Production-like Compose
 
 ```bash
-npm run typecheck
-npm run build
-npm run preview
+cp .env.production.example .env.production
+# заменить URL, домен, image и токены; chmod 600 .env.production
+docker compose -f compose.yml -f compose.production.yml config
+docker compose -f compose.yml -f compose.production.yml up -d --build
+npm run smoke:production
 ```
 
-## База данных
+Подробности: [DEPLOYMENT.md](DEPLOYMENT.md), [RUNBOOK.md](RUNBOOK.md), [ROLLBACK.md](ROLLBACK.md), [BACKUP_RESTORE.md](BACKUP_RESTORE.md), [SECURITY_PRODUCTION.md](SECURITY_PRODUCTION.md), [OBSERVABILITY.md](OBSERVABILITY.md).
 
-По умолчанию используется `public/data/database.json`.
-
-Чтобы подключить другой источник, создайте `.env`:
-
-```env
-VITE_DATABASE_URL=/data/database.json
-```
-
-React-компоненты не читают JSON напрямую: доступ выполняется через `DatabaseRepository` и `useDatabase()`.
-
-Включённая база является демонстрационной. Её нормы нельзя использовать для производственных расчётов.
-
-## Публикация на Vercel
-
-1. Загрузите проект в GitHub.
-2. Импортируйте репозиторий в Vercel.
-3. Framework Preset: Vite.
-4. Build Command: `npm run build`.
-5. Output Directory: `dist`.
-6. Нажмите Deploy.
-
-## Печать расчёта
-
-После успешного расчёта доступна кнопка «Печать расчёта». Она открывает системный диалог печати браузера. В нём можно выбрать принтер или сохранить расчёт в PDF.
-
-## Схема данных 1.2
-
-Версия 1.2.3 использует схему базы `1.2` и сохраняет чтение файлов схемы `1.1`.
-При загрузке схема 1.1 чисто и детерминированно мигрируется в памяти до 1.2.
-Миграция не изменяет исходный объект и не меняет существующие идентификаторы.
-
-Добавлены коллекции:
-
-- `material_substrates` — явные связи материалов с поверхностями применения;
-- `import_batches` — журнал пакетов пользовательского импорта.
-
-Добавлены служебные записи:
-
-- поверхность `substrate_unspecified`;
-- тип документа `user_excel_import`.
-
-Проверка миграции:
+## Проверка
 
 ```bash
-npm run test:migration
-```
-
-## Excel-шаблон и чтение файлов
-
-В версии 1.2.4 подключён минимальный шаблон `public/templates/PROFiGYM_шаблон_импорта.xlsx`.
-Парсер принимает только `.xlsx` с первым листом и точными колонками:
-
-1. `Производитель`
-2. `Материал`
-3. `Норма расхода`
-4. `Поверхности применения` — необязательное значение
-
-Ручное сопоставление колонок отсутствует. Результат чтения — `RawImportRow[]` и `ImportIssue[]`.
-Данные в базу на этом этапе не записываются. Лимиты: 2 МБ и 5000 непустых строк данных.
-
-## Импорт Excel в версии 1.3.1
-
-Шаблон: `public/templates/PROFiGYM_шаблон_импорта.xlsx`.
-
-Лист `Материалы` содержит четыре колонки: `Производитель`, `Материал`, `Норма расхода, кг/м²`, `Поверхности применения`. Сопоставление колонок вручную не используется. Поддерживаются десятичная запятая и точка, до 5000 строк и до 10 МБ.
-
-Импортированные данные сохраняются локально в IndexedDB текущего браузера. Встроенный JSON остаётся резервным источником. Перед заменой активного снимка создаётся backup. Доступны восстановление, очистка пользовательской базы и экспорт активной базы в JSON.
-
-Перед публикацией обязательно выполнить в среде с доступом к npm registry:
-
-```bash
-npm ci
+npm run lint
 npm run typecheck
 npm test
+npm run test:golden
+npm run test:regression
+npm run test:determinism
+npm run test:security
 npm run build
-npm run preview -- --host 127.0.0.1
+npm run verify:template
+npm run e2e:chromium
+npm run e2e:a11y
+npm run security:audit
+npm run security:sbom
+npm run security:licenses
+npm run security:secrets
+npm run prod:local:verify
 ```
+
+`prod:local:verify` поднимает app и worker как отдельные production-процессы, проверяет реальный HTTP workflow, остановку/restart worker, observability, backup/restore и rollback marker. Docker image/Compose считаются проверенными только после фактического запуска Docker.
+
+## Excel-шаблон
+
+Файл `public/templates/PROFiGYM_шаблон_импорта.xlsx` сохраняется с точным Unicode-именем. `npm run build` и `npm run verify:template` проверяют валидность XLSX, UTF-8 имя, отсутствие `PROFiGYM_#U*.xlsx` и совпадение SHA-256 с `dist`.
+
+## Статус публикации
+
+Если в `STAGE7_REPORT.md` не указан подтверждённый URL и CI run ID, статус остаётся `DEPLOYMENT_READY_NOT_PUBLISHED`.

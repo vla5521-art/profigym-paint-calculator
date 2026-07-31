@@ -1,0 +1,34 @@
+[
+  {
+    "name": "cube_10mm.step",
+    "dimensions": "6a², a=10 mm",
+    "theoreticalAreaMm2": 600,
+    "generatedAreaMm2": 599.9999999999999,
+    "deviationMm2": -1.1368683772161603e-13,
+    "deviationPercent": -1.8947806286936007e-14
+  },
+  {
+    "name": "box_10x20x30mm.step",
+    "dimensions": "2(ab+ac+bc), a=10, b=20, c=30 mm",
+    "theoreticalAreaMm2": 2200,
+    "generatedAreaMm2": 2200,
+    "deviationMm2": 0,
+    "deviationPercent": 0
+  },
+  {
+    "name": "cylinder_r10_h20mm.step",
+    "dimensions": "2πr(r+h), r=10, h=20 mm",
+    "theoreticalAreaMm2": 1884.9555921538758,
+    "generatedAreaMm2": 1884.955592153876,
+    "deviationMm2": 2.2737367544323206e-13,
+    "deviationPercent": 1.2062548125254227e-14
+  },
+  {
+    "name": "sphere_r10mm.step",
+    "dimensions": "4πr², r=10 mm",
+    "theoreticalAreaMm2": 1256.6370614359173,
+    "generatedAreaMm2": 1256.6370614359173,
+    "deviationMm2": 0,
+    "deviationPercent": 0
+  }
+]

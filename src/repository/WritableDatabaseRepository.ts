@@ -1,4 +1,3 @@
-import type { Database } from "../types/database.ts";
 import type { ImportApplyResult, ImportPlan } from "../types/import.ts";
 import type { DatabaseRepository } from "./DatabaseRepository.ts";
 export interface WritableDatabaseRepository extends DatabaseRepository {

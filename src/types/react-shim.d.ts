@@ -12,6 +12,9 @@ declare module "react" {
   export const StrictMode: (props: { children?: React.ReactNode }) => React.JSX.Element;
   export function useState<S>(initialState: S | (() => S)): [S, React.Dispatch<React.SetStateAction<S>>];
   export function useEffect(effect: () => void | (() => void), dependencies?: readonly unknown[]): void;
+  export function useRef<T>(initialValue: T): { current: T };
+  export function lazy<T>(factory: () => Promise<{ default: T }>): T;
+  export const Suspense: (props: { children?: React.ReactNode; fallback?: React.ReactNode }) => React.JSX.Element;
   export function useCallback<T extends (...args: never[]) => unknown>(callback: T, dependencies: readonly unknown[]): T;
   export function useMemo<T>(factory: () => T, dependencies: readonly unknown[]): T;
   export type FormEvent<T = Element> = React.FormEvent<T>;

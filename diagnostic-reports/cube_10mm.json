@@ -1,0 +1,874 @@
+{
+  "id": "f93c1838-1d6f-44ac-90ef-2132bc60934e",
+  "status": "completed",
+  "generatedAt": "2026-07-31T12:24:55.162Z",
+  "source": {
+    "name": "cube_10mm.stp",
+    "sizeBytes": 15416,
+    "format": ".stp"
+  },
+  "area": {
+    "mm2": 600,
+    "cm2": 6,
+    "m2": 0.0006
+  },
+  "paintableArea": {
+    "mm2": 600,
+    "cm2": 6,
+    "m2": 0.0006
+  },
+  "diagnostics": {
+    "sourceName": "cube_10mm.stp",
+    "modelHash": "eee5376552974836b342ddc6a44f4e1166ef26c98f7de7169829562601b7419b",
+    "kernel": "Open Cascade Technology 8 (occt-wasm 3.8.1)",
+    "counts": {
+      "bodies": 1,
+      "shells": 1,
+      "faces": 6,
+      "edges": 12,
+      "vertices": 8
+    },
+    "units": {
+      "source": "mm",
+      "symbol": "mm",
+      "millimetersPerUnit": 1,
+      "normalizedTo": "mm"
+    },
+    "totalArea": {
+      "mm2": 600,
+      "cm2": 6,
+      "m2": 0.0006
+    },
+    "bodies": [
+      {
+        "id": "body_cc9fa079e7dddef93e2b09ee",
+        "index": 0,
+        "area": {
+          "mm2": 600,
+          "cm2": 6,
+          "m2": 0.0006
+        },
+        "shellCount": 1,
+        "faceCount": 6,
+        "valid": true
+      }
+    ],
+    "faces": [
+      {
+        "id": "face_31976c1b776ab80bc5b71a1f",
+        "index": 0,
+        "bodyId": "body_cc9fa079e7dddef93e2b09ee",
+        "surfaceType": "plane",
+        "centerMm": [
+          0,
+          5,
+          5
+        ],
+        "area": {
+          "mm2": 100,
+          "cm2": 1,
+          "m2": 0.0001
+        }
+      },
+      {
+        "id": "face_e7fa386fa9d4b5f00f23d479",
+        "index": 1,
+        "bodyId": "body_cc9fa079e7dddef93e2b09ee",
+        "surfaceType": "plane",
+        "centerMm": [
+          10,
+          5,
+          5
+        ],
+        "area": {
+          "mm2": 100,
+          "cm2": 1,
+          "m2": 0.0001
+        }
+      },
+      {
+        "id": "face_fd05e725929141871530288c",
+        "index": 2,
+        "bodyId": "body_cc9fa079e7dddef93e2b09ee",
+        "surfaceType": "plane",
+        "centerMm": [
+          5,
+          0,
+          5
+        ],
+        "area": {
+          "mm2": 100,
+          "cm2": 1,
+          "m2": 0.0001
+        }
+      },
+      {
+        "id": "face_a5a80d87786885cf6b2a13ad",
+        "index": 3,
+        "bodyId": "body_cc9fa079e7dddef93e2b09ee",
+        "surfaceType": "plane",
+        "centerMm": [
+          5,
+          10,
+          5
+        ],
+        "area": {
+          "mm2": 100,
+          "cm2": 1,
+          "m2": 0.0001
+        }
+      },
+      {
+        "id": "face_84f67629f572e6796da24570",
+        "index": 4,
+        "bodyId": "body_cc9fa079e7dddef93e2b09ee",
+        "surfaceType": "plane",
+        "centerMm": [
+          5,
+          5,
+          0
+        ],
+        "area": {
+          "mm2": 100,
+          "cm2": 1,
+          "m2": 0.0001
+        }
+      },
+      {
+        "id": "face_9cea3a925a175dbdfcc9574b",
+        "index": 5,
+        "bodyId": "body_cc9fa079e7dddef93e2b09ee",
+        "surfaceType": "plane",
+        "centerMm": [
+          5,
+          5,
+          10
+        ],
+        "area": {
+          "mm2": 100,
+          "cm2": 1,
+          "m2": 0.0001
+        }
+      }
+    ],
+    "warnings": [],
+    "errors": [],
+    "validation": {
+      "isValid": true,
+      "openShellCount": 0,
+      "multiBody": false
+    },
+    "contacts": {
+      "contacts": [],
+      "summary": {
+        "totalAreaMm2": 600,
+        "confirmedPhysicalContactAreaMm2": 0,
+        "confirmedExcludedPaintAreaMm2": 0,
+        "reviewRequiredPhysicalAreaMm2": 0,
+        "paintableAreaMm2": 600,
+        "totalArea": {
+          "mm2": 600,
+          "cm2": 6,
+          "m2": 0.0006
+        },
+        "confirmedPhysicalContactArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "confirmedExcludedPaintArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "reviewRequiredPhysicalArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "paintableArea": {
+          "mm2": 600,
+          "cm2": 6,
+          "m2": 0.0006
+        }
+      },
+      "statistics": {
+        "bodyCount": 1,
+        "potentialBodyPairCount": 0,
+        "broadPhaseBodyPairCount": 0,
+        "narrowPhaseCandidateCount": 0,
+        "exactCheckCount": 0,
+        "broadPhaseMs": 0,
+        "narrowPhaseMs": 0,
+        "classificationMs": 0,
+        "totalContactProcessingMs": 0
+      }
+    },
+    "features": {
+      "features": [],
+      "summary": {
+        "totalAreaMm2": 600,
+        "confirmedPhysicalContactAreaMm2": 0,
+        "confirmedContactExcludedAreaMm2": 0,
+        "confirmedHoleExcludedAreaMm2": 0,
+        "confirmedCavityExcludedAreaMm2": 0,
+        "confirmedManualExcludedAreaMm2": 0,
+        "reviewRequiredFeatureAreaMm2": 0,
+        "rawContactExcludedAreaMm2": 0,
+        "rawFeatureExcludedAreaMm2": 0,
+        "rawExcludedAreaMm2": 0,
+        "overlapAreaMm2": 0,
+        "uniqueConfirmedExcludedAreaMm2": 0,
+        "paintableAreaMm2": 600,
+        "totalArea": {
+          "mm2": 600,
+          "cm2": 6,
+          "m2": 0.0006
+        },
+        "confirmedPhysicalContactArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "confirmedContactExcludedArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "confirmedHoleExcludedArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "confirmedCavityExcludedArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "confirmedManualExcludedArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "reviewRequiredFeatureArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "rawExcludedArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "overlapArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "uniqueConfirmedExcludedArea": {
+          "mm2": 0,
+          "cm2": 0,
+          "m2": 0
+        },
+        "paintableArea": {
+          "mm2": 600,
+          "cm2": 6,
+          "m2": 0.0006
+        }
+      },
+      "statistics": {
+        "candidateExtractionMs": 5.373885,
+        "holeRecognitionMs": 0.328018,
+        "cavityRecognitionMs": 0.161861,
+        "ruleEvaluationMs": 0.05427,
+        "overlapResolutionMs": 0.25568,
+        "totalFeatureProcessingMs": 6.237719,
+        "featureCandidateCount": 0,
+        "confirmedFeatureCount": 0,
+        "reviewRequiredCount": 0
+      }
+    },
+    "exclusions": {
+      "totalAreaMm2": 600,
+      "confirmedPhysicalContactAreaMm2": 0,
+      "confirmedContactExcludedAreaMm2": 0,
+      "confirmedHoleExcludedAreaMm2": 0,
+      "confirmedCavityExcludedAreaMm2": 0,
+      "confirmedManualExcludedAreaMm2": 0,
+      "reviewRequiredFeatureAreaMm2": 0,
+      "rawContactExcludedAreaMm2": 0,
+      "rawFeatureExcludedAreaMm2": 0,
+      "rawExcludedAreaMm2": 0,
+      "overlapAreaMm2": 0,
+      "uniqueConfirmedExcludedAreaMm2": 0,
+      "paintableAreaMm2": 600,
+      "totalArea": {
+        "mm2": 600,
+        "cm2": 6,
+        "m2": 0.0006
+      },
+      "confirmedPhysicalContactArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "confirmedContactExcludedArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "confirmedHoleExcludedArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "confirmedCavityExcludedArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "confirmedManualExcludedArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "reviewRequiredFeatureArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "rawExcludedArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "overlapArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "uniqueConfirmedExcludedArea": {
+        "mm2": 0,
+        "cm2": 0,
+        "m2": 0
+      },
+      "paintableArea": {
+        "mm2": 600,
+        "cm2": 6,
+        "m2": 0.0006
+      }
+    },
+    "performance": {
+      "importMs": 202.604154,
+      "calculationMs": 31.253433,
+      "broadPhaseMs": 0,
+      "narrowPhaseMs": 0,
+      "contactClassificationMs": 0,
+      "contactDetectionMs": 0,
+      "candidateExtractionMs": 5.373885,
+      "holeRecognitionMs": 0.328018,
+      "cavityRecognitionMs": 0.161861,
+      "featureRuleEvaluationMs": 0.05427,
+      "overlapResolutionMs": 0.25568,
+      "featureProcessingMs": 6.237719,
+      "uploadMs": 9.828,
+      "totalMs": 258.03
+    }
+  },
+  "contacts": [],
+  "contactSummary": {
+    "totalAreaMm2": 600,
+    "confirmedPhysicalContactAreaMm2": 0,
+    "confirmedExcludedPaintAreaMm2": 0,
+    "reviewRequiredPhysicalAreaMm2": 0,
+    "paintableAreaMm2": 600,
+    "totalArea": {
+      "mm2": 600,
+      "cm2": 6,
+      "m2": 0.0006
+    },
+    "confirmedPhysicalContactArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "confirmedExcludedPaintArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "reviewRequiredPhysicalArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "paintableArea": {
+      "mm2": 600,
+      "cm2": 6,
+      "m2": 0.0006
+    }
+  },
+  "contactStatistics": {
+    "bodyCount": 1,
+    "potentialBodyPairCount": 0,
+    "broadPhaseBodyPairCount": 0,
+    "narrowPhaseCandidateCount": 0,
+    "exactCheckCount": 0,
+    "broadPhaseMs": 0,
+    "narrowPhaseMs": 0,
+    "classificationMs": 0,
+    "totalContactProcessingMs": 0
+  },
+  "features": [],
+  "featureSummary": {
+    "totalAreaMm2": 600,
+    "confirmedPhysicalContactAreaMm2": 0,
+    "confirmedContactExcludedAreaMm2": 0,
+    "confirmedHoleExcludedAreaMm2": 0,
+    "confirmedCavityExcludedAreaMm2": 0,
+    "confirmedManualExcludedAreaMm2": 0,
+    "reviewRequiredFeatureAreaMm2": 0,
+    "rawContactExcludedAreaMm2": 0,
+    "rawFeatureExcludedAreaMm2": 0,
+    "rawExcludedAreaMm2": 0,
+    "overlapAreaMm2": 0,
+    "uniqueConfirmedExcludedAreaMm2": 0,
+    "paintableAreaMm2": 600,
+    "totalArea": {
+      "mm2": 600,
+      "cm2": 6,
+      "m2": 0.0006
+    },
+    "confirmedPhysicalContactArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "confirmedContactExcludedArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "confirmedHoleExcludedArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "confirmedCavityExcludedArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "confirmedManualExcludedArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "reviewRequiredFeatureArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "rawExcludedArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "overlapArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "uniqueConfirmedExcludedArea": {
+      "mm2": 0,
+      "cm2": 0,
+      "m2": 0
+    },
+    "paintableArea": {
+      "mm2": 600,
+      "cm2": 6,
+      "m2": 0.0006
+    }
+  },
+  "featureStatistics": {
+    "candidateExtractionMs": 5.373885,
+    "holeRecognitionMs": 0.328018,
+    "cavityRecognitionMs": 0.161861,
+    "ruleEvaluationMs": 0.05427,
+    "overlapResolutionMs": 0.25568,
+    "totalFeatureProcessingMs": 6.237719,
+    "featureCandidateCount": 0,
+    "confirmedFeatureCount": 0,
+    "reviewRequiredCount": 0
+  },
+  "featureRules": {
+    "autoExcludeEnabled": true,
+    "holeMinDiameterMm": 0.5,
+    "holeMaxDiameterMm": 1000,
+    "holeMinDepthMm": 0.5,
+    "holeMaxDepthMm": 1000,
+    "excludeThrough": true,
+    "excludeBlind": true,
+    "excludeBottomFace": false,
+    "excludeCountersink": true,
+    "excludeCounterbore": true,
+    "excludeClosedCavity": true,
+    "openCavityReviewRequired": true,
+    "confidenceThreshold": 0.9,
+    "areaToleranceMm2": 0.01,
+    "axisToleranceMm": 0.05,
+    "angleToleranceDeg": 1
+  },
+  "viewerMesh": {
+    "meshVersion": "1.0.0",
+    "available": true,
+    "warning": null,
+    "faces": [
+      {
+        "faceId": "face_31976c1b776ab80bc5b71a1f",
+        "bodyId": "body_cc9fa079e7dddef93e2b09ee",
+        "positions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          0,
+          10,
+          0,
+          0,
+          10,
+          10
+        ],
+        "normals": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          2,
+          1,
+          3
+        ],
+        "boundingBox": {
+          "xmin": 0,
+          "ymin": 0,
+          "zmin": 0,
+          "xmax": 0,
+          "ymax": 10,
+          "zmax": 10
+        },
+        "surfaceType": "plane",
+        "areaMm2": 100,
+        "category": "painted",
+        "status": "included",
+        "sourceFeatureIds": [],
+        "sourceContactIds": []
+      },
+      {
+        "faceId": "face_e7fa386fa9d4b5f00f23d479",
+        "bodyId": "body_cc9fa079e7dddef93e2b09ee",
+        "positions": [
+          10,
+          0,
+          10,
+          10,
+          0,
+          0,
+          10,
+          10,
+          0,
+          10,
+          10,
+          10
+        ],
+        "normals": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          0,
+          2,
+          3
+        ],
+        "boundingBox": {
+          "xmin": 10,
+          "ymin": 0,
+          "zmin": 0,
+          "xmax": 10,
+          "ymax": 10,
+          "zmax": 10
+        },
+        "surfaceType": "plane",
+        "areaMm2": 100,
+        "category": "painted",
+        "status": "included",
+        "sourceFeatureIds": [],
+        "sourceContactIds": []
+      },
+      {
+        "faceId": "face_fd05e725929141871530288c",
+        "bodyId": "body_cc9fa079e7dddef93e2b09ee",
+        "positions": [
+          10,
+          0,
+          0,
+          10,
+          0,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0,
+          10
+        ],
+        "normals": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          2,
+          1,
+          3
+        ],
+        "boundingBox": {
+          "xmin": 0,
+          "ymin": 0,
+          "zmin": 0,
+          "xmax": 10,
+          "ymax": 0,
+          "zmax": 10
+        },
+        "surfaceType": "plane",
+        "areaMm2": 100,
+        "category": "painted",
+        "status": "included",
+        "sourceFeatureIds": [],
+        "sourceContactIds": []
+      },
+      {
+        "faceId": "face_a5a80d87786885cf6b2a13ad",
+        "bodyId": "body_cc9fa079e7dddef93e2b09ee",
+        "positions": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          0,
+          0,
+          10,
+          0,
+          0,
+          10,
+          10
+        ],
+        "normals": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          0,
+          2,
+          3
+        ],
+        "boundingBox": {
+          "xmin": 0,
+          "ymin": 10,
+          "zmin": 0,
+          "xmax": 10,
+          "ymax": 10,
+          "zmax": 10
+        },
+        "surfaceType": "plane",
+        "areaMm2": 100,
+        "category": "painted",
+        "status": "included",
+        "sourceFeatureIds": [],
+        "sourceContactIds": []
+      },
+      {
+        "faceId": "face_84f67629f572e6796da24570",
+        "bodyId": "body_cc9fa079e7dddef93e2b09ee",
+        "positions": [
+          0,
+          10,
+          0,
+          10,
+          10,
+          0,
+          0,
+          0,
+          0,
+          10,
+          0,
+          0
+        ],
+        "normals": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          2,
+          1,
+          3
+        ],
+        "boundingBox": {
+          "xmin": 0,
+          "ymin": 0,
+          "zmin": 0,
+          "xmax": 10,
+          "ymax": 10,
+          "zmax": 0
+        },
+        "surfaceType": "plane",
+        "areaMm2": 100,
+        "category": "painted",
+        "status": "included",
+        "sourceFeatureIds": [],
+        "sourceContactIds": []
+      },
+      {
+        "faceId": "face_9cea3a925a175dbdfcc9574b",
+        "bodyId": "body_cc9fa079e7dddef93e2b09ee",
+        "positions": [
+          10,
+          10,
+          10,
+          0,
+          10,
+          10,
+          0,
+          0,
+          10,
+          10,
+          0,
+          10
+        ],
+        "normals": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          0,
+          2,
+          3
+        ],
+        "boundingBox": {
+          "xmin": 0,
+          "ymin": 0,
+          "zmin": 10,
+          "xmax": 10,
+          "ymax": 10,
+          "zmax": 10
+        },
+        "surfaceType": "plane",
+        "areaMm2": 100,
+        "category": "painted",
+        "status": "included",
+        "sourceFeatureIds": [],
+        "sourceContactIds": []
+      }
+    ],
+    "patches": [],
+    "triangleCount": 12,
+    "vertexCount": 24,
+    "payloadBytes": 2316,
+    "boundingBox": {
+      "xmin": 0,
+      "ymin": 0,
+      "zmin": 0,
+      "xmax": 10,
+      "ymax": 10,
+      "zmax": 10
+    },
+    "settings": {
+      "linearDeflectionMm": 0.15,
+      "angularDeflectionDeg": 20,
+      "maxTriangles": 750000
+    },
+    "performance": {
+      "meshGenerationMs": 9.837,
+      "meshSerializationMs": 0.044
+    }
+  }
+}

@@ -1,0 +1,3392 @@
+{
+  "schemaVersion": "1.0.0",
+  "applicationVersion": "2.0.0",
+  "suite": "B-Rep golden",
+  "total": 38,
+  "passed": 38,
+  "failed": 0,
+  "results": [
+    {
+      "fixtureId": "plate",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 5200,
+          "actual": 5200,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 5200,
+          "actual": 5200,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "cube",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 600,
+          "actual": 600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 600,
+          "actual": 600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "rectangular_box",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 2200,
+          "actual": 2200,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 2200,
+          "actual": 2200,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "cylinder",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 1884.955592154,
+          "actual": 1884.955592154,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1884.955592154,
+          "actual": 1884.955592154,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "sphere",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 1256.637061436,
+          "actual": 1256.637061436,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1256.637061436,
+          "actual": 1256.637061436,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "through_hole",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 5602.12385966,
+          "actual": 5602.12385966,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 502.654824574,
+          "actual": 502.654824574,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 502.654824574,
+          "actual": 502.654824574,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 502.654824574,
+          "actual": 502.654824574,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 5099.469035086,
+          "actual": 5099.469035086,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "blind_hole",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 5401.06192983,
+          "actual": 5401.06192983,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 201.06192983,
+          "actual": 201.06192983,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 201.06192983,
+          "actual": 201.06192983,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 201.06192983,
+          "actual": 201.06192983,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 5200,
+          "actual": 5200,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "stepped_hole",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 9004.867198483,
+          "actual": 9004.867198483,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 741.415866247,
+          "actual": 741.415866247,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 741.415866247,
+          "actual": 741.415866247,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 741.415866247,
+          "actual": 741.415866247,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 8263.451332236,
+          "actual": 8263.451332236,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "countersunk_hole",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 5499.028620585,
+          "actual": 5499.028620585,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 440.400289996,
+          "actual": 440.400289996,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 440.400289996,
+          "actual": 440.400289996,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 440.400289996,
+          "actual": 440.400289996,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 5058.628330589,
+          "actual": 5058.628330589,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "counterbored_hole",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 5671.238898039,
+          "actual": 5671.238898039,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 527.787565804,
+          "actual": 527.787565804,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 527.787565804,
+          "actual": 527.787565804,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 527.787565804,
+          "actual": 527.787565804,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 5143.451332235,
+          "actual": 5143.451332235,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "intersecting_holes",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 6250.902543893,
+          "actual": 6250.902543893,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 6250.902543893,
+          "actual": 6250.902543893,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "closed_internal_cavity",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 5936,
+          "actual": 5936,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 736,
+          "actual": 736,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 736,
+          "actual": 736,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 736,
+          "actual": 736,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 5200,
+          "actual": 5200,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "open_internal_cavity",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 5880,
+          "actual": 5880,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 5880,
+          "actual": 5880,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "slot_not_hole",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 5360.884901332,
+          "actual": 5360.884901332,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 5360.884901332,
+          "actual": 5360.884901332,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "contact_and_hole_overlap",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 6205.309649149,
+          "actual": 6205.309649149,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 502.654824574,
+          "actual": 502.654824574,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1005.309649149,
+          "actual": 1005.309649149,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 502.654824574,
+          "actual": 502.654824574,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1507.964473723,
+          "actual": 1507.964473723,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 502.654824574,
+          "actual": 502.654824574,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1005.309649148,
+          "actual": 1005.309649148,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 5200.000000001,
+          "actual": 5200.000000001,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "multiple_features",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 17215.097275241,
+          "actual": 17215.097275241,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 879.645943005,
+          "actual": 879.645943005,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 592,
+          "actual": 592,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1471.645943005,
+          "actual": 1471.645943005,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1471.645943005,
+          "actual": 1471.645943005,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 15743.451332236,
+          "actual": 15743.451332236,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "two_plates_full_contact",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 1040,
+          "actual": 1040,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 200,
+          "actual": 200,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 400,
+          "actual": 400,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 400,
+          "actual": 400,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 400,
+          "actual": 400,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 640,
+          "actual": 640,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "two_plates_partial_overlap",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 1040,
+          "actual": 1040,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 100,
+          "actual": 100,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 200,
+          "actual": 200,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 200,
+          "actual": 200,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 200,
+          "actual": 200,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 840,
+          "actual": 840,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "cylindrical_fit",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 4926.017280829,
+          "actual": 4926.017280829,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1256.637061436,
+          "actual": 1256.637061436,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 2513.274122872,
+          "actual": 2513.274122872,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1256.637061436,
+          "actual": 1256.637061436,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 3769.911184308,
+          "actual": 3769.911184308,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1256.637061436,
+          "actual": 1256.637061436,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 2513.274122872,
+          "actual": 2513.274122872,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 2412.743157957,
+          "actual": 2412.743157957,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "tangent_contact",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 2513.274122872,
+          "actual": 2513.274122872,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 2513.274122872,
+          "actual": 2513.274122872,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "tangent_line_contact",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 6684.955592154,
+          "actual": 6684.955592154,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 6684.955592154,
+          "actual": 6684.955592154,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "small_gap_below_tolerance",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 1040,
+          "actual": 1040,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1040,
+          "actual": 1040,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "gap_above_tolerance",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 1040,
+          "actual": 1040,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1040,
+          "actual": 1040,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "multiple_contacts",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 1560,
+          "actual": 1560,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 400,
+          "actual": 400,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 800,
+          "actual": 800,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 800,
+          "actual": 800,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 800,
+          "actual": 800,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 760,
+          "actual": 760,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "multi_body_no_contact",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 6000,
+          "actual": 6000,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 6000,
+          "actual": 6000,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "ten_plates_chain_contacts",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 5200,
+          "actual": 5200,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1800,
+          "actual": 1800,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 3600,
+          "actual": 3600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 3600,
+          "actual": 3600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 3600,
+          "actual": 3600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1600,
+          "actual": 1600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "large_model",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 5200,
+          "actual": 5200,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1800,
+          "actual": 1800,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 3600,
+          "actual": 3600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 3600,
+          "actual": 3600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 3600,
+          "actual": 3600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1600,
+          "actual": 1600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "invalid",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "empty",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "open_shell",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 500,
+          "actual": 500,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 500,
+          "actual": 500,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "duplicate_contact_regions",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 1560,
+          "actual": 1560,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 400,
+          "actual": 400,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 800,
+          "actual": 800,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 800,
+          "actual": 800,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 800,
+          "actual": 800,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 760,
+          "actual": 760,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "overlapping_features",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 6205.309649149,
+          "actual": 6205.309649149,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 502.654824574,
+          "actual": 502.654824574,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1005.309649149,
+          "actual": 1005.309649149,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 502.654824574,
+          "actual": 502.654824574,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1507.964473723,
+          "actual": 1507.964473723,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 502.654824574,
+          "actual": 502.654824574,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1005.309649148,
+          "actual": 1005.309649148,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 5200.000000001,
+          "actual": 5200.000000001,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "manual_exclusion_overlap",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 5602.12385966,
+          "actual": 5602.12385966,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 502.654824574,
+          "actual": 502.654824574,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 502.654824574,
+          "actual": 502.654824574,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 502.654824574,
+          "actual": 502.654824574,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 5099.469035086,
+          "actual": 5099.469035086,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "high_face_count",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 17215.097275241,
+          "actual": 17215.097275241,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 879.645943005,
+          "actual": 879.645943005,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 592,
+          "actual": 592,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1471.645943005,
+          "actual": 1471.645943005,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1471.645943005,
+          "actual": 1471.645943005,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 15743.451332236,
+          "actual": 15743.451332236,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "deeply_nested_step_entities",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 5200,
+          "actual": 5200,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1800,
+          "actual": 1800,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 3600,
+          "actual": 3600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 3600,
+          "actual": 3600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 3600,
+          "actual": 3600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 1600,
+          "actual": 1600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "mixed_units_mm",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 600,
+          "actual": 600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 600,
+          "actual": 600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "mixed_units_cm",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 600,
+          "actual": 600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 600,
+          "actual": 600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "fixtureId": "mixed_units_m",
+      "pass": true,
+      "topologyPass": true,
+      "semanticPass": true,
+      "deviations": [
+        {
+          "expected": 600,
+          "actual": 600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 0,
+          "actual": 0,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        },
+        {
+          "expected": 600,
+          "actual": 600,
+          "absoluteDeviation": 0,
+          "relativeDeviation": 0,
+          "absoluteTolerance": 0.05,
+          "relativeTolerance": 0.000001,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

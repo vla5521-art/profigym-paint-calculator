@@ -1,0 +1,71 @@
+name: container
+on:
+  pull_request:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+jobs:
+  build-scan-smoke:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24.14.0, cache: npm }
+      - run: npm ci
+      - run: npm run lint && npm run typecheck && npm test && npm run test:golden && npm run test:security && npm run build && npm run verify:template
+      - run: npm run security:audit && npm run security:sbom && npm run security:licenses && npm run security:secrets
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        if: github.event_name != 'pull_request'
+        with: { registry: ghcr.io, username: '${{ github.actor }}', password: '${{ secrets.GITHUB_TOKEN }}' }
+      - id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/profigym-calculator
+          tags: |
+            type=sha,format=long,prefix=sha-
+            type=semver,pattern={{version}},enable=${{ startsWith(github.ref, 'refs/tags/v') }}
+      - uses: docker/build-push-action@v6
+        id: build
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          load: ${{ github.event_name == 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          provenance: mode=max
+          sbom: true
+      - name: Vulnerability scan
+        uses: aquasecurity/trivy-action@0.30.0
+        with:
+          image-ref: ${{ fromJSON(steps.meta.outputs.json).tags[0] }}
+          format: sarif
+          output: trivy-results.sarif
+          severity: CRITICAL,HIGH
+          exit-code: '1'
+      - name: Production image smoke
+        env:
+          PROFIGYM_IMAGE: ${{ fromJSON(steps.meta.outputs.json).tags[0] }}
+        run: |
+          cp .env.production.example .env.production
+          token="$(openssl rand -base64 48 | tr -d '\n')"
+          sed -i "s#replace-with-at-least-32-random-bytes#$token#; s#replace-with-separate-random-token#$token#; s#https://example.invalid#http://127.0.0.1:8080#g" .env.production
+          docker compose up -d --no-build
+          for i in $(seq 1 60); do curl -fsS http://127.0.0.1:8080/health/ready && break; sleep 2; done
+          APP_PUBLIC_URL=http://127.0.0.1:8080 PROFIGYM_ACCESS_TOKEN="$token" PROFIGYM_METRICS_TOKEN="$token" npm run smoke:production
+          docker compose down --remove-orphans
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: stage7-container-evidence
+          path: |
+            artifacts/security
+            diagnostic-reports
+            trivy-results.sarif
+      - name: Image digest
+        run: echo "${{ steps.build.outputs.digest }}" | tee image-digest.txt

@@ -1,0 +1,46 @@
+name: deploy
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Deployment environment
+        type: choice
+        options: [staging, production]
+        default: staging
+permissions:
+  contents: read
+  packages: read
+concurrency:
+  group: profigym-${{ github.event.inputs.target || (startsWith(github.ref, 'refs/tags/v') && 'production' || 'staging') }}
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: ${{ github.event.inputs.target || (startsWith(github.ref, 'refs/tags/v') && 'production' || 'staging') }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure SSH
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s' "$DEPLOY_SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
+      - name: Deploy immutable image with protected migration
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          IMAGE: ghcr.io/${{ github.repository_owner }}/profigym-calculator:sha-${{ github.sha }}
+        run: ssh "$DEPLOY_USER@$DEPLOY_HOST" "cd '$DEPLOY_PATH' && PROFIGYM_IMAGE='$IMAGE' bash scripts/deploy-vps.sh"
+      - name: Remote smoke
+        env:
+          DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
+          ACCESS_TOKEN: ${{ secrets.PROFIGYM_ACCESS_TOKEN }}
+        run: APP_PUBLIC_URL="$DEPLOY_URL" PROFIGYM_ACCESS_TOKEN="$ACCESS_TOKEN" npm run smoke:production

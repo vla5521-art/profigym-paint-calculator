@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0.0",
+  "total": 2,
+  "passed": 2,
+  "failed": 0,
+  "results": [
+    {
+      "scenario": "backup-restore-idempotent",
+      "pass": true
+    },
+    {
+      "scenario": "invalid-backups",
+      "pass": true
+    }
+  ]
+}

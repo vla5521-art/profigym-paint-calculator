@@ -1,0 +1,63 @@
+{
+  "algorithmVersions": {
+    "geometry": "2.0.0",
+    "contact": "3.0.0",
+    "feature": "4.0.0",
+    "viewerMesh": "1.0.0",
+    "reportSchema": "1.0.0"
+  },
+  "geometryFingerprint": "fb257e2d29b830f68554bdef3932d691afbcb8a9e8515485f944bc216bee9d6a",
+  "geometryStatus": "valid",
+  "counts": {
+    "bodies": 1,
+    "shells": 1,
+    "faces": 10,
+    "edges": 28,
+    "vertices": 18
+  },
+  "units": {
+    "source": "mm",
+    "symbol": "mm",
+    "millimetersPerUnit": 1,
+    "normalizedTo": "mm"
+  },
+  "totalAreaMm2": 6250.902543893,
+  "areas": {
+    "contactPhysicalMm2": 0,
+    "contactExcludedMm2": 0,
+    "holeExcludedMm2": 0,
+    "cavityExcludedMm2": 0,
+    "manualExcludedMm2": 0,
+    "rawExcludedMm2": 0,
+    "overlapMm2": 0,
+    "uniqueExcludedMm2": 0,
+    "paintableMm2": 6250.902543893
+  },
+  "contacts": [],
+  "features": [
+    {
+      "type": "intersecting_holes",
+      "status": "review_required",
+      "areaMm2": 0,
+      "faceIds": [
+        "face_6c4f21ea5e49e2ef901c4e82",
+        "face_cb0bab1ab32e40f5b3dc0544"
+      ]
+    },
+    {
+      "type": "intersecting_holes",
+      "status": "review_required",
+      "areaMm2": 0,
+      "faceIds": [
+        "face_88fdb15afaf0097ade17b875",
+        "face_a50dff25b9f007803ded713a"
+      ]
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "mesh": {
+    "faceCount": 10,
+    "triangleCount": 0
+  }
+}

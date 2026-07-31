@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0.0",
+  "applicationVersion": "2.0.0",
+  "generatedAt": "2026-07-31T13:26:38.946Z",
+  "status": "PASS",
+  "nodeTestFiles": 18,
+  "frontendTestFiles": 3,
+  "suites": 21,
+  "nodeTests": 106,
+  "nodePassed": 106,
+  "nodeFailed": 0,
+  "frontendTests": 12,
+  "frontendPassed": 12,
+  "frontendFailed": 0,
+  "note": "Written only after machine-readable node:test and Vitest results both report success."
+}

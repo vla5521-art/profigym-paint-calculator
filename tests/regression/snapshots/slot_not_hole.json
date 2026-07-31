@@ -1,0 +1,54 @@
+{
+  "algorithmVersions": {
+    "geometry": "2.0.0",
+    "contact": "3.0.0",
+    "feature": "4.0.0",
+    "viewerMesh": "1.0.0",
+    "reportSchema": "1.0.0"
+  },
+  "geometryFingerprint": "3d98af058adf7314dc16cd8a8e05c925d97ed6e34a2f0bf6a193025319d9ba6f",
+  "geometryStatus": "valid",
+  "counts": {
+    "bodies": 1,
+    "shells": 1,
+    "faces": 9,
+    "edges": 21,
+    "vertices": 14
+  },
+  "units": {
+    "source": "mm",
+    "symbol": "mm",
+    "millimetersPerUnit": 1,
+    "normalizedTo": "mm"
+  },
+  "totalAreaMm2": 5360.884901332,
+  "areas": {
+    "contactPhysicalMm2": 0,
+    "contactExcludedMm2": 0,
+    "holeExcludedMm2": 0,
+    "cavityExcludedMm2": 0,
+    "manualExcludedMm2": 0,
+    "rawExcludedMm2": 0,
+    "overlapMm2": 0,
+    "uniqueExcludedMm2": 0,
+    "paintableMm2": 5360.884901332
+  },
+  "contacts": [],
+  "features": [
+    {
+      "type": "slot",
+      "status": "review_required",
+      "areaMm2": 0,
+      "faceIds": [
+        "face_1eb69eb628ab036b1d7d99c0",
+        "face_9a22b00e28a631f524b68e66"
+      ]
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "mesh": {
+    "faceCount": 9,
+    "triangleCount": 0
+  }
+}

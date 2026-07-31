@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "1.0.0",
+  "suite": "security upload/API",
+  "total": 26,
+  "passed": 26,
+  "failed": 0,
+  "results": [
+    {
+      "category": "filename",
+      "input": "a.sldprt",
+      "status": 415,
+      "pass": true
+    },
+    {
+      "category": "filename",
+      "input": "a.sldasm",
+      "status": 415,
+      "pass": true
+    },
+    {
+      "category": "filename",
+      "input": "a.asm",
+      "status": 415,
+      "pass": true
+    },
+    {
+      "category": "filename",
+      "input": "a.txt",
+      "status": 415,
+      "pass": true
+    },
+    {
+      "category": "filename",
+      "input": "a.exe",
+      "status": 415,
+      "pass": true
+    },
+    {
+      "category": "filename",
+      "input": "a.step.exe",
+      "status": 415,
+      "pass": true
+    },
+    {
+      "category": "filename",
+      "input": "a.stеp",
+      "status": 415,
+      "pass": true
+    },
+    {
+      "category": "filename",
+      "input": "a.step.",
+      "status": 415,
+      "pass": true
+    },
+    {
+      "category": "filename",
+      "input": "../../file.step",
+      "status": 202,
+      "pass": true
+    },
+    {
+      "category": "filename",
+      "input": "..\\..\\file.step",
+      "status": 202,
+      "pass": true
+    },
+    {
+      "category": "filename",
+      "input": "C:\\Windows\\file.step",
+      "status": 202,
+      "pass": true
+    },
+    {
+      "category": "filename",
+      "input": "／etc／file.step",
+      "status": 202,
+      "pass": true
+    },
+    {
+      "category": "content-spoof",
+      "input": "zip.step",
+      "status": 202,
+      "pass": true
+    },
+    {
+      "category": "content-spoof",
+      "input": "html.step",
+      "status": 202,
+      "pass": true
+    },
+    {
+      "category": "content-spoof",
+      "input": "js.step",
+      "status": 202,
+      "pass": true
+    },
+    {
+      "category": "content-spoof",
+      "input": "exe.step",
+      "status": 202,
+      "pass": true
+    },
+    {
+      "category": "content-spoof",
+      "input": "xlsx.step",
+      "status": 202,
+      "pass": true
+    },
+    {
+      "category": "content-spoof",
+      "input": "binary.step",
+      "status": 202,
+      "pass": true
+    },
+    {
+      "category": "content-spoof",
+      "input": "bomb.step",
+      "status": 202,
+      "pass": true
+    },
+    {
+      "category": "size",
+      "input": "limit",
+      "status": 202,
+      "pass": true
+    },
+    {
+      "category": "size",
+      "input": "limit+1",
+      "status": 413,
+      "pass": true
+    },
+    {
+      "category": "api",
+      "status": 404,
+      "pass": true
+    },
+    {
+      "category": "api",
+      "status": 404,
+      "pass": true
+    },
+    {
+      "category": "api",
+      "status": 400,
+      "pass": true
+    },
+    {
+      "category": "api",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "category": "api",
+      "status": 400,
+      "pass": true
+    }
+  ]
+}
