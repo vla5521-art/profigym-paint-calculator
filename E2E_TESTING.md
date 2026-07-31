@@ -1,6 +1,6 @@
 # Playwright browser E2E
 
-Версия проекта: 2.0.0. Версия `@playwright/test`: 1.62.1. Обязательная среда — Chromium; Firefox/WebKit опциональны. Browser E2E по-прежнему использует изолированный inline test worker; production separation app/worker проверяется отдельными HTTP smoke и queue-тестами.
+Версия проекта: 2.0.1. Версия `@playwright/test`: 1.62.1. Обязательная среда — Chromium; Firefox/WebKit опциональны. Browser E2E по-прежнему использует изолированный inline test worker; production separation app/worker проверяется отдельными HTTP smoke и queue-тестами.
 
 ## Установка и запуск
 

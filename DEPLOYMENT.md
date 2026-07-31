@@ -1,29 +1,60 @@
-# Deployment
+# Deployment — PROFiGYM 2.0.1
 
 ## Требования
 
-Linux VPS, Docker Engine 27+ с Compose v2, 2 CPU, минимум 4 ГБ RAM и persistent disk. DNS `A/AAAA` указывает на VPS. Для IDN используйте Punycode в DNS/TLS-конфигурации. Serverless Vercel не подходит для SQLite, локального storage, persistent worker и длительного OCCT.
+Linux VPS, Docker Engine 27+ с Compose v2.24.4+, 2 CPU, минимум 4 ГБ RAM и persistent disk. Compose v2.24.4+ нужен для `!override` в production ports/volumes. DNS `A/AAAA` должен указывать на VPS; TLS-файлы находятся только на VPS в `secrets/tls`.
 
-## Первый запуск
+## Первый запуск VPS
 
 ```bash
 cp .env.production.example .env.production
-openssl rand -base64 48
+# заменить URL, origins, image и оба независимых токена
 chmod 600 .env.production
 mkdir -p secrets/tls
-# поместить реальные fullchain.pem и privkey.pem; chmod 600 secrets/tls/privkey.pem
+# добавить fullchain.pem и privkey.pem
 docker compose -f compose.yml -f compose.production.yml config
 docker compose -f compose.yml -f compose.production.yml up -d --build
 docker compose -f compose.yml -f compose.production.yml ps
-APP_PUBLIC_URL=https://REAL_DOMAIN PROFIGYM_ACCESS_TOKEN=... PROFIGYM_METRICS_TOKEN=... npm run smoke:production
 ```
 
-Замените `APP_PUBLIC_URL`, `APP_ALLOWED_ORIGINS`, `TLS_DOMAIN`, `PROFIGYM_IMAGE`, оба токена. Не используйте example.invalid. Для Prometheus запишите metrics token без перевода строки в `secrets/metrics_token` и включите `--profile observability`. ClamAV включается `--profile antivirus`; production recommendation — `CAD_ANTIVIRUS_FAIL_MODE=closed` после EICAR-проверки.
+`volume-init` однократно назначает named volumes пользователю UID/GID 1000. `app` и `worker` используют один image, но разные команды, read-only root filesystem и `USER node`.
 
-## Обновление
+## GitHub Environments и secrets
 
-`scripts/deploy-vps.sh` выполняет integrity → backup → pull immutable image → migration → readiness → proxy. Это controlled maintenance deployment: одна активная версия пишет в SQLite. Для несовместимой миграции предусмотрен verified backup и downtime; безопасный параллельный blue/green writer не заявляется.
+Создайте Environments `staging` и `production`; для `production` включите required reviewer. Repository/organization secrets:
 
-## Публикация
+- `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_SSH_KEY`;
+- `DEPLOY_KNOWN_HOSTS` — заранее проверенная строка known_hosts, не результат доверия `ssh-keyscan` во время deploy;
+- `DEPLOY_PATH`, `DEPLOY_URL` (только HTTPS);
+- `PROFIGYM_ACCESS_TOKEN`, `PROFIGYM_METRICS_TOKEN`.
 
-Минимальные действия владельца: создать GitHub repository, GHCR permissions и Environments; добавить `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_SSH_KEY`, `DEPLOY_PATH`, `DEPLOY_URL`, `PROFIGYM_ACCESS_TOKEN`; настроить production required reviewer; подготовить VPS/DNS/TLS; запустить container workflow и staging deploy; проверить smoke; подтвердить production environment.
+Если secrets отсутствуют, ручной deploy получает контролируемый skip. Обычный push никогда не запускает deploy.
+
+## Публикация image и deploy
+
+1. Загрузите проект в GitHub и дождитесь зелёных `quality` и `container`.
+2. Скачайте `stage7-container-evidence` и возьмите digest из `image-digest.txt`.
+3. Откройте Actions → deploy → Run workflow.
+4. Выберите `staging`, вставьте `sha256:...` и выполните smoke.
+5. Повторите для `production`; reviewer подтверждает GitHub Environment.
+
+Deploy использует `ghcr.io/<owner>/profigym-calculator@sha256:...`. Для private GHCR VPS должен быть предварительно авторизован read-only token; для public package login не нужен.
+
+## Backup, readiness и rollback
+
+`scripts/deploy-vps.sh` выполняет: pull текущего backup image → volume init → integrity → backup и фиксацию backup ID → stop app/worker → pull нового digest → migration → app/worker readiness → proxy → запись active digest.
+
+Если deploy или внешний HTTP smoke падает, workflow вызывает `scripts/rollback-vps.sh`: app/worker останавливаются, pre-deploy backup повторно проверяется и атомарно восстанавливается, затем запускается предыдущий digest и проверяется readiness. Safety-copy заменённой БД остаётся рядом с основной БД.
+
+## Smoke
+
+```bash
+APP_PUBLIC_URL=https://REAL_DOMAIN \
+PROFIGYM_ACCESS_TOKEN=... \
+PROFIGYM_METRICS_TOKEN=... \
+npm run smoke:production
+```
+
+Smoke работает только через HTTP и проверяет liveness/readiness/auth/security headers, реальный `through_hole.step`, очередь/worker, площадь, mesh, JSON/HTML reports, CAD→ЛКМ, удаление, HTTP 415 и повреждённый STEP.
+
+Без фактического VPS-запуска статус остаётся `CI_FIXED_READY_FOR_GITHUB` или `CI_FIXED_DOCKER_VERIFIED`, но не `PRODUCTION_DEPLOYED`.

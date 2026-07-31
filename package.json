@@ -1,7 +1,7 @@
 {
   "name": "profigym-paint-calculator",
   "private": true,
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -59,6 +59,8 @@
     "security:sbom": "node scripts/security-sbom.mjs",
     "security:licenses": "node scripts/security-licenses.mjs",
     "security:secrets": "node scripts/security-secrets.mjs",
+    "ci:actionlint": "node scripts/actionlint.mjs",
+    "ci:validate": "npm run ci:actionlint && node scripts/validate-actions.mjs",
     "prod:build": "docker compose -f compose.yml -f compose.production.yml build",
     "prod:up": "docker compose -f compose.yml -f compose.production.yml up -d",
     "prod:down": "docker compose -f compose.yml -f compose.production.yml down --remove-orphans",
@@ -88,6 +90,7 @@
     "three": "^0.185.1"
   },
   "devDependencies": {
+    "actionlint": "^2.0.6",
     "@axe-core/playwright": "^4.12.1",
     "@eslint/js": "^9.32.0",
     "@playwright/test": "^1.62.1",
@@ -105,6 +108,7 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.38.0",
     "vite": "^7.0.6",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "yaml": "^2.9.0"
   }
 }

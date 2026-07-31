@@ -1,5 +1,16 @@
 # История изменений
 
+## 2.0.1 — 2026-07-31
+
+- Исправлена недействительная ссылка Trivy без префикса `v` (`aquasecurity/trivy-action@` + `0.30.0`); используется подтверждённый официальный release `v0.36.0`.
+- Обновлены официальные GitHub Actions, добавлены actionlint и `npm run ci:validate` с policy/online tag verification.
+- Исправлены image tag, push/load/pull, SARIF upload, artifact fallback и digest evidence в container workflow.
+- Deploy переведён на явный `workflow_dispatch`, immutable digest, secret preflight, GitHub Environment, backup, readiness, HTTP smoke и rollback с восстановлением БД.
+- Исправлен Docker build: postbuild-проверка Excel-шаблона теперь доступна в build stage.
+- Добавлен `volume-init` для writable named volumes при запуске app/worker под `USER node`; production ports/volumes используют Compose override.
+- Production smoke полностью использует HTTP и не импортирует внутренние функции приложения.
+- Версия приложения обновлена до 2.0.1; версии geometry/contact/feature не изменены.
+
 ## 1.8.1 — 2026-07-31
 
 - Добавлены настоящие Playwright Chromium E2E для WebGL Viewer и полного Stage 5 UI workflow.

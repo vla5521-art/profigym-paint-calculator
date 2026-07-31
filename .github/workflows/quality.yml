@@ -1,77 +1,128 @@
 name: quality
-on: [push, pull_request]
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: 24.14.0
+
 jobs:
   lint-typecheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 24, cache: npm }
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
       - run: npm ci
+      - run: npm run ci:validate
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - run: npm run lint && npm run typecheck
+
   unit-integration:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 24, cache: npm }
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
       - run: npm ci
       - run: npm test
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
-        with: { name: unit-results, path: diagnostic-reports/unit-results.json }
+        with:
+          name: unit-results
+          path: diagnostic-reports/unit-results.json
+          if-no-files-found: warn
+
   golden-regression:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 24, cache: npm }
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
       - run: npm ci
       - run: npm run fixtures:golden && npm run test:golden && npm run test:regression && npm run test:determinism
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
-        with: { name: golden-regression, path: diagnostic-reports }
+        with:
+          name: golden-regression
+          path: diagnostic-reports
+          if-no-files-found: warn
+
   security:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 24, cache: npm }
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
       - run: npm ci
       - run: npm run test:security && npm run test:concurrency && npm run db:restore:test
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
-        with: { name: security-results, path: diagnostic-reports }
+        with:
+          name: security-results
+          path: diagnostic-reports
+          if-no-files-found: warn
+
   browser-e2e:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 24, cache: npm }
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
       - run: npm ci
+      - name: Prepare Chromium and SwiftShader runtime
+        run: npm run e2e:prepare
       - run: npm run fixtures:golden && npm run e2e:chromium && npm run e2e:a11y
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
-        with: { name: playwright, path: |
+        with:
+          name: playwright
+          if-no-files-found: warn
+          path: |
             artifacts/e2e
             playwright-report
-            test-results }
+            test-results
+
   performance-smoke:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 24, cache: npm }
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
       - run: npm ci
       - run: npm run fixtures:golden && BENCHMARK_ITERATIONS=3 npm run benchmark:full && npm run test:memory && CI=1 npm run test:soak
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
-        with: { name: performance-results, path: diagnostic-reports }
+        with:
+          name: performance-results
+          path: diagnostic-reports
+          if-no-files-found: warn
+
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 24, cache: npm }
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
       - run: npm ci
       - run: npm run build && npm run verify:template

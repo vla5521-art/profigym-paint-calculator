@@ -1,8 +1,6 @@
 name: deploy
+
 on:
-  push:
-    branches: [main]
-    tags: ['v*']
   workflow_dispatch:
     inputs:
       target:
@@ -10,37 +8,148 @@ on:
         type: choice
         options: [staging, production]
         default: staging
+        required: true
+      image_digest:
+        description: Immutable GHCR digest produced by the container workflow (sha256:...)
+        type: string
+        required: true
+
 permissions:
   contents: read
   packages: read
+
 concurrency:
-  group: profigym-${{ github.event.inputs.target || (startsWith(github.ref, 'refs/tags/v') && 'production' || 'staging') }}
+  group: profigym-${{ inputs.target }}
   cancel-in-progress: false
+
+env:
+  NODE_VERSION: 24.14.0
+
 jobs:
-  deploy:
-    environment:
-      name: ${{ github.event.inputs.target || (startsWith(github.ref, 'refs/tags/v') && 'production' || 'staging') }}
-    runs-on: ubuntu-24.04
+  preflight:
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.check.outputs.ready }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Check deployment inputs and secrets without failing ordinary development
+        id: check
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
+          PROFIGYM_ACCESS_TOKEN: ${{ secrets.PROFIGYM_ACCESS_TOKEN }}
+          PROFIGYM_METRICS_TOKEN: ${{ secrets.PROFIGYM_METRICS_TOKEN }}
+          IMAGE_DIGEST: ${{ inputs.image_digest }}
+        run: |
+          missing=""
+          for name in DEPLOY_HOST DEPLOY_USER DEPLOY_SSH_KEY DEPLOY_KNOWN_HOSTS DEPLOY_PATH DEPLOY_URL PROFIGYM_ACCESS_TOKEN PROFIGYM_METRICS_TOKEN; do
+            if [ -z "${!name:-}" ]; then missing="$missing $name"; fi
+          done
+          if [ -n "$missing" ]; then
+            printf 'ready=false\n' >> "$GITHUB_OUTPUT"
+            printf '### Deployment skipped\nMissing secrets:%s\n' "$missing" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if ! printf '%s' "$IMAGE_DIGEST" | grep -Eq '^sha256:[0-9a-f]{64}$'; then
+            printf 'ready=false\n' >> "$GITHUB_OUTPUT"
+            printf '### Deployment skipped\n`image_digest` must be `sha256:` plus 64 lowercase hex characters.\n' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if ! printf '%s' "$DEPLOY_PATH" | grep -Eq '^/[A-Za-z0-9._/-]+$' || \
+             ! printf '%s' "$DEPLOY_USER" | grep -Eq '^[A-Za-z0-9._-]+$' || \
+             ! printf '%s' "$DEPLOY_HOST" | grep -Eq '^[A-Za-z0-9.-]+$' || \
+             ! printf '%s' "$DEPLOY_URL" | grep -Eq '^https://'; then
+            printf 'ready=false\n' >> "$GITHUB_OUTPUT"
+            printf '### Deployment skipped\nHost, user, path or HTTPS URL failed validation.\n' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          printf 'ready=true\n' >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: preflight
+    if: needs.preflight.outputs.ready == 'true'
+    environment:
+      name: ${{ inputs.target }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
       - name: Configure SSH
         env:
           DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
         run: |
-          install -m 700 -d ~/.ssh
-          printf '%s' "$DEPLOY_SSH_KEY" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
-      - name: Deploy immutable image with protected migration
+          install -m 700 -d "$RUNNER_TEMP/profigym-ssh"
+          printf '%s' "$DEPLOY_SSH_KEY" > "$RUNNER_TEMP/profigym-ssh/id_ed25519"
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > "$RUNNER_TEMP/profigym-ssh/known_hosts"
+          chmod 600 "$RUNNER_TEMP/profigym-ssh/id_ed25519" "$RUNNER_TEMP/profigym-ssh/known_hosts"
+
+      - name: Resolve immutable image
+        id: image
+        env:
+          IMAGE_DIGEST: ${{ inputs.image_digest }}
+        run: |
+          owner="$(printf '%s' "$GITHUB_REPOSITORY_OWNER" | tr '[:upper:]' '[:lower:]')"
+          printf 'ref=ghcr.io/%s/profigym-calculator@%s\n' "$owner" "$IMAGE_DIGEST" >> "$GITHUB_OUTPUT"
+
+      - name: Synchronize audited deployment files
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
-          IMAGE: ghcr.io/${{ github.repository_owner }}/profigym-calculator:sha-${{ github.sha }}
-        run: ssh "$DEPLOY_USER@$DEPLOY_HOST" "cd '$DEPLOY_PATH' && PROFIGYM_IMAGE='$IMAGE' bash scripts/deploy-vps.sh"
-      - name: Remote smoke
+        run: |
+          ssh_args=(-i "$RUNNER_TEMP/profigym-ssh/id_ed25519" -o UserKnownHostsFile="$RUNNER_TEMP/profigym-ssh/known_hosts" -o StrictHostKeyChecking=yes)
+          tar -czf "$RUNNER_TEMP/profigym-deploy-files.tgz" \
+            compose.yml compose.production.yml nginx observability scripts/deploy-vps.sh scripts/rollback-vps.sh scripts/backup-cli.mjs
+          ssh "${ssh_args[@]}" "$DEPLOY_USER@$DEPLOY_HOST" "mkdir -p '$DEPLOY_PATH/.deployment'"
+          scp "${ssh_args[@]}" "$RUNNER_TEMP/profigym-deploy-files.tgz" "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/.deployment/release.tgz"
+          ssh "${ssh_args[@]}" "$DEPLOY_USER@$DEPLOY_HOST" "tar -xzf '$DEPLOY_PATH/.deployment/release.tgz' -C '$DEPLOY_PATH'"
+
+      - name: Deploy immutable image with protected migration
+        id: remote-deploy
         env:
-          DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
-          ACCESS_TOKEN: ${{ secrets.PROFIGYM_ACCESS_TOKEN }}
-        run: APP_PUBLIC_URL="$DEPLOY_URL" PROFIGYM_ACCESS_TOKEN="$ACCESS_TOKEN" npm run smoke:production
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          IMAGE_REF: ${{ steps.image.outputs.ref }}
+        run: |
+          ssh_args=(-i "$RUNNER_TEMP/profigym-ssh/id_ed25519" -o UserKnownHostsFile="$RUNNER_TEMP/profigym-ssh/known_hosts" -o StrictHostKeyChecking=yes)
+          ssh "${ssh_args[@]}" "$DEPLOY_USER@$DEPLOY_HOST" \
+            "cd '$DEPLOY_PATH' && PROFIGYM_IMAGE='$IMAGE_REF' bash scripts/deploy-vps.sh"
+
+      - name: Remote readiness and full HTTP smoke
+        id: remote-smoke
+        env:
+          APP_PUBLIC_URL: ${{ secrets.DEPLOY_URL }}
+          PROFIGYM_ACCESS_TOKEN: ${{ secrets.PROFIGYM_ACCESS_TOKEN }}
+          PROFIGYM_METRICS_TOKEN: ${{ secrets.PROFIGYM_METRICS_TOKEN }}
+        run: npm run smoke:production
+
+      - name: Roll back image and database after failure
+        if: failure() && (steps.remote-deploy.outcome == 'failure' || steps.remote-smoke.outcome == 'failure')
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          FAILED_IMAGE_REF: ${{ steps.image.outputs.ref }}
+        run: |
+          ssh_args=(-i "$RUNNER_TEMP/profigym-ssh/id_ed25519" -o UserKnownHostsFile="$RUNNER_TEMP/profigym-ssh/known_hosts" -o StrictHostKeyChecking=yes)
+          ssh "${ssh_args[@]}" "$DEPLOY_USER@$DEPLOY_HOST" \
+            "cd '$DEPLOY_PATH' && PROFIGYM_IMAGE='$FAILED_IMAGE_REF' ROLLBACK_RESTORE_DATABASE=true bash scripts/rollback-vps.sh"
+
+      - name: Upload deployment smoke evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: deployment-${{ inputs.target }}-${{ github.run_id }}
+          path: diagnostic-reports/production-smoke.json
+          if-no-files-found: warn
+          retention-days: 30

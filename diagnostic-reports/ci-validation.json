@@ -1,0 +1,323 @@
+{
+  "applicationVersion": "2.0.1",
+  "generatedAt": "2026-07-31T15:39:00.645Z",
+  "status": "PASS",
+  "actionlint": "PASS",
+  "workflowFiles": [
+    ".github/workflows/quality.yml",
+    ".github/workflows/container.yml",
+    ".github/workflows/deploy.yml"
+  ],
+  "actionReferences": [
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "lint-typecheck",
+      "action": "actions/checkout",
+      "version": "v7",
+      "inputs": []
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "lint-typecheck",
+      "action": "actions/setup-node",
+      "version": "v6",
+      "inputs": [
+        "node-version",
+        "cache"
+      ]
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "unit-integration",
+      "action": "actions/checkout",
+      "version": "v7",
+      "inputs": []
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "unit-integration",
+      "action": "actions/setup-node",
+      "version": "v6",
+      "inputs": [
+        "node-version",
+        "cache"
+      ]
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "unit-integration",
+      "action": "actions/upload-artifact",
+      "version": "v7",
+      "inputs": [
+        "name",
+        "path",
+        "if-no-files-found"
+      ]
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "golden-regression",
+      "action": "actions/checkout",
+      "version": "v7",
+      "inputs": []
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "golden-regression",
+      "action": "actions/setup-node",
+      "version": "v6",
+      "inputs": [
+        "node-version",
+        "cache"
+      ]
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "golden-regression",
+      "action": "actions/upload-artifact",
+      "version": "v7",
+      "inputs": [
+        "name",
+        "path",
+        "if-no-files-found"
+      ]
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "security",
+      "action": "actions/checkout",
+      "version": "v7",
+      "inputs": []
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "security",
+      "action": "actions/setup-node",
+      "version": "v6",
+      "inputs": [
+        "node-version",
+        "cache"
+      ]
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "security",
+      "action": "actions/upload-artifact",
+      "version": "v7",
+      "inputs": [
+        "name",
+        "path",
+        "if-no-files-found"
+      ]
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "browser-e2e",
+      "action": "actions/checkout",
+      "version": "v7",
+      "inputs": []
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "browser-e2e",
+      "action": "actions/setup-node",
+      "version": "v6",
+      "inputs": [
+        "node-version",
+        "cache"
+      ]
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "browser-e2e",
+      "action": "actions/upload-artifact",
+      "version": "v7",
+      "inputs": [
+        "name",
+        "if-no-files-found",
+        "path"
+      ]
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "performance-smoke",
+      "action": "actions/checkout",
+      "version": "v7",
+      "inputs": []
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "performance-smoke",
+      "action": "actions/setup-node",
+      "version": "v6",
+      "inputs": [
+        "node-version",
+        "cache"
+      ]
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "performance-smoke",
+      "action": "actions/upload-artifact",
+      "version": "v7",
+      "inputs": [
+        "name",
+        "path",
+        "if-no-files-found"
+      ]
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "build",
+      "action": "actions/checkout",
+      "version": "v7",
+      "inputs": []
+    },
+    {
+      "file": ".github/workflows/quality.yml",
+      "job": "build",
+      "action": "actions/setup-node",
+      "version": "v6",
+      "inputs": [
+        "node-version",
+        "cache"
+      ]
+    },
+    {
+      "file": ".github/workflows/container.yml",
+      "job": "build-scan-smoke",
+      "action": "actions/checkout",
+      "version": "v7",
+      "inputs": []
+    },
+    {
+      "file": ".github/workflows/container.yml",
+      "job": "build-scan-smoke",
+      "action": "actions/setup-node",
+      "version": "v6",
+      "inputs": [
+        "node-version",
+        "cache"
+      ]
+    },
+    {
+      "file": ".github/workflows/container.yml",
+      "job": "build-scan-smoke",
+      "action": "docker/setup-buildx-action",
+      "version": "v4",
+      "inputs": []
+    },
+    {
+      "file": ".github/workflows/container.yml",
+      "job": "build-scan-smoke",
+      "action": "docker/login-action",
+      "version": "v4",
+      "inputs": [
+        "registry",
+        "username",
+        "password"
+      ]
+    },
+    {
+      "file": ".github/workflows/container.yml",
+      "job": "build-scan-smoke",
+      "action": "docker/metadata-action",
+      "version": "v6",
+      "inputs": [
+        "images",
+        "tags"
+      ]
+    },
+    {
+      "file": ".github/workflows/container.yml",
+      "job": "build-scan-smoke",
+      "action": "docker/build-push-action",
+      "version": "v7",
+      "inputs": [
+        "context",
+        "push",
+        "load",
+        "tags",
+        "labels",
+        "build-args",
+        "provenance",
+        "sbom",
+        "cache-from",
+        "cache-to"
+      ]
+    },
+    {
+      "file": ".github/workflows/container.yml",
+      "job": "build-scan-smoke",
+      "action": "aquasecurity/trivy-action",
+      "version": "v0.36.0",
+      "inputs": [
+        "scan-type",
+        "image-ref",
+        "format",
+        "output",
+        "severity",
+        "exit-code",
+        "ignore-unfixed",
+        "vuln-type",
+        "limit-severities-for-sarif"
+      ]
+    },
+    {
+      "file": ".github/workflows/container.yml",
+      "job": "build-scan-smoke",
+      "action": "github/codeql-action/upload-sarif",
+      "version": "v4",
+      "inputs": [
+        "sarif_file",
+        "category"
+      ]
+    },
+    {
+      "file": ".github/workflows/container.yml",
+      "job": "build-scan-smoke",
+      "action": "actions/upload-artifact",
+      "version": "v7",
+      "inputs": [
+        "name",
+        "if-no-files-found",
+        "retention-days",
+        "path"
+      ]
+    },
+    {
+      "file": ".github/workflows/deploy.yml",
+      "job": "deploy",
+      "action": "actions/checkout",
+      "version": "v7",
+      "inputs": []
+    },
+    {
+      "file": ".github/workflows/deploy.yml",
+      "job": "deploy",
+      "action": "actions/setup-node",
+      "version": "v6",
+      "inputs": [
+        "node-version",
+        "cache"
+      ]
+    },
+    {
+      "file": ".github/workflows/deploy.yml",
+      "job": "deploy",
+      "action": "actions/upload-artifact",
+      "version": "v7",
+      "inputs": [
+        "name",
+        "path",
+        "if-no-files-found",
+        "retention-days"
+      ]
+    }
+  ],
+  "actionTagVerification": "PASS",
+  "onlineFailures": [],
+  "composeStaticValidation": "PASS",
+  "failures": [],
+  "warnings": []
+}

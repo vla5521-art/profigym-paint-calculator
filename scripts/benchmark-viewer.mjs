@@ -27,7 +27,7 @@ for (const fixture of fixtures) {
     available: result.viewerMesh?.available ?? false,
   });
 }
-const report = { applicationVersion: '2.0.0', generatedAt: new Date().toISOString(), results, memoryBeforeBytes: memoryBefore, memoryAfterBytes: process.memoryUsage().heapUsed };
+const report = { applicationVersion: '2.0.1', generatedAt: new Date().toISOString(), results, memoryBeforeBytes: memoryBefore, memoryAfterBytes: process.memoryUsage().heapUsed };
 await fs.mkdir('diagnostic-reports', { recursive: true });
 await fs.writeFile('diagnostic-reports/viewer-benchmark.json', `${JSON.stringify(report, null, 2)}\n`);
 console.log(JSON.stringify(report, null, 2));

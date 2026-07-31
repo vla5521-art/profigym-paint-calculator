@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "applicationVersion": "2.0.0",
-  "generatedAt": "2026-07-31T13:26:35.700Z",
+  "applicationVersion": "2.0.1",
+  "generatedAt": "2026-07-31T15:34:56.267Z",
   "files": 18,
   "tests": 106,
   "passed": 106,

@@ -1,71 +1,192 @@
 name: container
+
 on:
   pull_request:
   push:
     branches: [main]
-    tags: ['v*']
+    tags: ["v*"]
   workflow_dispatch:
+
 permissions:
   contents: read
   packages: write
-  id-token: write
+  security-events: write
+
+env:
+  NODE_VERSION: 24.14.0
+
 jobs:
   build-scan-smoke:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 24.14.0, cache: npm }
-      - run: npm ci
-      - run: npm run lint && npm run typecheck && npm test && npm run test:golden && npm run test:security && npm run build && npm run verify:template
-      - run: npm run security:audit && npm run security:sbom && npm run security:licenses && npm run security:secrets
-      - uses: docker/setup-buildx-action@v3
-      - uses: docker/login-action@v3
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Validate CI configuration
+        run: npm run ci:validate
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Lint, typecheck, tests and build
+        run: |
+          npm run lint
+          npm run typecheck
+          npm test
+          npm run test:golden
+          npm run test:regression
+          npm run test:determinism
+          npm run test:security
+          npm run build
+          npm run verify:template
+
+      - name: Supply-chain checks
+        run: |
+          npm run security:audit
+          npm run security:sbom
+          npm run security:licenses
+          npm run security:secrets
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Log in to GHCR
         if: github.event_name != 'pull_request'
-        with: { registry: ghcr.io, username: '${{ github.actor }}', password: '${{ secrets.GITHUB_TOKEN }}' }
-      - id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate image metadata
+        id: meta
+        uses: docker/metadata-action@v6
         with:
           images: ghcr.io/${{ github.repository_owner }}/profigym-calculator
           tags: |
-            type=sha,format=long,prefix=sha-
-            type=semver,pattern={{version}},enable=${{ startsWith(github.ref, 'refs/tags/v') }}
-      - uses: docker/build-push-action@v6
+            type=sha,format=long,prefix=sha-,priority=1000
+            type=semver,pattern={{version}},enable=${{ startsWith(github.ref, 'refs/tags/v') }},priority=900
+
+      - name: Select one image reference for scan and smoke
+        id: image
+        env:
+          IMAGE_TAGS: ${{ steps.meta.outputs.tags }}
+        run: |
+          image_ref="$(printf '%s\n' "$IMAGE_TAGS" | sed -n '1p')"
+          test -n "$image_ref"
+          printf 'ref=%s\n' "$image_ref" >> "$GITHUB_OUTPUT"
+
+      - name: Build and optionally push image
         id: build
+        uses: docker/build-push-action@v7
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
           load: ${{ github.event_name == 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          provenance: mode=max
-          sbom: true
-      - name: Vulnerability scan
-        uses: aquasecurity/trivy-action@0.30.0
+          build-args: |
+            VCS_REF=${{ github.sha }}
+          provenance: ${{ github.event_name != 'pull_request' && 'mode=max' || 'false' }}
+          sbom: ${{ github.event_name != 'pull_request' }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Save image digest
+        env:
+          IMAGE_DIGEST: ${{ steps.build.outputs.digest }}
+          IMAGE_REF: ${{ steps.image.outputs.ref }}
+        run: |
+          test -n "$IMAGE_DIGEST"
+          printf '%s\n' "$IMAGE_DIGEST" > image-digest.txt
+          printf '{"imageRef":"%s","digest":"%s","gitSha":"%s"}\n' \
+            "$IMAGE_REF" "$IMAGE_DIGEST" "$GITHUB_SHA" > image-evidence.json
+
+      - name: Pull pushed image for local scan and smoke
+        if: github.event_name != 'pull_request'
+        env:
+          IMAGE_REF: ${{ steps.image.outputs.ref }}
+        run: docker pull "$IMAGE_REF"
+
+      - name: Verify local image is available
+        env:
+          IMAGE_REF: ${{ steps.image.outputs.ref }}
+        run: docker image inspect "$IMAGE_REF" > /dev/null
+
+      - name: Scan image with Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: ${{ fromJSON(steps.meta.outputs.json).tags[0] }}
+          scan-type: image
+          image-ref: ${{ steps.image.outputs.ref }}
           format: sarif
           output: trivy-results.sarif
           severity: CRITICAL,HIGH
-          exit-code: '1'
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: os,library
+          limit-severities-for-sarif: true
+
+      - name: Upload Trivy SARIF to GitHub Security
+        if: always() && hashFiles('trivy-results.sarif') != '' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+        continue-on-error: true
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: trivy-results.sarif
+          category: trivy-profigym-container
+
       - name: Production image smoke
         env:
-          PROFIGYM_IMAGE: ${{ fromJSON(steps.meta.outputs.json).tags[0] }}
+          PROFIGYM_IMAGE: ${{ steps.image.outputs.ref }}
+          PROFIGYM_ENV_FILE: .env.production
         run: |
           cp .env.production.example .env.production
-          token="$(openssl rand -base64 48 | tr -d '\n')"
-          sed -i "s#replace-with-at-least-32-random-bytes#$token#; s#replace-with-separate-random-token#$token#; s#https://example.invalid#http://127.0.0.1:8080#g" .env.production
-          docker compose up -d --no-build
-          for i in $(seq 1 60); do curl -fsS http://127.0.0.1:8080/health/ready && break; sleep 2; done
-          APP_PUBLIC_URL=http://127.0.0.1:8080 PROFIGYM_ACCESS_TOKEN="$token" PROFIGYM_METRICS_TOKEN="$token" npm run smoke:production
-          docker compose down --remove-orphans
-      - uses: actions/upload-artifact@v4
+          access_token="$(openssl rand -hex 32)"
+          metrics_token="$(openssl rand -hex 32)"
+          sed -i \
+            -e "s#replace-with-at-least-32-random-bytes#$access_token#" \
+            -e "s#replace-with-separate-random-token#$metrics_token#" \
+            -e "s#https://example.invalid#http://127.0.0.1:8080#g" \
+            .env.production
+          docker compose -f compose.yml up -d --no-build
+          ready=0
+          for _ in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:8080/health/ready > /dev/null; then
+              ready=1
+              break
+            fi
+            sleep 2
+          done
+          test "$ready" -eq 1
+          APP_PUBLIC_URL=http://127.0.0.1:8080 \
+            PROFIGYM_ACCESS_TOKEN="$access_token" \
+            PROFIGYM_METRICS_TOKEN="$metrics_token" \
+            npm run smoke:production
+
+      - name: Stop smoke environment
         if: always()
+        env:
+          PROFIGYM_IMAGE: ${{ steps.image.outputs.ref }}
+          PROFIGYM_ENV_FILE: .env.production
+        run: docker compose -f compose.yml down --remove-orphans --volumes || true
+
+      - name: Upload container evidence
+        if: always()
+        uses: actions/upload-artifact@v7
         with:
           name: stage7-container-evidence
+          if-no-files-found: warn
+          retention-days: 14
           path: |
             artifacts/security
             diagnostic-reports
             trivy-results.sarif
-      - name: Image digest
-        run: echo "${{ steps.build.outputs.digest }}" | tee image-digest.txt
+            image-digest.txt
+            image-evidence.json

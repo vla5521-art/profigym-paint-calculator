@@ -1,0 +1,13 @@
+{
+  "applicationVersion": "2.0.1",
+  "generatedAt": "2026-07-31T15:30:00.000Z",
+  "status": "NOT_RUN",
+  "dockerAvailable": false,
+  "reason": "Docker CLI and daemon are not installed in the verification environment",
+  "composeStaticValidation": "PASS",
+  "dockerfileStaticValidation": "PASS",
+  "dockerComposeConfig": "NOT_RUN_DOCKER_UNAVAILABLE",
+  "dockerBuild": "NOT_RUN_DOCKER_UNAVAILABLE",
+  "productionSmoke": "NOT_RUN_DOCKER_UNAVAILABLE",
+  "trivyRuntimeScan": "NOT_RUN_REQUIRES_DOCKER_OR_GITHUB_CI"
+}

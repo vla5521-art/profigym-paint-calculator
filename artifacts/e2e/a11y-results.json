@@ -2,14 +2,14 @@
   "config": {
     "argv": [
       "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
-      "/workspace/scratch/28999e3ac01a/stage7_work/PROFiGYM_calculator_v2.0.0_STAGE7_PRODUCTION/node_modules/.bin/playwright",
+      "/workspace/scratch/28999e3ac01a/stage7_ci_fix_work/PROFiGYM_calculator_v2.0.1_STAGE7_CI_FIXED/node_modules/.bin/playwright",
       "test",
       "--project=chromium",
       "--grep",
       "@a11y"
     ],
-    "configFile": "/workspace/scratch/28999e3ac01a/stage7_work/PROFiGYM_calculator_v2.0.0_STAGE7_PRODUCTION/playwright.config.ts",
-    "rootDir": "/workspace/scratch/28999e3ac01a/stage7_work/PROFiGYM_calculator_v2.0.0_STAGE7_PRODUCTION/e2e",
+    "configFile": "/workspace/scratch/28999e3ac01a/stage7_ci_fix_work/PROFiGYM_calculator_v2.0.1_STAGE7_CI_FIXED/playwright.config.ts",
+    "rootDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix_work/PROFiGYM_calculator_v2.0.1_STAGE7_CI_FIXED/e2e",
     "failOnFlakyTests": false,
     "forbidOnly": false,
     "fullyParallel": false,
@@ -25,7 +25,7 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/workspace/scratch/28999e3ac01a/stage7_work/PROFiGYM_calculator_v2.0.0_STAGE7_PRODUCTION/test-results",
+        "outputDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix_work/PROFiGYM_calculator_v2.0.1_STAGE7_CI_FIXED/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -33,7 +33,7 @@
         },
         "id": "chromium",
         "name": "chromium",
-        "testDir": "/workspace/scratch/28999e3ac01a/stage7_work/PROFiGYM_calculator_v2.0.0_STAGE7_PRODUCTION/e2e",
+        "testDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix_work/PROFiGYM_calculator_v2.0.1_STAGE7_CI_FIXED/e2e",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -41,7 +41,7 @@
         "timeout": 120000
       },
       {
-        "outputDir": "/workspace/scratch/28999e3ac01a/stage7_work/PROFiGYM_calculator_v2.0.0_STAGE7_PRODUCTION/test-results",
+        "outputDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix_work/PROFiGYM_calculator_v2.0.1_STAGE7_CI_FIXED/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -49,7 +49,7 @@
         },
         "id": "firefox",
         "name": "firefox",
-        "testDir": "/workspace/scratch/28999e3ac01a/stage7_work/PROFiGYM_calculator_v2.0.0_STAGE7_PRODUCTION/e2e",
+        "testDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix_work/PROFiGYM_calculator_v2.0.1_STAGE7_CI_FIXED/e2e",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -57,7 +57,7 @@
         "timeout": 120000
       },
       {
-        "outputDir": "/workspace/scratch/28999e3ac01a/stage7_work/PROFiGYM_calculator_v2.0.0_STAGE7_PRODUCTION/test-results",
+        "outputDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix_work/PROFiGYM_calculator_v2.0.1_STAGE7_CI_FIXED/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -65,7 +65,7 @@
         },
         "id": "webkit",
         "name": "webkit",
-        "testDir": "/workspace/scratch/28999e3ac01a/stage7_work/PROFiGYM_calculator_v2.0.0_STAGE7_PRODUCTION/e2e",
+        "testDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix_work/PROFiGYM_calculator_v2.0.1_STAGE7_CI_FIXED/e2e",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -137,12 +137,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3208,
+                  "duration": 4436,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-31T13:36:01.523Z",
+                  "startTime": "2026-07-31T15:27:04.384Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -173,12 +173,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1951,
+                  "duration": 2008,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-31T13:36:04.807Z",
+                  "startTime": "2026-07-31T15:27:08.931Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -196,8 +196,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-07-31T13:36:00.225Z",
-    "duration": 6638.9710000000005,
+    "startTime": "2026-07-31T15:27:03.027Z",
+    "duration": 7999.222,
     "expected": 2,
     "skipped": 0,
     "unexpected": 0,

@@ -9,7 +9,10 @@ const testFiles = entries
   .sort()
   .map((name) => path.join('tests', name));
 
-const child = spawn(process.execPath, ['--experimental-strip-types', '--test', ...testFiles], {
+// OCCT/WASM integration files each start a real backend and can compile the same
+// large module on a cold runner. Run files serially to avoid memory pressure and
+// connection resets while preserving concurrency tests in their dedicated suite.
+const child = spawn(process.execPath, ['--experimental-strip-types', '--test', '--test-concurrency=1', ...testFiles], {
   cwd: root,
   env: process.env,
   stdio: ['ignore', 'pipe', 'pipe'],
@@ -32,7 +35,7 @@ const exitCode = await new Promise((resolve, reject) => {
 const number = (label) => Number(output.match(new RegExp(`(?:ℹ|#) ${label} (\\d+)`))?.[1] ?? 0);
 await writeJson(path.join(reportsDir, 'node-test-results.json'), {
   schemaVersion: '1.0.0',
-  applicationVersion: '2.0.0',
+  applicationVersion: '2.0.1',
   generatedAt: new Date().toISOString(),
   files: testFiles.length,
   tests: number('tests'),

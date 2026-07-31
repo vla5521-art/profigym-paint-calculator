@@ -5,8 +5,11 @@ const patterns = [
   { name: 'private-key', regex: /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/ },
   { name: 'github-token', regex: /gh[pousr]_[A-Za-z0-9]{30,}/ },
   { name: 'aws-access-key', regex: /AKIA[0-9A-Z]{16}/ },
-  { name: 'assigned-secret', regex: /(?:PROFIGYM_ACCESS_TOKEN|PROFIGYM_METRICS_TOKEN|PASSWORD|WEBHOOK_URL)\s*=\s*(?!replace-|\$\{|<|$)[^\s#]{16,}/i },
+  { name: 'assigned-secret', regex: /(?:PROFIGYM_ACCESS_TOKEN|PROFIGYM_METRICS_TOKEN|PASSWORD|WEBHOOK_URL)\s*=\s*(?!["']?\$\{?|replace-|<|$)[^\s#]{16,}/i },
 ];
+const assignedSecretPattern = patterns.find(({ name }) => name === 'assigned-secret').regex;
+if (assignedSecretPattern.test('PROFIGYM_ACCESS_TOKEN="$access_token"')) throw new Error('secret scanner rejects safe runtime interpolation');
+if (!assignedSecretPattern.test('PROFIGYM_ACCESS_TOKEN=literal-secret-value-123')) throw new Error('secret scanner does not detect literal assignments');
 const findings = [];
 async function walk(directory) {
   for (const entry of await fs.readdir(directory, { withFileTypes: true })) {

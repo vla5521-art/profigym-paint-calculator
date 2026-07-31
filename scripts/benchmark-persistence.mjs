@@ -35,7 +35,7 @@ createJsonReport(loaded);
 const reportGenerationMs = performance.now() - reportStarted;
 const fullWorkflowMs = performance.now() - workflowStarted;
 const report = {
-  applicationVersion: '2.0.0', generatedAt: new Date().toISOString(), stepProcessingMs: Number(stepProcessingMs.toFixed(3)),
+  applicationVersion: '2.0.1', generatedAt: new Date().toISOString(), stepProcessingMs: Number(stepProcessingMs.toFixed(3)),
   databaseSaveMs: Number(databaseSaveMs.toFixed(3)), databaseLoadMs: Number(databaseLoadMs.toFixed(3)), reportGenerationMs: Number(reportGenerationMs.toFixed(3)),
   fullWorkflowMs: Number(fullWorkflowMs.toFixed(3)), memoryBeforeBytes, memoryAfterBytes: process.memoryUsage().heapUsed,
   sourceBytes: Buffer.byteLength(source), meshPayloadBytes: result.viewerMesh.payloadBytes,

@@ -7,7 +7,7 @@ import { deviation, reportsDir, root, sha256File, stableResult, writeJson } from
 
 const manifest = JSON.parse(await fs.readFile(path.join(root, 'test-models/golden/golden-manifest.json'), 'utf8'));
 const results = [];
-test.after(async () => { await closeCadKernel(); await writeJson(path.join(reportsDir, 'golden-results.json'), { schemaVersion: '1.0.0', applicationVersion: '2.0.0', suite: 'B-Rep golden', total: results.length, passed: results.filter((r) => r.pass).length, failed: results.filter((r) => !r.pass).length, results }); });
+test.after(async () => { await closeCadKernel(); await writeJson(path.join(reportsDir, 'golden-results.json'), { schemaVersion: '1.0.0', applicationVersion: '2.0.1', suite: 'B-Rep golden', total: results.length, passed: results.filter((r) => r.pass).length, failed: results.filter((r) => !r.pass).length, results }); });
 
 for (const fixture of manifest.fixtures) test(`golden ${fixture.fixtureId}`, async () => {
   const file = path.join(root, 'test-models/golden', fixture.file);

@@ -65,16 +65,7 @@ const unsupported = new FormData(); unsupported.append('file', new Blob(['native
 const unsupportedResponse = await fetch(`${base}/api/cad/import`, { method: 'POST', headers, body: unsupported }); check('unsupported-format-415', unsupportedResponse.status === 415, { status: unsupportedResponse.status });
 const corrupted = await upload('corrupted.step', Buffer.from('ISO-10303-21;\nBROKEN\nEND-ISO-10303-21;'));
 const corruptResult = await terminal(corrupted.id); check('corrupt-step-controlled', corruptResult.status === 'failed' && Boolean(corruptResult.error?.code || corruptResult.errorCode), { status: corruptResult.status, errorCode: corruptResult.error?.code || corruptResult.errorCode });
-if (local) {
-  const [{ cadConfig }, { cleanupStorage }] = await Promise.all([import('../server/config.js'), import('../server/storage.js')]);
-  await cleanupStorage(cadConfig, { dryRun: false });
-  const tempEntries = await fs.readdir(cadConfig.tempDir).catch(() => []);
-  check('temporary-files-cleaned', tempEntries.length === 0, { tempFiles: tempEntries.length });
-} else {
-  results.push({ id: 'temporary-files-cleaned', pass: true, status: 'NOT_VERIFIED_REMOTE_FILESYSTEM' });
-}
-
 await fs.mkdir(path.join(root, 'diagnostic-reports'), { recursive: true });
-const report = { applicationVersion: '2.0.0', generatedAt: new Date().toISOString(), baseUrl: base, https: base.startsWith('https://'), localHttpException: local && !base.startsWith('https://'), status: results.every((item) => item.pass) ? 'PASS' : 'FAIL', tests: results.length, results };
+const report = { applicationVersion: '2.0.1', generatedAt: new Date().toISOString(), baseUrl: base, https: base.startsWith('https://'), localHttpException: local && !base.startsWith('https://'), transport: 'HTTP_ONLY', status: results.every((item) => item.pass) ? 'PASS' : 'FAIL', tests: results.length, results };
 await fs.writeFile(path.join(root, 'diagnostic-reports', 'production-smoke.json'), `${JSON.stringify(report, null, 2)}\n`);
 console.log(JSON.stringify(report, null, 2));

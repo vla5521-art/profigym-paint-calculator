@@ -15,7 +15,7 @@ const storageRoot = path.resolve(process.env.CAD_STORAGE_ROOT || (process.env.NO
 const environment = process.env.NODE_ENV || 'development';
 
 export const cadConfig = {
-  applicationVersion: '2.0.0',
+  applicationVersion: '2.0.1',
   environment,
   port: number('CAD_API_PORT', 8787, 1),
   publicUrl: process.env.APP_PUBLIC_URL || 'http://127.0.0.1:8787',

@@ -1,6 +1,6 @@
-# PROFiGYM — калькулятор расхода краски v2.0.0
+# PROFiGYM — калькулятор расхода краски v2.0.1
 
-Версия 2.0.0 — production-пакет для Linux VPS. STEP-only CAD pipeline, OCCT/WASM, геометрические эталоны и версии алгоритмов `geometry 2.0 / contact 3.0 / feature 4.0` сохранены. Длительная CAD-обработка вынесена из HTTP-процесса в отдельный worker с durable SQLite queue.
+Версия 2.0.1 исправляет GitHub Actions и container/deploy workflow этапа 7. STEP-only CAD pipeline, OCCT/WASM, геометрические эталоны и версии алгоритмов `geometry 2.0 / contact 3.0 / feature 4.0` сохранены без изменений. Длительная CAD-обработка выполняется отдельным worker через durable SQLite queue.
 
 ## Архитектура
 
@@ -44,6 +44,7 @@ npm run smoke:production
 ## Проверка
 
 ```bash
+npm run ci:validate
 npm run lint
 npm run typecheck
 npm test
@@ -62,6 +63,8 @@ npm run security:secrets
 npm run prod:local:verify
 ```
 
+Версии и официальные источники GitHub Actions зафиксированы в [CI_ACTIONS.md](CI_ACTIONS.md). Container workflow использует Trivy `v0.36.0`, явно загружает pushed image обратно в runner перед scan/smoke и сохраняет digest/SARIF. Deploy запускается только вручную по immutable digest; отсутствие VPS secrets даёт контролируемый skip, а не красный workflow на обычном push.
+
 `prod:local:verify` поднимает app и worker как отдельные production-процессы, проверяет реальный HTTP workflow, остановку/restart worker, observability, backup/restore и rollback marker. Docker image/Compose считаются проверенными только после фактического запуска Docker.
 
 ## Excel-шаблон
@@ -70,4 +73,4 @@ npm run prod:local:verify
 
 ## Статус публикации
 
-Если в `STAGE7_REPORT.md` не указан подтверждённый URL и CI run ID, статус остаётся `DEPLOYMENT_READY_NOT_PUBLISHED`.
+Локальный итоговый статус исправления — `CI_FIXED_READY_FOR_GITHUB` или `CI_FIXED_DOCKER_VERIFIED`. Статус `PRODUCTION_DEPLOYED` не используется без фактического VPS-деплоя.

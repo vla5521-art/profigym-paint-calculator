@@ -72,6 +72,44 @@ export async function restoreBackupTest(config, backupId) {
   } finally { await fs.rm(directory, { recursive: true, force: true }); }
 }
 
+export async function restoreBackup(config, backupId) {
+  const verified = await verifyBackup(config, backupId);
+  await fs.mkdir(path.dirname(config.databasePath), { recursive: true, mode: 0o700 });
+  const temporary = `${config.databasePath}.restore-${randomUUID()}`;
+  const safetyCopy = `${config.databasePath}.pre-restore-${new Date().toISOString().replace(/[:.]/g, '-')}`;
+  const source = path.join(config.backupsDir, verified.manifest.databaseFile);
+  await fs.copyFile(source, temporary);
+  const temporaryStatus = databaseStatus(temporary);
+  if (temporaryStatus.integrity !== 'ok' || temporaryStatus.schemaVersion !== verified.manifest.schemaVersion) {
+    await fs.rm(temporary, { force: true });
+    throw Object.assign(new Error('Подготовленная копия backup не прошла повторную проверку'), { code: 'BACKUP_RESTORE_INVALID' });
+  }
+
+  let previousDatabaseMoved = false;
+  try {
+    await fs.rename(config.databasePath, safetyCopy);
+    previousDatabaseMoved = true;
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+  await fs.rm(`${config.databasePath}-wal`, { force: true });
+  await fs.rm(`${config.databasePath}-shm`, { force: true });
+  try {
+    await fs.rename(temporary, config.databasePath);
+  } catch (error) {
+    if (previousDatabaseMoved) await fs.rename(safetyCopy, config.databasePath).catch(() => undefined);
+    throw error;
+  }
+  const restored = databaseStatus(config.databasePath);
+  return {
+    ok: restored.integrity === 'ok',
+    backupId: verified.manifest.backupId,
+    schemaVersion: restored.schemaVersion,
+    sha256: verified.manifest.sha256,
+    safetyCopy: previousDatabaseMoved ? path.basename(safetyCopy) : null,
+  };
+}
+
 export async function cleanupBackups(config, retentionDays = 30) {
   const cutoff = Date.now() - retentionDays * 86_400_000;
   const manifests = await listBackups(config);

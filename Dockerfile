@@ -6,6 +6,7 @@ RUN --mount=type=cache,target=/root/.npm npm ci
 COPY tsconfig*.json vite.config.ts index.html ./
 COPY src ./src
 COPY public ./public
+COPY scripts/verify-template-packaging.mjs ./scripts/verify-template-packaging.mjs
 RUN npm run build
 
 FROM node:24.14.0-bookworm-slim AS dependencies
@@ -16,7 +17,7 @@ RUN --mount=type=cache,target=/root/.npm npm ci --omit=dev --ignore-scripts && n
 FROM node:24.14.0-bookworm-slim AS runtime
 ARG VCS_REF=unknown
 LABEL org.opencontainers.image.title="PROFiGYM Calculator" \
-      org.opencontainers.image.version="2.0.0" \
+      org.opencontainers.image.version="2.0.1" \
       org.opencontainers.image.revision="$VCS_REF" \
       org.opencontainers.image.source="local-stage7-package"
 RUN apt-get update && apt-get install -y --no-install-recommends tini ca-certificates && rm -rf /var/lib/apt/lists/*

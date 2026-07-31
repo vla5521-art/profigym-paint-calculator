@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "total": 2,
-  "passed": 2,
+  "total": 3,
+  "passed": 3,
   "failed": 0,
   "results": [
     {
@@ -10,6 +10,10 @@
     },
     {
       "scenario": "invalid-backups",
+      "pass": true
+    },
+    {
+      "scenario": "atomic-restore-with-safety-copy",
       "pass": true
     }
   ]

@@ -1,6 +1,6 @@
 {
-  "applicationVersion": "2.0.0",
-  "generatedAt": "2026-07-31T13:43:03.101Z",
+  "applicationVersion": "2.0.1",
+  "generatedAt": "2026-07-31T15:27:16.763Z",
   "status": "PASS",
   "tests": 24,
   "results": [
@@ -87,12 +87,12 @@
     {
       "id": "worker-heartbeat-fresh",
       "pass": true,
-      "ageSeconds": 0.009
+      "ageSeconds": 0.008
     },
     {
       "id": "json-logs",
       "pass": true,
-      "lines": 46
+      "lines": 45
     },
     {
       "id": "request-id-in-logs",

@@ -1,12 +1,12 @@
 {
-  "applicationVersion": "2.0.0",
-  "testReportSchemaVersion": "1.1.0",
-  "generatedAt": "2026-07-31T13:48:02.536Z",
+  "applicationVersion": "2.0.1",
+  "testReportSchemaVersion": "1.2.0",
+  "generatedAt": "2026-07-31T15:39:00.910Z",
   "nodeVersion": "v24.14.0",
   "os": "linux",
   "architecture": "x64",
   "gitCommit": null,
-  "fixtureManifestHash": "29ad75d1bb4a767d5fc3828d6d91244ca28ac8853881cab9bc142f6dc9431e59",
+  "fixtureManifestHash": "e9fa52703840c77bb6a5d7efa4105b310d96d4a60bdc641197ee175642ad33d5",
   "fixtureCount": 38,
   "testCounts": {
     "nodeUnitIntegration": 106,
@@ -14,13 +14,14 @@
     "golden": 38,
     "regression": 35,
     "security": 26,
-    "migrations": 2,
+    "migrations": 3,
     "functionalBrowser": 27,
     "accessibility": 2,
-    "productionHttp": 40,
+    "productionHttp": 39,
     "observability": 24
   },
   "critical": {
+    "ciValidation": "PASS",
     "unit": "PASS",
     "golden": "PASS",
     "regression": "PASS",
@@ -47,13 +48,14 @@
   },
   "production": {
     "http": {
-      "applicationVersion": "2.0.0",
-      "generatedAt": "2026-07-31T13:43:01.126Z",
+      "applicationVersion": "2.0.1",
+      "generatedAt": "2026-07-31T15:27:14.944Z",
       "baseUrl": "http://127.0.0.1:8899",
       "https": false,
       "localHttpException": true,
+      "transport": "HTTP_ONLY",
       "status": "PASS",
-      "tests": 40,
+      "tests": 39,
       "results": [
         {
           "id": "https",
@@ -117,17 +119,17 @@
           "pass": true
         },
         {
-          "id": "http:/api/cad/job/6ffe0173-bb79-42fb-813d-03053a5140c0:200",
+          "id": "http:/api/cad/job/41f4b57c-4f30-428b-8e3e-a7ce07bc7908:200",
           "pass": true,
           "actual": 200
         },
         {
-          "id": "http:/api/cad/job/6ffe0173-bb79-42fb-813d-03053a5140c0:200",
+          "id": "http:/api/cad/job/41f4b57c-4f30-428b-8e3e-a7ce07bc7908:200",
           "pass": true,
           "actual": 200
         },
         {
-          "id": "http:/api/cad/job/6ffe0173-bb79-42fb-813d-03053a5140c0:200",
+          "id": "http:/api/cad/job/41f4b57c-4f30-428b-8e3e-a7ce07bc7908:200",
           "pass": true,
           "actual": 200
         },
@@ -157,7 +159,7 @@
           "pass": true
         },
         {
-          "id": "http:/api/cad/calculations/75e1ec88-5fea-4bab-b567-648699beab06:200",
+          "id": "http:/api/cad/calculations/8c834704-b7b5-4709-adbd-2e5bea7b39c0:200",
           "pass": true,
           "actual": 200
         },
@@ -166,7 +168,7 @@
           "pass": true
         },
         {
-          "id": "http:/api/cad/calculations/75e1ec88-5fea-4bab-b567-648699beab06/viewer-mesh:200",
+          "id": "http:/api/cad/calculations/8c834704-b7b5-4709-adbd-2e5bea7b39c0/viewer-mesh:200",
           "pass": true,
           "actual": 200
         },
@@ -175,7 +177,7 @@
           "pass": true
         },
         {
-          "id": "http:/api/cad/calculations/75e1ec88-5fea-4bab-b567-648699beab06/report.json:200",
+          "id": "http:/api/cad/calculations/8c834704-b7b5-4709-adbd-2e5bea7b39c0/report.json:200",
           "pass": true,
           "actual": 200
         },
@@ -184,7 +186,7 @@
           "pass": true
         },
         {
-          "id": "http:/api/cad/calculations/75e1ec88-5fea-4bab-b567-648699beab06/report.html:200",
+          "id": "http:/api/cad/calculations/8c834704-b7b5-4709-adbd-2e5bea7b39c0/report.html:200",
           "pass": true,
           "actual": 200
         },
@@ -193,7 +195,7 @@
           "pass": true
         },
         {
-          "id": "http:/api/cad/calculations/75e1ec88-5fea-4bab-b567-648699beab06/integrate-paint:200",
+          "id": "http:/api/cad/calculations/8c834704-b7b5-4709-adbd-2e5bea7b39c0/integrate-paint:200",
           "pass": true,
           "actual": 200
         },
@@ -202,7 +204,7 @@
           "pass": true
         },
         {
-          "id": "http:/api/cad/calculations/75e1ec88-5fea-4bab-b567-648699beab06:204",
+          "id": "http:/api/cad/calculations/8c834704-b7b5-4709-adbd-2e5bea7b39c0:204",
           "pass": true,
           "actual": 204
         },
@@ -222,12 +224,12 @@
           "actual": 202
         },
         {
-          "id": "http:/api/cad/job/184533e4-455a-4985-a502-6c512ff4ece3:200",
+          "id": "http:/api/cad/job/900ee8e7-bd5f-4910-a7fd-f9d4fee8d060:200",
           "pass": true,
           "actual": 200
         },
         {
-          "id": "http:/api/cad/job/184533e4-455a-4985-a502-6c512ff4ece3:200",
+          "id": "http:/api/cad/job/900ee8e7-bd5f-4910-a7fd-f9d4fee8d060:200",
           "pass": true,
           "actual": 200
         },
@@ -236,17 +238,12 @@
           "pass": true,
           "status": "failed",
           "errorCode": "INVALID_STEP_FILE"
-        },
-        {
-          "id": "temporary-files-cleaned",
-          "pass": true,
-          "tempFiles": 0
         }
       ]
     },
     "observability": {
-      "applicationVersion": "2.0.0",
-      "generatedAt": "2026-07-31T13:43:03.101Z",
+      "applicationVersion": "2.0.1",
+      "generatedAt": "2026-07-31T15:27:16.763Z",
       "status": "PASS",
       "tests": 24,
       "results": [
@@ -333,12 +330,12 @@
         {
           "id": "worker-heartbeat-fresh",
           "pass": true,
-          "ageSeconds": 0.009
+          "ageSeconds": 0.008
         },
         {
           "id": "json-logs",
           "pass": true,
-          "lines": 46
+          "lines": 45
         },
         {
           "id": "request-id-in-logs",
@@ -351,21 +348,21 @@
       ]
     },
     "backup": {
-      "applicationVersion": "2.0.0",
-      "generatedAt": "2026-07-31T13:43:03.550Z",
+      "applicationVersion": "2.0.1",
+      "generatedAt": "2026-07-31T15:27:17.227Z",
       "status": "PASS",
-      "backupId": "2026-07-31T13-43-03-520Z-2bc827e6-73f4-4b37-a97c-c365f32dbb2d",
-      "sha256": "e8dddfb23532c8d2c2dbc79b31138143a8ae9fb440a3267926f392a75fab0a00",
+      "backupId": "2026-07-31T15-27-17-194Z-1c9dfea1-5354-4314-816d-061f9d50a689",
+      "sha256": "fdf95670dd408061b2697427ed4ba81aee32bb41e7b13dfb21a0adbd3cd7f997",
       "schemaVersion": 2,
       "calculations": 1,
-      "calculationId": "f3f71538-3fef-4eee-a6f0-925e6a2b05fa",
+      "calculationId": "6a28f8f6-c4ff-48d3-bc22-3f11df2870cb",
       "summaryMatches": true,
       "reportGenerated": true,
       "restoredIntoIsolatedDirectory": true
     },
     "rollback": {
-      "applicationVersion": "2.0.0",
-      "generatedAt": "2026-07-31T13:43:03.629Z",
+      "applicationVersion": "2.0.1",
+      "generatedAt": "2026-07-31T15:27:17.301Z",
       "status": "PASS",
       "releaseAStarted": true,
       "releaseBStarted": true,
@@ -377,7 +374,7 @@
     },
     "orchestration": {
       "status": "PASS",
-      "generatedAt": "2026-07-31T13:43:03.634Z",
+      "generatedAt": "2026-07-31T15:27:17.305Z",
       "orchestration": "local-separate-processes",
       "localUrl": "http://127.0.0.1:8899",
       "localUrlIsProduction": false,
@@ -396,12 +393,14 @@
       "critical": 0,
       "total": 0
     },
-    "sbomComponents": 457,
-    "licensedPackages": 457,
+    "sbomComponents": 459,
+    "licensedPackages": 459,
     "unknownLicenses": 0,
     "secretFindings": 0
   },
   "environmentDependent": {
+    "actionlint": "PASS",
+    "actionTagVerification": "PASS",
     "dockerBuild": "NOT_RUN_DOCKER_UNAVAILABLE",
     "composeRuntime": "NOT_RUN_DOCKER_UNAVAILABLE",
     "containerScan": "NOT_RUN_REQUIRES_DOCKER_OR_CI",
