@@ -1,6 +1,6 @@
 # STAGE7_REPORT
 
-Версия: 2.0.1. Итоговый статус: **CI_FIXED_READY_FOR_GITHUB**.
+Версия: 2.0.2. Итоговый статус: **CI_FIXED_READY_FOR_GITHUB**.
 
 ## Фактическая архитектура
 
@@ -17,7 +17,7 @@ Auth: bearer token или HttpOnly SameSite session; rate limits по катег
 ## Реальные результаты
 
 - CI validation/actionlint: PASS; online action tags: PASS.
-- Node unit/integration/API: 106; jsdom: 12.
+- Node unit/integration/API: 113; jsdom: 12.
 - Golden: 38/38; regression: 35/35; determinism PASS.
 - Chromium: 27, PASS; accessibility: 2, PASS.
 - Production HTTP smoke: PASS; observability: PASS; backup: PASS; rollback marker: PASS.

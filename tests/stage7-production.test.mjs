@@ -13,7 +13,7 @@ async function runtime(name) {
   return {
     root,
     config: {
-      environment: 'test', applicationVersion: '2.0.1', storageRoot: root,
+      environment: 'test', applicationVersion: '2.0.2', storageRoot: root,
       databaseDir: path.join(root, 'database'), sourceFilesDir: path.join(root, 'source-files'), viewerMeshDir: path.join(root, 'viewer-mesh'), previewsDir: path.join(root, 'previews'), reportsDir: path.join(root, 'reports'), backupsDir: path.join(root, 'backups'), tempDir: path.join(root, 'tmp'),
       uploadDir: path.join(root, 'source-files', 'incoming'), calculationStoragePath: root, databasePath: path.join(root, 'database', 'db.sqlite'),
       processingMode: 'queue', workerRequired: true, workerConcurrency: 1, queuePollIntervalMs: 25, jobHeartbeatIntervalMs: 50, jobStaleAfterMs: 150, jobMaxAttempts: 2, jobTimeoutMs: 60_000,
@@ -73,6 +73,6 @@ test('production auth, rate limit, request ID, CORS and security headers are enf
     const badLogin = await fetch(`${base}/api/auth/login`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ token: 'wrong' }) }); assert.equal(badLogin.status, 401);
     const limitedLogin = await fetch(`${base}/api/auth/login`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ token }) }); assert.equal(limitedLogin.status, 429); assert.ok(limitedLogin.headers.get('retry-after'));
     const metricsAnonymous = await fetch(`${base}/metrics`); assert.equal(metricsAnonymous.status, 401);
-    const metrics = await fetch(`${base}/metrics`, { headers: { authorization: `Bearer ${token}-metrics` } }); assert.equal(metrics.status, 200); assert.match(await metrics.text(), /profigym_info\{version="2\.0\.1"/);
+    const metrics = await fetch(`${base}/metrics`, { headers: { authorization: `Bearer ${token}-metrics` } }); assert.equal(metrics.status, 200); assert.match(await metrics.text(), /profigym_info\{version="2\.0\.2"/);
   } finally { created.calculationRepository.close(); created.jobStore.close(); await new Promise((resolve) => server.close(resolve)); await fs.rm(env.root, { recursive: true, force: true }); }
 });

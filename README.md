@@ -1,6 +1,6 @@
-# PROFiGYM — калькулятор расхода краски v2.0.1
+# PROFiGYM — калькулятор расхода краски v2.0.2
 
-Версия 2.0.1 исправляет GitHub Actions и container/deploy workflow этапа 7. STEP-only CAD pipeline, OCCT/WASM, геометрические эталоны и версии алгоритмов `geometry 2.0 / contact 3.0 / feature 4.0` сохранены без изменений. Длительная CAD-обработка выполняется отдельным worker через durable SQLite queue.
+Версия 2.0.2 исправляет две оставшиеся CI-ошибки: очистку подключённого BuildKit npm cache во время Docker build и неидемпотентное создание Playwright ffmpeg symlink. STEP-only CAD pipeline, OCCT/WASM, геометрические эталоны и версии алгоритмов `geometry 2.0 / contact 3.0 / feature 4.0` сохранены без изменений. Длительная CAD-обработка выполняется отдельным worker через durable SQLite queue.
 
 ## Архитектура
 

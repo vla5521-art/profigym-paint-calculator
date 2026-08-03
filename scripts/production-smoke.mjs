@@ -66,6 +66,6 @@ const unsupportedResponse = await fetch(`${base}/api/cad/import`, { method: 'POS
 const corrupted = await upload('corrupted.step', Buffer.from('ISO-10303-21;\nBROKEN\nEND-ISO-10303-21;'));
 const corruptResult = await terminal(corrupted.id); check('corrupt-step-controlled', corruptResult.status === 'failed' && Boolean(corruptResult.error?.code || corruptResult.errorCode), { status: corruptResult.status, errorCode: corruptResult.error?.code || corruptResult.errorCode });
 await fs.mkdir(path.join(root, 'diagnostic-reports'), { recursive: true });
-const report = { applicationVersion: '2.0.1', generatedAt: new Date().toISOString(), baseUrl: base, https: base.startsWith('https://'), localHttpException: local && !base.startsWith('https://'), transport: 'HTTP_ONLY', status: results.every((item) => item.pass) ? 'PASS' : 'FAIL', tests: results.length, results };
+const report = { applicationVersion: '2.0.2', generatedAt: new Date().toISOString(), baseUrl: base, https: base.startsWith('https://'), localHttpException: local && !base.startsWith('https://'), transport: 'HTTP_ONLY', status: results.every((item) => item.pass) ? 'PASS' : 'FAIL', tests: results.length, results };
 await fs.writeFile(path.join(root, 'diagnostic-reports', 'production-smoke.json'), `${JSON.stringify(report, null, 2)}\n`);
 console.log(JSON.stringify(report, null, 2));

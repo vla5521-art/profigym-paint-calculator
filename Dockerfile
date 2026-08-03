@@ -12,12 +12,12 @@ RUN npm run build
 FROM node:24.14.0-bookworm-slim AS dependencies
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN --mount=type=cache,target=/root/.npm npm ci --omit=dev --ignore-scripts && npm cache clean --force
+RUN --mount=type=cache,target=/root/.npm npm ci --omit=dev --ignore-scripts
 
 FROM node:24.14.0-bookworm-slim AS runtime
 ARG VCS_REF=unknown
 LABEL org.opencontainers.image.title="PROFiGYM Calculator" \
-      org.opencontainers.image.version="2.0.1" \
+      org.opencontainers.image.version="2.0.2" \
       org.opencontainers.image.revision="$VCS_REF" \
       org.opencontainers.image.source="local-stage7-package"
 RUN apt-get update && apt-get install -y --no-install-recommends tini ca-certificates && rm -rf /var/lib/apt/lists/*

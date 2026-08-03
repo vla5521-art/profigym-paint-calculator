@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "applicationVersion": "2.0.1",
+  "applicationVersion": "2.0.2",
   "generatedBy": "scripts/generate-golden-models.mjs",
   "fixtures": [
     {

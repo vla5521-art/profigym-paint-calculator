@@ -1,4 +1,4 @@
-# CI/CD — версия 2.0.1
+# CI/CD — версия 2.0.2
 
 ## Локальная валидация
 
@@ -7,11 +7,11 @@ npm ci
 npm run ci:validate
 ```
 
-`ci:validate` проверяет три workflow actionlint’ом, затем контролирует shell syntax, `${{ ... }}`/outputs, permissions, action versions и inputs, запрет старой ссылки Trivy (`aquasecurity/trivy-action@` + `0.30.0`), HTTP-only production smoke и статическую согласованность Compose. Разрешённые версии перечислены в `CI_ACTIONS.md`.
+`ci:validate` проверяет три workflow actionlint’ом, затем контролирует shell syntax, `${{ ... }}`/outputs, permissions, action versions и inputs, запрет старой ссылки Trivy (`aquasecurity/trivy-action@` + `0.30.0`), HTTP-only production smoke, статическую согласованность Compose и отсутствие `npm cache clean --force` в Docker BuildKit npm cache mounts. Разрешённые версии перечислены в `CI_ACTIONS.md`.
 
 ## quality.yml
 
-Семь независимых jobs работают на чистом `ubuntu-latest`, Node `24.14.0`, `npm ci` и npm cache. Browser job извлекает Chromium 149 из `@sparticuz/chromium`, использует SwiftShader, сохраняет раздельные functional/a11y JSON, Playwright HTML report, trace при retry и video только при failure. Все artifact steps используют `if-no-files-found: warn`.
+Семь независимых jobs работают на чистом `ubuntu-latest`, Node `24.14.0`, `npm ci` и npm cache. Browser job извлекает Chromium 149 из `@sparticuz/chromium`, использует SwiftShader, сохраняет раздельные functional/a11y JSON, Playwright HTML report, trace при retry и video только при failure. Подготовка ffmpeg повторно использует рабочий файл/ссылку, заменяет только битую или неправильную ссылку внутри `.tmp` и повторно проверяет конкурентный `EEXIST`; Chromium runtime публикуется атомарно. Все artifact steps используют `if-no-files-found: warn`.
 
 ## container.yml
 

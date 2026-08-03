@@ -107,6 +107,17 @@ const nginxLocal = await fs.readFile(path.join(root, 'nginx/local.conf'), 'utf8'
 const nginxProduction = await fs.readFile(path.join(root, 'nginx/production.conf'), 'utf8');
 if (!nginxLocal.includes('proxy_pass http://app:8787') || !nginxProduction.includes('proxy_pass http://app:8787')) fail('nginx: proxy upstream must target app:8787');
 
+const dockerfile = await fs.readFile(path.join(root, 'Dockerfile'), 'utf8');
+const dockerInstructions = dockerfile.replace(/\\\r?\n[ \t]*/gu, ' ').split(/\r?\n/u);
+const npmCacheMountRuns = dockerInstructions.filter((line) => /^RUN\s/u.test(line) && line.includes('--mount=type=cache,target=/root/.npm'));
+if (npmCacheMountRuns.length < 2) fail('Dockerfile: expected npm cache mounts in build and dependencies stages');
+for (const instruction of npmCacheMountRuns) {
+  if (/npm\s+cache\s+clean\s+--force/u.test(instruction)) fail('Dockerfile: npm cache clean --force must not run inside an npm cache mount');
+}
+if (!npmCacheMountRuns.some((line) => line.includes('npm ci --omit=dev --ignore-scripts'))) {
+  fail('Dockerfile: production dependencies must use npm ci --omit=dev --ignore-scripts');
+}
+
 let networkStatus = 'SKIPPED_NETWORK_UNAVAILABLE';
 const onlineFailures = [];
 try {
@@ -141,7 +152,7 @@ for (const [action, policy] of actionPolicy) {
 const actionlint = JSON.parse(await fs.readFile(path.join(root, 'diagnostic-reports/actionlint-results.json'), 'utf8'));
 if (actionlint.status !== 'PASS') fail('actionlint result is not PASS');
 const report = {
-  applicationVersion: '2.0.1',
+  applicationVersion: '2.0.2',
   generatedAt: new Date().toISOString(),
   status: failures.length === 0 ? 'PASS' : 'FAIL',
   actionlint: actionlint.status,

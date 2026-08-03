@@ -1,8 +1,8 @@
-# TEST_REPORT — PROFiGYM 2.0.1
+# TEST_REPORT — PROFiGYM 2.0.2
 
-Автоматически сформирован: 2026-07-31T15:39:00.910Z. Итог: **PASS**.
+Автоматически сформирован: 2026-08-03T05:33:45.867Z. Итог: **PASS**.
 
-- CI validation/actionlint: PASS; Node unit/integration/API: 106; frontend jsdom: 12.
+- CI validation/actionlint: PASS; Node unit/integration/API: 113; frontend jsdom: 12.
 - Golden: 38/38; regression: 35/35; max deviation 0 мм² / 0.
 - Chromium: 27; accessibility: 2.
 - Production HTTP: 39, PASS; observability: 24, PASS.

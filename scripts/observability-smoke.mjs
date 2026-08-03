@@ -27,6 +27,6 @@ if (process.env.PROFIGYM_LOG_FILE) {
   record('request-id-in-logs', true, { status: 'NOT_VERIFIED_EXTERNAL_LOG_ACCESS' });
   record('secrets-redacted', true, { status: 'NOT_VERIFIED_EXTERNAL_LOG_ACCESS' });
 }
-const report = { applicationVersion: '2.0.1', generatedAt: new Date().toISOString(), status: results.every((item) => item.pass) ? 'PASS' : 'FAIL', tests: results.length, results };
+const report = { applicationVersion: '2.0.2', generatedAt: new Date().toISOString(), status: results.every((item) => item.pass) ? 'PASS' : 'FAIL', tests: results.length, results };
 await fs.mkdir('diagnostic-reports', { recursive: true }); await fs.writeFile(path.join('diagnostic-reports', 'observability-smoke.json'), `${JSON.stringify(report, null, 2)}\n`);
 console.log(JSON.stringify(report, null, 2)); if (report.status !== 'PASS') process.exitCode = 1;

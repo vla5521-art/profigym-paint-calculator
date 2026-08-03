@@ -182,9 +182,9 @@ paintableAreaMm2
 | `DECISION_RESTORE_CONFLICT` | предупреждение | Старое решение не сопоставлено молча |
 | `INVALID_REPORT_PREVIEW` | 400 | Preview не является допустимым PNG/JPEG |
 | `PAINT_INTEGRATION_CONFIRMATION_REQUIRED` | 409 | Нет явного подтверждения передачи |
-# API версии приложения 2.0.1
+# API версии приложения 2.0.2
 
-Форматы импорта не изменились: только `.stp` и `.step`; неподдерживаемые расширения возвращают HTTP 415. Версии приложения и алгоритмов передаются раздельно: `applicationVersion=2.0.1`, geometry `2.0.0`, contact `3.0.0`, feature `4.0.0`.
+Форматы импорта не изменились: только `.stp` и `.step`; неподдерживаемые расширения возвращают HTTP 415. Версии приложения и алгоритмов передаются раздельно: `applicationVersion=2.0.2`, geometry `2.0.0`, contact `3.0.0`, feature `4.0.0`.
 
 ## Production endpoints
 
