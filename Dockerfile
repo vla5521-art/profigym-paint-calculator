@@ -17,10 +17,22 @@ RUN --mount=type=cache,target=/root/.npm npm ci --omit=dev --ignore-scripts
 FROM node:24.18.1-bookworm-slim AS runtime
 ARG VCS_REF=unknown
 LABEL org.opencontainers.image.title="PROFiGYM Calculator" \
-      org.opencontainers.image.version="2.0.3" \
+      org.opencontainers.image.version="2.0.4" \
       org.opencontainers.image.revision="$VCS_REF" \
       org.opencontainers.image.source="local-stage7-package"
-RUN apt-get update && apt-get install -y --no-install-recommends tini ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends tini ca-certificates \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /usr/local/lib/node_modules/npm /usr/local/lib/node_modules/corepack /opt/yarn-v* \
+    && rm -f /usr/local/bin/npm /usr/local/bin/npx /usr/local/bin/corepack \
+      /usr/local/bin/yarn /usr/local/bin/yarnpkg /usr/local/bin/pnpm /usr/local/bin/pnpx \
+    && test ! -e /usr/local/lib/node_modules/npm \
+    && test ! -e /usr/local/lib/node_modules/corepack \
+    && ! command -v npm \
+    && ! command -v npx \
+    && ! command -v corepack \
+    && ! command -v yarn \
+    && node --version
 WORKDIR /app
 ENV NODE_ENV=production CAD_STORAGE_ROOT=/data CAD_TEMP_DIR=/tmp/cad-processing CAD_FRONTEND_DIST_PATH=/app/dist
 COPY --from=dependencies --chown=node:node /app/node_modules ./node_modules

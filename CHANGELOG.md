@@ -1,5 +1,14 @@
 # История изменений
 
+## 2.0.4 — 2026-08-03
+
+- Устранены пять исправляемых HIGH/CRITICAL CVE из глобального npm официального Node image: `CVE-2026-13149`, `CVE-2026-14257`, `CVE-2026-59873`, `CVE-2026-59874`, `CVE-2026-12151`.
+- Подтверждено, что production runtime запускает приложение и healthcheck напрямую через `node`; `npm`, `npx`, `corepack` и `yarn` ему не требуются.
+- Build/dependencies stages сохраняют закреплённый `node:24.18.1-bookworm-slim` и npm для воспроизводимых `npm ci`; финальная runtime stage удаляет глобальные npm/corepack/yarn и их CLI-ссылки до копирования приложения.
+- Container workflow проверяет версию Node и отсутствие глобального npm перед последовательностью Trivy `table → SARIF → validation → upload → enforce`.
+- Добавлены статические regression-проверки npm-free runtime; политика Trivy, severity и `ignore-unfixed` не ослаблялись.
+- Версия приложения обновлена до 2.0.4; версии geometry/contact/feature и бизнес-логика расчёта площади не изменены.
+
 ## 2.0.3 — 2026-08-03
 
 - Browser E2E job устанавливает системный ffmpeg, проверяет его версию, определяет фактический путь через `command -v ffmpeg` и экспортирует `PLAYWRIGHT_FFMPEG_PATH`.

@@ -1,4 +1,4 @@
-# Deployment — PROFiGYM 2.0.3
+# Deployment — PROFiGYM 2.0.4
 
 ## Требования
 
@@ -18,6 +18,8 @@ docker compose -f compose.yml -f compose.production.yml ps
 ```
 
 `volume-init` однократно назначает named volumes пользователю UID/GID 1000. `app` и `worker` используют один image, но разные команды, read-only root filesystem и `USER node`.
+
+Production image запускает API, worker, healthcheck и служебные скрипты напрямую через `node`. Глобальные `npm`, `npx`, `corepack` и `yarn` намеренно отсутствуют в runtime; команды сборки и управления через npm выполняются с хоста или в build/dependencies стадиях.
 
 ## GitHub Environments и secrets
 

@@ -1,4 +1,4 @@
-# Production acceptance checklist — 2.0.3
+# Production acceptance checklist — 2.0.4
 
 `actualResult` относится к этому пакету. Docker/VPS/remote GitHub Actions не подменяются локальными результатами.
 

@@ -1,6 +1,6 @@
-# PROFiGYM — калькулятор расхода краски v2.0.3
+# PROFiGYM — калькулятор расхода краски v2.0.4
 
-Версия 2.0.3 исправляет две оставшиеся CI-ошибки: browser E2E теперь устанавливает системный ffmpeg, передаёт его реальный путь через `PLAYWRIGHT_FFMPEG_PATH` и не зависит от жёсткого `/usr/bin/ffmpeg`; container workflow показывает таблицу Trivy, отдельно создаёт и проверяет SARIF, загружает его в GitHub Security и только затем применяет блокирующую политику. Production image обновлён до поддерживаемого patch-tag `node:24.18.1-bookworm-slim`. STEP-only CAD pipeline, OCCT/WASM, геометрические эталоны и версии алгоритмов `geometry 2.0 / contact 3.0 / feature 4.0` сохранены без изменений.
+Версия 2.0.4 устраняет пять исправляемых HIGH/CRITICAL CVE, находившихся не в зависимостях приложения, а во встроенном глобальном npm официального Node image. Production runtime запускает приложение и healthcheck напрямую через `node`, поэтому глобальные npm/corepack/yarn удалены только из финальной стадии; build/dependencies stages сохраняют npm и воспроизводимые `npm ci`. Container workflow проверяет npm-free runtime до неизменённой блокирующей последовательности Trivy. Используется актуальный patch-tag `node:24.18.1-bookworm-slim`. STEP-only CAD pipeline, OCCT/WASM, геометрические эталоны и версии алгоритмов `geometry 2.0 / contact 3.0 / feature 4.0` сохранены без изменений.
 
 ## Архитектура
 
@@ -63,7 +63,7 @@ npm run security:secrets
 npm run prod:local:verify
 ```
 
-Версии и официальные источники GitHub Actions зафиксированы в [CI_ACTIONS.md](CI_ACTIONS.md). Container workflow использует Trivy `v0.36.0` в последовательности `table → SARIF → validation → upload → enforce`, явно загружает pushed image обратно в runner перед scan/smoke и сохраняет digest/SARIF. Deploy запускается только вручную по immutable digest; отсутствие VPS secrets даёт контролируемый skip, а не красный workflow на обычном push.
+Версии и официальные источники GitHub Actions зафиксированы в [CI_ACTIONS.md](CI_ACTIONS.md). Container workflow проверяет, что финальный image содержит Node, но не содержит глобальные npm/corepack/yarn, затем использует Trivy `v0.36.0` в последовательности `table → SARIF → validation → upload → enforce`, явно загружает pushed image обратно в runner перед scan/smoke и сохраняет digest/SARIF. Deploy запускается только вручную по immutable digest; отсутствие VPS secrets даёт контролируемый skip, а не красный workflow на обычном push.
 
 `prod:local:verify` поднимает app и worker как отдельные production-процессы, проверяет реальный HTTP workflow, остановку/restart worker, observability, backup/restore и rollback marker. Docker image/Compose считаются проверенными только после фактического запуска Docker.
 

@@ -1,4 +1,4 @@
-# CI/CD — версия 2.0.3
+# CI/CD — версия 2.0.4
 
 ## Локальная валидация
 
@@ -7,7 +7,7 @@ npm ci
 npm run ci:validate
 ```
 
-`ci:validate` проверяет три workflow actionlint’ом, затем контролирует shell syntax, `${{ ... }}`/outputs, permissions, action versions и inputs, запрет старой ссылки Trivy (`aquasecurity/trivy-action@` + `0.30.0`), HTTP-only production smoke, статическую согласованность Compose и отсутствие `npm cache clean --force` в Docker BuildKit npm cache mounts. Разрешённые версии перечислены в `CI_ACTIONS.md`.
+`ci:validate` проверяет три workflow actionlint’ом, затем контролирует shell syntax, `${{ ... }}`/outputs, permissions, action versions и inputs, запрет старой ссылки Trivy (`aquasecurity/trivy-action@` + `0.30.0`), HTTP-only production smoke, статическую согласованность Compose, отсутствие `npm cache clean --force` в Docker BuildKit npm cache mounts и npm-free production runtime. Разрешённые версии перечислены в `CI_ACTIONS.md`.
 
 ## quality.yml
 
@@ -15,11 +15,12 @@ npm run ci:validate
 
 ## container.yml
 
-Последовательность: checkout → Node/npm ci → CI validation → lint/typecheck/tests/build/template → supply-chain → Buildx → fork-safe GHCR login → metadata → build → digest → pull pushed image (или load для PR) → Trivy table → SARIF → SARIF validation → upload → Trivy enforce → image smoke → artifacts.
+Последовательность: checkout → Node/npm ci → CI validation → lint/typecheck/tests/build/template → supply-chain → Buildx → fork-safe GHCR login → metadata → build → digest → pull pushed image (или load для PR) → проверка Node и отсутствия npm/corepack/yarn в runtime → Trivy table → SARIF → SARIF validation → upload → Trivy enforce → image smoke → artifacts.
 
 - Pull request: `push=false`, `load=true`, login не выполняется.
 - Push/tag/manual: image публикуется, затем явно выполняется `docker pull` перед локальным Trivy/smoke.
 - Единственный image ref берётся из первой строки официального `steps.meta.outputs.tags` и сохраняется как step output.
+- Build/dependencies stages используют npm; production stage запускается напрямую через `node`, а глобальные npm/corepack/yarn и их CLI-ссылки в ней отсутствуют.
 - Trivy: `aquasecurity/trivy-action@v0.36.0`; диагностический table scan и SARIF generation используют `exit-code=0`, затем SARIF проверяется через `jq` и отправляется через `github/codeql-action/upload-sarif@v4`.
 - После загрузки выполняется отдельный table scan с `CRITICAL,HIGH`, `ignore-unfixed=true`, `vuln-type=os,library` и `exit-code=1`; обязательный шаг остаётся блокирующим.
 - Fork PR пропускает только SARIF upload из-за permissions; локальный SARIF artifact и блокирующий Trivy scan сохраняются.

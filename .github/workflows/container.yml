@@ -121,6 +121,20 @@ jobs:
           IMAGE_REF: ${{ steps.image.outputs.ref }}
         run: docker image inspect "$IMAGE_REF" > /dev/null
 
+      - name: Verify npm-free production runtime
+        env:
+          IMAGE_REF: ${{ steps.image.outputs.ref }}
+        run: |
+          docker run --rm "$IMAGE_REF" node --version
+          docker run --rm "$IMAGE_REF" sh -eu -c '
+            test ! -e /usr/local/lib/node_modules/npm
+            test ! -e /usr/local/lib/node_modules/corepack
+            ! command -v npm
+            ! command -v npx
+            ! command -v corepack
+            ! command -v yarn
+          '
+
       - name: Show Trivy vulnerabilities
         uses: aquasecurity/trivy-action@v0.36.0
         with:

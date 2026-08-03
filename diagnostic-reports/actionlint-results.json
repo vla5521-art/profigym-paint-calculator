@@ -1,8 +1,8 @@
 {
-  "applicationVersion": "2.0.3",
+  "applicationVersion": "2.0.4",
   "validator": "actionlint-wasm",
   "validatorPackageVersion": "2.0.6",
-  "generatedAt": "2026-08-03T06:58:22.499Z",
+  "generatedAt": "2026-08-03T07:53:24.733Z",
   "workflows": [
     ".github/workflows/quality.yml",
     ".github/workflows/container.yml",

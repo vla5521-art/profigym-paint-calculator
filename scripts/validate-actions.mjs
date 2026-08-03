@@ -166,6 +166,27 @@ for (const instruction of npmCacheMountRuns) {
 if (!npmCacheMountRuns.some((line) => line.includes('npm ci --omit=dev --ignore-scripts'))) {
   fail('Dockerfile: production dependencies must use npm ci --omit=dev --ignore-scripts');
 }
+const runtimeStage = dockerfile.split(/^FROM\s+node:24\.18\.1-bookworm-slim\s+AS\s+runtime\s*$/mu)[1] ?? '';
+for (const required of [
+  '/usr/local/lib/node_modules/npm',
+  '/usr/local/lib/node_modules/corepack',
+  '/usr/local/bin/npm',
+  '/usr/local/bin/npx',
+  '/usr/local/bin/corepack',
+  'CMD ["node","server/index.js"]',
+]) {
+  if (!runtimeStage.includes(required)) fail(`Dockerfile: npm-free runtime requirement is missing: ${required}`);
+}
+if (/CMD\s+\[\s*["']npm["']/u.test(runtimeStage) || /ENTRYPOINT\s+\[\s*["']npm["']/u.test(runtimeStage)) {
+  fail('Dockerfile: production runtime must start directly with node, not npm');
+}
+const runtimeVerification = containerSteps.find((step) => step.name === 'Verify npm-free production runtime');
+const runtimeVerificationRun = String(runtimeVerification?.run ?? '');
+if (!runtimeVerificationRun.includes('docker run --rm "$IMAGE_REF" node --version') ||
+    !runtimeVerificationRun.includes('test ! -e /usr/local/lib/node_modules/npm') ||
+    !runtimeVerificationRun.includes('! command -v npm')) {
+  fail('container.yml: npm-free production runtime verification is incomplete');
+}
 
 let networkStatus = 'SKIPPED_NETWORK_UNAVAILABLE';
 const onlineFailures = [];
@@ -201,7 +222,7 @@ for (const [action, policy] of actionPolicy) {
 const actionlint = JSON.parse(await fs.readFile(path.join(root, 'diagnostic-reports/actionlint-results.json'), 'utf8'));
 if (actionlint.status !== 'PASS') fail('actionlint result is not PASS');
 const report = {
-  applicationVersion: '2.0.3',
+  applicationVersion: '2.0.4',
   generatedAt: new Date().toISOString(),
   status: failures.length === 0 ? 'PASS' : 'FAIL',
   actionlint: actionlint.status,

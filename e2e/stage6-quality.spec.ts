@@ -46,11 +46,11 @@ test("22 summary matches the frozen golden regression value", async ({ page }) =
 
 test("23 JSON report is reachable through the UI-created calculation", async ({ page, request }) => {
   await uploadStep(page, model("through_hole.step")); await page.getByTestId("cad-save-button").click();
-  const html = await page.getByTestId("cad-report-button").getAttribute("href"); const id = html!.split("/").at(-2)!; const response = await request.get(`/api/cad/calculations/${id}/report.json`); expect(response.status()).toBe(200); const body = await response.json(); expect(body.calculationId).toBe(id); expect(body.applicationVersion).toBe("2.0.3");
+  const html = await page.getByTestId("cad-report-button").getAttribute("href"); const id = html!.split("/").at(-2)!; const response = await request.get(`/api/cad/calculations/${id}/report.json`); expect(response.status()).toBe(200); const body = await response.json(); expect(body.calculationId).toBe(id); expect(body.applicationVersion).toBe("2.0.4");
 });
 
 test("24 HTML report is escaped and contains authoritative areas", async ({ page }) => {
-  await uploadStep(page, model("cube.step", "golden")); await page.getByTestId("cad-save-button").click(); const [report] = await Promise.all([page.context().waitForEvent("page"), page.getByTestId("cad-report-button").click()]); await expect(report.locator("body")).toContainText("PROFiGYM 2.0.3"); await expect(report.locator("body")).toContainText(/600/); await report.close();
+  await uploadStep(page, model("cube.step", "golden")); await page.getByTestId("cad-save-button").click(); const [report] = await Promise.all([page.context().waitForEvent("page"), page.getByTestId("cad-report-button").click()]); await expect(report.locator("body")).toContainText("PROFiGYM 2.0.4"); await expect(report.locator("body")).toContainText(/600/); await report.close();
 });
 
 test("25 saved calculation remains available after browser reload", async ({ page }) => {

@@ -39,7 +39,7 @@ try {
       paintableAreaMm2: result.featureResult.summary.paintableAreaMm2,
     });
   }
-  console.log(JSON.stringify({ status: 'ok', version: '2.0.3', scenarios: results }, null, 2));
+  console.log(JSON.stringify({ status: 'ok', version: '2.0.4', scenarios: results }, null, 2));
 } finally {
   await closeCadKernel();
 }

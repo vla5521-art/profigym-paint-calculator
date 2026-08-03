@@ -1,6 +1,6 @@
 {
-  "applicationVersion": "2.0.3",
-  "generatedAt": "2026-08-03T06:58:34.551Z",
+  "applicationVersion": "2.0.4",
+  "generatedAt": "2026-08-03T07:53:36.509Z",
   "status": "PASS",
   "actionlint": "PASS",
   "workflowFiles": [
@@ -345,11 +345,9 @@
       ]
     }
   ],
-  "actionTagVerification": "SKIPPED_NETWORK_UNAVAILABLE",
+  "actionTagVerification": "PASS",
   "onlineFailures": [],
   "composeStaticValidation": "PASS",
   "failures": [],
-  "warnings": [
-    "online action-tag verification unavailable: The operation was aborted due to timeout"
-  ]
+  "warnings": []
 }

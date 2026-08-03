@@ -142,3 +142,16 @@ test('Dockerfile keeps npm cache mounts without cleaning the mounted cache', asy
   for (const instruction of cacheMountRuns) assert.doesNotMatch(instruction, /npm\s+cache\s+clean\s+--force/u);
   assert.ok(cacheMountRuns.some((line) => line.includes('npm ci --omit=dev --ignore-scripts')));
 });
+
+test('Dockerfile removes package managers only from the direct-node runtime stage', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const dockerfile = await readFile(path.join(projectRoot, 'Dockerfile'), 'utf8');
+  const [beforeRuntime, runtime = ''] = dockerfile.split(/^FROM\s+node:24\.18\.1-bookworm-slim\s+AS\s+runtime\s*$/mu);
+  assert.match(beforeRuntime, /npm ci/u, 'build and dependencies stages must retain npm');
+  assert.match(runtime, /rm -rf \/usr\/local\/lib\/node_modules\/npm/u);
+  assert.match(runtime, /rm -f \/usr\/local\/bin\/npm \/usr\/local\/bin\/npx/u);
+  assert.match(runtime, /test ! -e \/usr\/local\/lib\/node_modules\/npm/u);
+  assert.match(runtime, /! command -v npm/u);
+  assert.match(runtime, /CMD \["node","server\/index\.js"\]/u);
+  assert.doesNotMatch(runtime, /CMD\s+\[\s*["']npm["']/u);
+});
