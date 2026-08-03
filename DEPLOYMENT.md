@@ -1,4 +1,4 @@
-# Deployment — PROFiGYM 2.0.2
+# Deployment — PROFiGYM 2.0.3
 
 ## Требования
 

@@ -1,4 +1,4 @@
-# Production acceptance checklist — 2.0.2
+# Production acceptance checklist — 2.0.3
 
 `actualResult` относится к этому пакету. Docker/VPS/remote GitHub Actions не подменяются локальными результатами.
 
@@ -18,7 +18,7 @@
 | P12 | Observability | production-like verifier | 24/24 | `diagnostic-reports/observability-smoke.json` | PASS_LOCAL |
 | P13 | Backup/restore/rollback | production-like + restore tests | real calculation backup PASS; rollback marker PASS; atomic restore with safety copy 3/3 | backup/rollback/migration reports | PASS_LOCAL |
 | P14 | Supply chain | `security:audit/sbom/licenses/secrets` | 0 vulnerabilities; SBOM 459 components; licenses 459/459 known; 0 secret findings | `artifacts/security/` | PASS |
-| P15 | Dockerfile | static validation | Node 24.14.0 image exists; build/runtime stages, OCCT dependencies, dist/template, tini, non-root and healthcheck audited | `Dockerfile`, `docker-verification.json` | PASS_STATIC |
+| P15 | Dockerfile | static validation | Node 24.18.1 bookworm-slim tag confirmed; build/runtime stages, OCCT dependencies, dist/template, tini, non-root and healthcheck audited | `Dockerfile`, `docker-verification.json` | PASS_STATIC |
 | P16 | Compose merge/config | `docker compose ... config` | static YAML/service/image/upstream validation PASS; Docker CLI unavailable, so real Compose config NOT RUN | `ci-validation.json`, `docker-verification.json` | NOT_RUN_DOCKER |
 | P17 | Docker build/runtime/Trivy | container workflow | workflow prepared; local Docker unavailable | `container.yml`, `docker-verification.json` | NOT_RUN_DOCKER |
 | P18 | Fork-safe GHCR | workflow audit | PR loads locally; login/push disabled; push build explicitly pulled before smoke | `container.yml` | PASS_STATIC |

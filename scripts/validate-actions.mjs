@@ -9,7 +9,7 @@ const workflowFiles = [
   '.github/workflows/container.yml',
   '.github/workflows/deploy.yml',
 ];
-const verifiedAt = '2026-07-31';
+const verifiedAt = '2026-08-03';
 const actionPolicy = new Map([
   ['actions/checkout', { version: 'v7', source: 'https://github.com/actions/checkout/releases/tag/v7.0.1', inputs: new Set() }],
   ['actions/setup-node', { version: 'v6', source: 'https://github.com/actions/setup-node/releases/tag/v6.5.0', inputs: new Set(['node-version', 'cache']) }],
@@ -81,7 +81,56 @@ if (!containerText.includes('steps.image.outputs.ref')) fail('container.yml: sin
 if (!containerText.includes('docker pull "$IMAGE_REF"')) fail('container.yml: pushed image is not explicitly pulled before local smoke');
 if (!containerText.includes('load: ${{ github.event_name == \'pull_request\' }}')) fail('container.yml: pull-request build must load the image locally');
 if (!containerText.includes('push: ${{ github.event_name != \'pull_request\' }}')) fail('container.yml: fork-safe push condition is missing');
-if (!containerText.includes('limit-severities-for-sarif: true')) fail('container.yml: SARIF severity gating is not explicit');
+const containerSteps = container?.jobs?.['build-scan-smoke']?.steps ?? [];
+const stepByName = new Map(containerSteps.map((step) => [step.name, step]));
+const trivySequence = [
+  'Show Trivy vulnerabilities',
+  'Generate Trivy SARIF',
+  'Validate Trivy SARIF',
+  'Upload Trivy SARIF to GitHub Security',
+  'Enforce Trivy policy',
+];
+let priorIndex = -1;
+for (const name of trivySequence) {
+  const index = containerSteps.findIndex((step) => step.name === name);
+  if (index < 0) fail(`container.yml: missing required step ${name}`);
+  if (index <= priorIndex) fail(`container.yml: Trivy steps are out of order at ${name}`);
+  priorIndex = index;
+}
+for (const name of ['Show Trivy vulnerabilities', 'Generate Trivy SARIF', 'Enforce Trivy policy']) {
+  const step = stepByName.get(name);
+  if (step?.uses !== 'aquasecurity/trivy-action@v0.36.0') fail(`container.yml: ${name} must use Trivy v0.36.0`);
+  if (step?.with?.['image-ref'] !== '${{ steps.image.outputs.ref }}') fail(`container.yml: ${name} must scan the selected image`);
+  if (step?.with?.severity !== 'CRITICAL,HIGH') fail(`container.yml: ${name} severity must be CRITICAL,HIGH`);
+  if (step?.with?.['ignore-unfixed'] !== true) fail(`container.yml: ${name} must keep ignore-unfixed: true`);
+  if (step?.with?.['vuln-type'] !== 'os,library') fail(`container.yml: ${name} must scan os,library`);
+}
+if (stepByName.get('Show Trivy vulnerabilities')?.with?.format !== 'table' || String(stepByName.get('Show Trivy vulnerabilities')?.with?.['exit-code']) !== '0') {
+  fail('container.yml: diagnostic Trivy scan must use table and exit-code 0');
+}
+const sarifStep = stepByName.get('Generate Trivy SARIF');
+if (sarifStep?.with?.format !== 'sarif' || sarifStep?.with?.output !== 'trivy-results.sarif' || String(sarifStep?.with?.['exit-code']) !== '0') {
+  fail('container.yml: SARIF generation must write trivy-results.sarif with exit-code 0');
+}
+if (sarifStep?.with?.['limit-severities-for-sarif'] !== true) fail('container.yml: SARIF severity gating is not explicit');
+const sarifValidation = String(stepByName.get('Validate Trivy SARIF')?.run ?? '');
+if (!sarifValidation.includes('test -s trivy-results.sarif') || !sarifValidation.includes('jq -e')) fail('container.yml: SARIF JSON validation is missing');
+const sarifUpload = stepByName.get('Upload Trivy SARIF to GitHub Security');
+if (sarifUpload?.with?.sarif_file !== 'trivy-results.sarif') fail('container.yml: upload-sarif must use trivy-results.sarif');
+if (sarifUpload?.['continue-on-error'] !== undefined) fail('container.yml: SARIF upload errors must not be hidden');
+const enforceStep = stepByName.get('Enforce Trivy policy');
+if (enforceStep?.with?.format !== 'table' || String(enforceStep?.with?.['exit-code']) !== '1') fail('container.yml: enforcement must use table and exit-code 1');
+if (enforceStep?.['continue-on-error'] !== undefined) fail('container.yml: final Trivy policy must remain blocking');
+
+const qualityText = documents.get('.github/workflows/quality.yml')?.content ?? '';
+if (!qualityText.includes('sudo apt-get install -y ffmpeg') || !qualityText.includes('ffmpeg_path="$(command -v ffmpeg)"')) {
+  fail('quality.yml: browser-e2e must install ffmpeg and resolve it with command -v');
+}
+if (!qualityText.includes("PLAYWRIGHT_FFMPEG_PATH=%s\\n")) fail('quality.yml: PLAYWRIGHT_FFMPEG_PATH is not exported through GITHUB_ENV');
+
+const e2ePrepareText = await fs.readFile(path.join(root, 'scripts/prepare-e2e-chromium.mjs'), 'utf8');
+if (e2ePrepareText.includes('isUsableFile("/usr/bin/ffmpeg"')) fail('prepare-e2e-chromium.mjs: hard-coded /usr/bin/ffmpeg fallback remains');
+if (!e2ePrepareText.includes('command -v ${name}')) fail('prepare-e2e-chromium.mjs: command -v fallback is missing');
 
 const deploy = documents.get('.github/workflows/deploy.yml')?.document;
 const deployTriggers = Object.keys(deploy?.on ?? {});
@@ -152,7 +201,7 @@ for (const [action, policy] of actionPolicy) {
 const actionlint = JSON.parse(await fs.readFile(path.join(root, 'diagnostic-reports/actionlint-results.json'), 'utf8'));
 if (actionlint.status !== 'PASS') fail('actionlint result is not PASS');
 const report = {
-  applicationVersion: '2.0.2',
+  applicationVersion: '2.0.3',
   generatedAt: new Date().toISOString(),
   status: failures.length === 0 ? 'PASS' : 'FAIL',
   actionlint: actionlint.status,

@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.7
-FROM node:24.14.0-bookworm-slim AS build
+FROM node:24.18.1-bookworm-slim AS build
 WORKDIR /build
 COPY package.json package-lock.json ./
 RUN --mount=type=cache,target=/root/.npm npm ci
@@ -9,15 +9,15 @@ COPY public ./public
 COPY scripts/verify-template-packaging.mjs ./scripts/verify-template-packaging.mjs
 RUN npm run build
 
-FROM node:24.14.0-bookworm-slim AS dependencies
+FROM node:24.18.1-bookworm-slim AS dependencies
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN --mount=type=cache,target=/root/.npm npm ci --omit=dev --ignore-scripts
 
-FROM node:24.14.0-bookworm-slim AS runtime
+FROM node:24.18.1-bookworm-slim AS runtime
 ARG VCS_REF=unknown
 LABEL org.opencontainers.image.title="PROFiGYM Calculator" \
-      org.opencontainers.image.version="2.0.2" \
+      org.opencontainers.image.version="2.0.3" \
       org.opencontainers.image.revision="$VCS_REF" \
       org.opencontainers.image.source="local-stage7-package"
 RUN apt-get update && apt-get install -y --no-install-recommends tini ca-certificates && rm -rf /var/lib/apt/lists/*

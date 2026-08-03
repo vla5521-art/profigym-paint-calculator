@@ -8,16 +8,19 @@ const workflowFiles = [
   '.github/workflows/container.yml',
   '.github/workflows/deploy.yml',
 ];
-const linter = await createLinter();
 const findings = [];
 
 for (const relativeFile of workflowFiles) {
+  // The WASM wrapper retains parser state and can exhaust its linear memory when
+  // the same instance validates several larger workflows. A fresh instance per
+  // document keeps validation deterministic without skipping any workflow.
+  const linter = await createLinter();
   const content = await fs.readFile(path.join(root, relativeFile), 'utf8');
   findings.push(...linter(content, relativeFile));
 }
 
 const report = {
-  applicationVersion: '2.0.2',
+  applicationVersion: '2.0.3',
   validator: 'actionlint-wasm',
   validatorPackageVersion: '2.0.6',
   generatedAt: new Date().toISOString(),

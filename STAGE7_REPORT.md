@@ -1,10 +1,10 @@
 # STAGE7_REPORT
 
-Версия: 2.0.2. Итоговый статус: **CI_FIXED_READY_FOR_GITHUB**.
+Версия: 2.0.3. Итоговый статус: **CI_FIXED_READY_FOR_GITHUB**.
 
 ## Фактическая архитектура
 
-Nginx proxy → Node app/API → SQLite durable queue → отдельный CAD worker → OCCT/WASM → persistent volumes. Runtime image основан на Node 24.14.0 bookworm-slim, запускается non-root через tini; отдельный `volume-init` подготавливает права named volumes. Image name по умолчанию `profigym-calculator:sha-local`; digest отсутствует, если Docker build/push в этой среде не подтверждён.
+Nginx proxy → Node app/API → SQLite durable queue → отдельный CAD worker → OCCT/WASM → persistent volumes. Runtime image основан на Node 24.18.1 bookworm-slim, запускается non-root через tini; отдельный `volume-init` подготавливает права named volumes. Image name по умолчанию `profigym-calculator:sha-local`; digest отсутствует, если Docker build/push в этой среде не подтверждён.
 
 Основные Compose-сервисы: `proxy`, `app`, `worker`; опциональные профили: `backup`, `prometheus`, `grafana`, `clamav`. Именованные тома: `database`, `source-files`, `viewer-mesh`, `previews`, `reports`, `backups`, `clamav-db`. Конфигурация подготовлена статически; build и runtime Compose не запускались без Docker.
 

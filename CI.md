@@ -1,4 +1,4 @@
-# CI/CD — версия 2.0.2
+# CI/CD — версия 2.0.3
 
 ## Локальная валидация
 
@@ -11,17 +11,18 @@ npm run ci:validate
 
 ## quality.yml
 
-Семь независимых jobs работают на чистом `ubuntu-latest`, Node `24.14.0`, `npm ci` и npm cache. Browser job извлекает Chromium 149 из `@sparticuz/chromium`, использует SwiftShader, сохраняет раздельные functional/a11y JSON, Playwright HTML report, trace при retry и video только при failure. Подготовка ffmpeg повторно использует рабочий файл/ссылку, заменяет только битую или неправильную ссылку внутри `.tmp` и повторно проверяет конкурентный `EEXIST`; Chromium runtime публикуется атомарно. Все artifact steps используют `if-no-files-found: warn`.
+Семь независимых jobs работают на чистом `ubuntu-latest`, Node `24.18.1`, `npm ci` и npm cache. Browser job устанавливает Ubuntu `ffmpeg`, выводит `ffmpeg -version`, определяет реальный путь через `command -v ffmpeg` и сохраняет его в `PLAYWRIGHT_FFMPEG_PATH`. Затем job извлекает Chromium 149 из `@sparticuz/chromium`, использует SwiftShader и сохраняет раздельные functional/a11y JSON, Playwright HTML report, trace при retry и video только при failure. Подготовка ffmpeg повторно использует рабочий файл/ссылку, заменяет только битую или неправильную ссылку внутри `.tmp` и повторно проверяет конкурентный `EEXIST`; Chromium runtime публикуется атомарно.
 
 ## container.yml
 
-Последовательность: checkout → Node/npm ci → CI validation → lint/typecheck/tests/build/template → supply-chain → Buildx → fork-safe GHCR login → metadata → build → digest → pull pushed image (или load для PR) → Trivy → SARIF upload → image smoke → artifacts.
+Последовательность: checkout → Node/npm ci → CI validation → lint/typecheck/tests/build/template → supply-chain → Buildx → fork-safe GHCR login → metadata → build → digest → pull pushed image (или load для PR) → Trivy table → SARIF → SARIF validation → upload → Trivy enforce → image smoke → artifacts.
 
 - Pull request: `push=false`, `load=true`, login не выполняется.
 - Push/tag/manual: image публикуется, затем явно выполняется `docker pull` перед локальным Trivy/smoke.
 - Единственный image ref берётся из первой строки официального `steps.meta.outputs.tags` и сохраняется как step output.
-- Trivy: `aquasecurity/trivy-action@v0.36.0`, SARIF, HIGH/CRITICAL, `exit-code=1`, `limit-severities-for-sarif=true`.
-- SARIF отправляется через `github/codeql-action/upload-sarif@v4`; fork PR пропускается, локальный artifact остаётся.
+- Trivy: `aquasecurity/trivy-action@v0.36.0`; диагностический table scan и SARIF generation используют `exit-code=0`, затем SARIF проверяется через `jq` и отправляется через `github/codeql-action/upload-sarif@v4`.
+- После загрузки выполняется отдельный table scan с `CRITICAL,HIGH`, `ignore-unfixed=true`, `vuln-type=os,library` и `exit-code=1`; обязательный шаг остаётся блокирующим.
+- Fork PR пропускает только SARIF upload из-за permissions; локальный SARIF artifact и блокирующий Trivy scan сохраняются.
 - `contents:read`, `packages:write`, `security-events:write`; `id-token` не запрашивается.
 
 ## deploy.yml

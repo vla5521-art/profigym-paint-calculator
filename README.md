@@ -1,6 +1,6 @@
-# PROFiGYM — калькулятор расхода краски v2.0.2
+# PROFiGYM — калькулятор расхода краски v2.0.3
 
-Версия 2.0.2 исправляет две оставшиеся CI-ошибки: очистку подключённого BuildKit npm cache во время Docker build и неидемпотентное создание Playwright ffmpeg symlink. STEP-only CAD pipeline, OCCT/WASM, геометрические эталоны и версии алгоритмов `geometry 2.0 / contact 3.0 / feature 4.0` сохранены без изменений. Длительная CAD-обработка выполняется отдельным worker через durable SQLite queue.
+Версия 2.0.3 исправляет две оставшиеся CI-ошибки: browser E2E теперь устанавливает системный ffmpeg, передаёт его реальный путь через `PLAYWRIGHT_FFMPEG_PATH` и не зависит от жёсткого `/usr/bin/ffmpeg`; container workflow показывает таблицу Trivy, отдельно создаёт и проверяет SARIF, загружает его в GitHub Security и только затем применяет блокирующую политику. Production image обновлён до поддерживаемого patch-tag `node:24.18.1-bookworm-slim`. STEP-only CAD pipeline, OCCT/WASM, геометрические эталоны и версии алгоритмов `geometry 2.0 / contact 3.0 / feature 4.0` сохранены без изменений.
 
 ## Архитектура
 
@@ -63,7 +63,7 @@ npm run security:secrets
 npm run prod:local:verify
 ```
 
-Версии и официальные источники GitHub Actions зафиксированы в [CI_ACTIONS.md](CI_ACTIONS.md). Container workflow использует Trivy `v0.36.0`, явно загружает pushed image обратно в runner перед scan/smoke и сохраняет digest/SARIF. Deploy запускается только вручную по immutable digest; отсутствие VPS secrets даёт контролируемый skip, а не красный workflow на обычном push.
+Версии и официальные источники GitHub Actions зафиксированы в [CI_ACTIONS.md](CI_ACTIONS.md). Container workflow использует Trivy `v0.36.0` в последовательности `table → SARIF → validation → upload → enforce`, явно загружает pushed image обратно в runner перед scan/smoke и сохраняет digest/SARIF. Deploy запускается только вручную по immutable digest; отсутствие VPS secrets даёт контролируемый skip, а не красный workflow на обычном push.
 
 `prod:local:verify` поднимает app и worker как отдельные production-процессы, проверяет реальный HTTP workflow, остановку/restart worker, observability, backup/restore и rollback marker. Docker image/Compose считаются проверенными только после фактического запуска Docker.
 

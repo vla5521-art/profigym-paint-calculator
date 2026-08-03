@@ -1,6 +1,6 @@
 {
-  "applicationVersion": "2.0.2",
-  "generatedAt": "2026-08-03T05:20:41.286Z",
+  "applicationVersion": "2.0.3",
+  "generatedAt": "2026-08-03T06:58:34.551Z",
   "status": "PASS",
   "actionlint": "PASS",
   "workflowFiles": [
@@ -255,11 +255,26 @@
         "scan-type",
         "image-ref",
         "format",
-        "output",
         "severity",
-        "exit-code",
         "ignore-unfixed",
         "vuln-type",
+        "exit-code"
+      ]
+    },
+    {
+      "file": ".github/workflows/container.yml",
+      "job": "build-scan-smoke",
+      "action": "aquasecurity/trivy-action",
+      "version": "v0.36.0",
+      "inputs": [
+        "scan-type",
+        "image-ref",
+        "format",
+        "output",
+        "severity",
+        "ignore-unfixed",
+        "vuln-type",
+        "exit-code",
         "limit-severities-for-sarif"
       ]
     },
@@ -271,6 +286,21 @@
       "inputs": [
         "sarif_file",
         "category"
+      ]
+    },
+    {
+      "file": ".github/workflows/container.yml",
+      "job": "build-scan-smoke",
+      "action": "aquasecurity/trivy-action",
+      "version": "v0.36.0",
+      "inputs": [
+        "scan-type",
+        "image-ref",
+        "format",
+        "severity",
+        "ignore-unfixed",
+        "vuln-type",
+        "exit-code"
       ]
     },
     {
@@ -315,9 +345,11 @@
       ]
     }
   ],
-  "actionTagVerification": "PASS",
+  "actionTagVerification": "SKIPPED_NETWORK_UNAVAILABLE",
   "onlineFailures": [],
   "composeStaticValidation": "PASS",
   "failures": [],
-  "warnings": []
+  "warnings": [
+    "online action-tag verification unavailable: The operation was aborted due to timeout"
+  ]
 }

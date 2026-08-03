@@ -13,7 +13,7 @@ permissions:
   security-events: write
 
 env:
-  NODE_VERSION: 24.14.0
+  NODE_VERSION: 24.18.1
 
 jobs:
   build-scan-smoke:
@@ -121,7 +121,18 @@ jobs:
           IMAGE_REF: ${{ steps.image.outputs.ref }}
         run: docker image inspect "$IMAGE_REF" > /dev/null
 
-      - name: Scan image with Trivy
+      - name: Show Trivy vulnerabilities
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: image
+          image-ref: ${{ steps.image.outputs.ref }}
+          format: table
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+          vuln-type: os,library
+          exit-code: "0"
+
+      - name: Generate Trivy SARIF
         uses: aquasecurity/trivy-action@v0.36.0
         with:
           scan-type: image
@@ -129,18 +140,37 @@ jobs:
           format: sarif
           output: trivy-results.sarif
           severity: CRITICAL,HIGH
-          exit-code: "1"
           ignore-unfixed: true
           vuln-type: os,library
+          exit-code: "0"
           limit-severities-for-sarif: true
+
+      - name: Validate Trivy SARIF
+        run: |
+          test -s trivy-results.sarif
+          jq -e '
+            .version == "2.1.0" and
+            (.runs | type == "array" and length > 0) and
+            ([.runs[] | ((.tool.driver.name // "") | length > 0)] | all)
+          ' trivy-results.sarif > /dev/null
 
       - name: Upload Trivy SARIF to GitHub Security
         if: always() && hashFiles('trivy-results.sarif') != '' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
-        continue-on-error: true
         uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: trivy-results.sarif
           category: trivy-profigym-container
+
+      - name: Enforce Trivy policy
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: image
+          image-ref: ${{ steps.image.outputs.ref }}
+          format: table
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+          vuln-type: os,library
+          exit-code: "1"
 
       - name: Production image smoke
         env:

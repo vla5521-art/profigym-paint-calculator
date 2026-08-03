@@ -13,7 +13,7 @@ function redact(value, fields, seen = new WeakSet()) {
   return output;
 }
 
-export function createLogger({ service, environment = 'development', applicationVersion = '2.0.2', level = 'info', format = 'json', redactFields = [] }) {
+export function createLogger({ service, environment = 'development', applicationVersion = '2.0.3', level = 'info', format = 'json', redactFields = [] }) {
   const minimum = LEVELS[level] ?? LEVELS.info;
   const fields = new Set([...BASE_REDACTIONS, ...redactFields.map((item) => item.toLowerCase())]);
   const write = (logLevel, event, details = {}) => {

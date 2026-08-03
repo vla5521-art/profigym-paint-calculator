@@ -6,7 +6,7 @@ import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 
-import { ensurePlaywrightFfmpeg } from '../scripts/prepare-e2e-chromium.mjs';
+import { ensurePlaywrightFfmpeg, resolveSystemFfmpeg } from '../scripts/prepare-e2e-chromium.mjs';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const scriptPath = path.join(projectRoot, 'scripts', 'prepare-e2e-chromium.mjs');
@@ -106,6 +106,31 @@ test('parallel ffmpeg preparation converges on one usable target', async (t) => 
   await Promise.all(Array.from({ length: 6 }, () => ensurePlaywrightFfmpeg({ root, platform: 'linux', env: { PATH: '', PLAYWRIGHT_FFMPEG_PATH: source }, logger: () => {} })));
   assert.equal((await lstat(target)).isSymbolicLink(), true);
   assert.equal(path.resolve(path.dirname(target), await readlink(target)), source);
+});
+
+test('PLAYWRIGHT_FFMPEG_PATH takes precedence over command -v ffmpeg', async (t) => {
+  const { root, source } = await fixture();
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const bin = path.join(root, 'bin');
+  const discovered = path.join(bin, 'ffmpeg');
+  await mkdir(bin, { recursive: true });
+  await writeFile(discovered, '#!/bin/sh\nexit 0\n', { mode: 0o755 });
+  const result = await resolveSystemFfmpeg({ platform: 'linux', env: { PATH: bin, PLAYWRIGHT_FFMPEG_PATH: source } });
+  assert.equal(result, source);
+});
+
+test('invalid PLAYWRIGHT_FFMPEG_PATH falls back to command -v ffmpeg', async (t) => {
+  const { root } = await fixture();
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const bin = path.join(root, 'bin');
+  const discovered = path.join(bin, 'ffmpeg');
+  await mkdir(bin, { recursive: true });
+  await writeFile(discovered, '#!/bin/sh\nexit 0\n', { mode: 0o755 });
+  const result = await resolveSystemFfmpeg({
+    platform: 'linux',
+    env: { PATH: bin, PLAYWRIGHT_FFMPEG_PATH: path.join(root, 'missing-ffmpeg') },
+  });
+  assert.equal(result, discovered);
 });
 
 test('Dockerfile keeps npm cache mounts without cleaning the mounted cache', async () => {

@@ -1,5 +1,14 @@
 # История изменений
 
+## 2.0.3 — 2026-08-03
+
+- Browser E2E job устанавливает системный ffmpeg, проверяет его версию, определяет фактический путь через `command -v ffmpeg` и экспортирует `PLAYWRIGHT_FFMPEG_PATH`.
+- Подготовка Playwright использует `PLAYWRIGHT_FFMPEG_PATH`, затем `command -v ffmpeg`; жёсткий fallback `/usr/bin/ffmpeg` удалён, идемпотентная и конкурентно-безопасная публикация внутри `.tmp` сохранена.
+- Trivy разделён на диагностическую таблицу, генерацию SARIF с `exit-code: 0`, проверку JSON/SARIF, загрузку через CodeQL и отдельный блокирующий table scan с `exit-code: 1`.
+- Ошибки загрузки SARIF больше не скрываются через `continue-on-error`.
+- Все Docker stages обновлены до поддерживаемого patch-tag `node:24.18.1-bookworm-slim`; production npm audit не обнаружил уязвимостей.
+- Версия приложения обновлена до 2.0.3; версии geometry/contact/feature и бизнес-логика расчёта площади не изменены.
+
 ## 2.0.2 — 2026-08-03
 
 - Удалена команда `npm cache clean --force` из production dependencies стадии Dockerfile, где `/root/.npm` подключён как BuildKit cache mount; воспроизводимая установка сохранена через `npm ci --omit=dev --ignore-scripts`.

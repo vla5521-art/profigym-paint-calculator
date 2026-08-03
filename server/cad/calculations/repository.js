@@ -4,7 +4,7 @@ import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { migrateDatabase } from './migrations.js';
 
-const APPLICATION_VERSION = '2.0.2';
+const APPLICATION_VERSION = '2.0.3';
 const ALGORITHM_VERSION = 'geometry-2.0/contact-3.0/feature-4.0';
 const ID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 

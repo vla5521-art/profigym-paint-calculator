@@ -1,4 +1,4 @@
-# TEST_REPORT — PROFiGYM 2.0.2
+# TEST_REPORT — PROFiGYM 2.0.3
 
 Автоматически сформирован: 2026-08-03T05:33:45.867Z. Итог: **PASS**.
 

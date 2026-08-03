@@ -1,13 +1,15 @@
 import { createReadStream, createWriteStream } from "node:fs";
 import { constants as fsConstants } from "node:fs";
 import { access, chmod, lstat, mkdir, mkdtemp, readlink, rename, rm, symlink, unlink } from "node:fs/promises";
-import { spawn } from "node:child_process";
+import { execFile, spawn } from "node:child_process";
 import path from "node:path";
+import { promisify } from "node:util";
 import { pathToFileURL } from "node:url";
 import { createBrotliDecompress } from "node:zlib";
 import { pipeline } from "node:stream/promises";
 
 const defaultFs = { access, chmod, lstat, mkdir, mkdtemp, readlink, rename, rm, symlink, unlink };
+const execFileAsync = promisify(execFile);
 
 export function playwrightFfmpegName(platform = process.platform) {
   if (platform === "win32") return "ffmpeg-win64.exe";
@@ -26,24 +28,29 @@ async function isUsableFile(file, platform, fsApi = defaultFs) {
   }
 }
 
-async function findOnPath(name, platform, env, fsApi = defaultFs) {
-  const directories = String(env.PATH ?? "").split(path.delimiter).filter(Boolean);
-  const suffixes = platform === "win32"
-    ? String(env.PATHEXT ?? ".EXE;.CMD;.BAT;.COM").split(";").filter(Boolean)
-    : [""];
-  for (const directory of directories) {
-    for (const suffix of suffixes) {
-      const candidate = path.join(directory, platform === "win32" ? `${name}${suffix}` : name);
-      if (await isUsableFile(candidate, platform, fsApi)) return candidate;
-    }
+async function commandV(name, platform, env) {
+  try {
+    const command = platform === "win32" ? "where.exe" : "/bin/sh";
+    const args = platform === "win32" ? [name] : ["-c", `command -v ${name}`];
+    const { stdout } = await execFileAsync(command, args, { env, windowsHide: true });
+    return String(stdout).split(/\r?\n/u).map((line) => line.trim()).find(Boolean) ?? null;
+  } catch {
+    return null;
   }
-  return null;
 }
 
 export async function resolveSystemFfmpeg({ platform = process.platform, env = process.env, fsApi = defaultFs } = {}) {
-  if (env.PLAYWRIGHT_FFMPEG_PATH) return path.resolve(env.PLAYWRIGHT_FFMPEG_PATH);
-  if (platform === "linux" && await isUsableFile("/usr/bin/ffmpeg", platform, fsApi)) return "/usr/bin/ffmpeg";
-  return findOnPath("ffmpeg", platform, env, fsApi);
+  if (env.PLAYWRIGHT_FFMPEG_PATH) {
+    const configured = path.resolve(env.PLAYWRIGHT_FFMPEG_PATH);
+    if (await isUsableFile(configured, platform, fsApi)) return configured;
+  }
+
+  const discovered = await commandV("ffmpeg", platform, env);
+  if (discovered) {
+    const resolved = path.resolve(discovered);
+    if (await isUsableFile(resolved, platform, fsApi)) return resolved;
+  }
+  return null;
 }
 
 export async function ensurePlaywrightFfmpeg({
@@ -91,7 +98,7 @@ export async function ensurePlaywrightFfmpeg({
     }
 
     if (!source || !await isUsableFile(source, platform, fsApi)) {
-      throw new Error(`System ffmpeg executable was not found; set PLAYWRIGHT_FFMPEG_PATH (target: ${target})`);
+      throw new Error(`System ffmpeg executable was not found. Install ffmpeg or set PLAYWRIGHT_FFMPEG_PATH to an executable (target: ${target})`);
     }
 
     try {

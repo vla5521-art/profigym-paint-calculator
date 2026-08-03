@@ -1,6 +1,6 @@
 # Playwright browser E2E
 
-Версия проекта: 2.0.2. Версия `@playwright/test`: 1.62.1. Обязательная среда — Chromium; Firefox/WebKit опциональны. Browser E2E по-прежнему использует изолированный inline test worker; production separation app/worker проверяется отдельными HTTP smoke и queue-тестами. Подготовка ffmpeg и Chromium runtime идемпотентна и безопасна при повторном или конкурентном запуске.
+Версия проекта: 2.0.3. Версия `@playwright/test`: 1.62.1. Обязательная среда — Chromium; Firefox/WebKit опциональны. Browser E2E по-прежнему использует изолированный inline test worker; production separation app/worker проверяется отдельными HTTP smoke и queue-тестами. Workflow устанавливает ffmpeg и экспортирует путь, найденный через `command -v ffmpeg`. Скрипт сначала проверяет `PLAYWRIGHT_FFMPEG_PATH`, затем выполняет `command -v`; подготовка ffmpeg и Chromium runtime идемпотентна и безопасна при повторном или конкурентном запуске.
 
 ## Установка и запуск
 

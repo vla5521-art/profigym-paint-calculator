@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 env:
-  NODE_VERSION: 24.14.0
+  NODE_VERSION: 24.18.1
 
 jobs:
   lint-typecheck:
@@ -86,6 +86,17 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
       - run: npm ci
+      - name: Install system ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          ffmpeg -version
+      - name: Resolve system ffmpeg
+        run: |
+          ffmpeg_path="$(command -v ffmpeg)"
+          test -n "$ffmpeg_path"
+          test -x "$ffmpeg_path"
+          printf 'PLAYWRIGHT_FFMPEG_PATH=%s\n' "$ffmpeg_path" >> "$GITHUB_ENV"
       - name: Prepare Chromium and SwiftShader runtime
         run: npm run e2e:prepare
       - run: npm run fixtures:golden && npm run e2e:chromium && npm run e2e:a11y
