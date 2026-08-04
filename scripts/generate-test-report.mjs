@@ -13,7 +13,7 @@ const playwright = (value) => value ? { suites: value.suites?.length ?? 0, tests
 const resultStatus = (value) => !value ? null : (value.status ?? (typeof value.failed === 'number' ? (value.failed === 0 ? 'PASS' : 'FAIL') : 'PASS'));
 const critical = {
   ciValidation: resultStatus(data.ciValidation), unit: resultStatus(data.unit), golden: resultStatus(data.golden), regression: resultStatus(data.regression), determinism: resultStatus(data.determinism), security: resultStatus(data.security), migrations: resultStatus(data.migrations), functionalE2E: playwright(data.functionalE2E)?.status ?? null, a11y: playwright(data.a11y)?.status ?? null,
-  build: await exists('dist/index.html') ? 'PASS' : null, unicodeTemplate: await exists('dist/templates/PROFiGYM_шаблон_импорта.xlsx') ? 'PASS' : null,
+  build: await exists('dist/index.html') ? 'PASS' : null,
   productionHttpSmoke: resultStatus(data.production), observabilitySmoke: resultStatus(data.observability), backupRestoreSmoke: resultStatus(data.backup), rollbackSmoke: resultStatus(data.rollback), productionOrchestration: resultStatus(data.orchestration), finalArchiveVerification: resultStatus(data.finalArchive), dependencyAudit: resultStatus(data.audit), secretScan: resultStatus(data.secrets),
 };
 const missing = Object.entries(critical).filter(([, status]) => !status).map(([key]) => key);
@@ -86,7 +86,6 @@ Auth: bearer token или HttpOnly SameSite session; rate limits по катег
 - Backup/restore used ${data.backup?.calculations ?? 0} saved calculation: summary match ${data.backup?.summaryMatches === true ? 'PASS' : 'NOT_RUN'}, report regeneration ${data.backup?.reportGenerated === true ? 'PASS' : 'NOT_RUN'}, schema ${data.backup?.schemaVersion ?? 'n/a'}.
 - Supply chain: npm audit ${data.audit?.vulnerabilities?.total ?? 'n/a'} vulnerabilities; CycloneDX SBOM ${data.sbom?.components?.length ?? 0} components; licenses ${data.licenses?.packages?.length ?? 0} known / ${data.licenses?.packages?.filter((item) => item.license === 'UNKNOWN').length ?? 0} unknown; secret findings ${data.secrets?.findings?.length ?? 0}.
 - Benchmark median: small ${medians.small?.toFixed(3) ?? 'n/a'} ms; medium ${medians.medium?.toFixed(3) ?? 'n/a'} ms; large ${medians.large?.toFixed(3) ?? 'n/a'} ms. Memory: ${data.memory?.iterations ?? 0} iterations, heap growth ${Math.round(memoryGrowth)} bytes. Soak: ${data.soak?.iterations ?? 0} iterations, ${data.soak?.errors ?? 0} errors, ${Math.round((data.soak?.durationMs ?? 0) / 1000)} s.
-- Unicode Excel template: ${critical.unicodeTemplate ?? 'NOT_RUN'}.
 - Docker/Compose/image scan: ${report.environmentDependent.dockerBuild}; CI/CD remote runs: ${report.environmentDependent.githubActions}.
 - Проверка распакованного ZIP: ${critical.finalArchiveVerification ?? 'NOT_RUN'}; Chromium ${data.finalArchive?.checks?.chromium ?? 'NOT_RUN'}; accessibility ${data.finalArchive?.checks?.accessibility ?? 'NOT_RUN'}.
 

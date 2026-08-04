@@ -1,7 +1,7 @@
 {
-  "id": "ee52c122-d754-4155-a679-7f7763c02199",
+  "id": "e6386b65-b6e5-4f7a-8d48-ae9021150617",
   "status": "failed",
-  "generatedAt": "2026-07-31T12:24:55.668Z",
+  "generatedAt": "2026-08-04T13:08:32.127Z",
   "source": {
     "name": "open_box_shell.step",
     "sizeBytes": 13640,
@@ -343,8 +343,8 @@
       }
     },
     "performance": {
-      "importMs": 8.934301,
-      "calculationMs": 2.784843,
+      "importMs": 6.77613,
+      "calculationMs": 2.900988,
       "broadPhaseMs": 0,
       "narrowPhaseMs": 0,
       "contactClassificationMs": 0,
@@ -355,8 +355,8 @@
       "featureRuleEvaluationMs": 0,
       "overlapResolutionMs": 0,
       "featureProcessingMs": 0,
-      "uploadMs": 3.188,
-      "totalMs": 26.565
+      "uploadMs": 2.952,
+      "totalMs": 21.343
     }
   },
   "contacts": [],

@@ -1,7 +1,7 @@
 {
-  "id": "efa4d673-8286-4693-93ca-62415ab508ac",
+  "id": "90935572-70e2-4764-8007-413de9b95c95",
   "status": "failed",
-  "generatedAt": "2026-07-31T12:24:55.743Z",
+  "generatedAt": "2026-08-04T13:08:32.197Z",
   "source": {
     "name": "empty.step",
     "sizeBytes": 105,
@@ -262,10 +262,10 @@
       }
     },
     "performance": {
-      "importMs": 0.007621,
+      "importMs": 0.007281,
       "calculationMs": 0,
-      "uploadMs": 2.381,
-      "totalMs": 10.492
+      "uploadMs": 1.67,
+      "totalMs": 4.857
     }
   },
   "contacts": [],

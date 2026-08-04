@@ -1,7 +1,7 @@
 {
-  "id": "f2df0e6c-d67f-4d02-9794-c61724fb2dbb",
+  "id": "53d8dc97-c0b3-4a9a-b0d4-0f6b50dfaa7d",
   "status": "failed",
-  "generatedAt": "2026-07-31T12:24:55.700Z",
+  "generatedAt": "2026-08-04T13:08:32.160Z",
   "source": {
     "name": "corrupted.step",
     "sizeBytes": 17,
@@ -262,10 +262,10 @@
       }
     },
     "performance": {
-      "importMs": 0.004627,
+      "importMs": 0.003445,
       "calculationMs": 0,
-      "uploadMs": 2.506,
-      "totalMs": 6.327
+      "uploadMs": 0.773,
+      "totalMs": 9.501
     }
   },
   "contacts": [],

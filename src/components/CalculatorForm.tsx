@@ -1,38 +1,24 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import type { PaintIntegration } from "../cad/api.ts";
-import type { DatabaseRepository } from "../repository/DatabaseRepository.ts";
 import { calculateConsumption } from "../services/calculations.ts";
-import type { Material } from "../types/database.ts";
 import { parseNumberInput } from "../utils/formatNumber.ts";
 import type { CalculationResultView } from "./ResultCard.tsx";
 
 interface FormErrors {
-  manufacturer?: string;
-  material?: string;
+  norm?: string;
   area?: string;
   lossFactor?: string;
   general?: string;
 }
 
 interface CalculatorFormProps {
-  repository: DatabaseRepository;
   onResult: (result: CalculationResultView | null) => void;
   cadSource?: PaintIntegration | null;
   onReturnToCad?: () => void;
 }
 
-function resultUnitFromNormSymbol(symbol: string): string {
-  if (symbol.includes("кг")) return "кг";
-  if (symbol.includes("г/")) return "г";
-  if (symbol.includes("мл")) return "мл";
-  if (symbol.includes("л")) return "л";
-  return symbol.replace("/м²", "");
-}
-
-export function CalculatorForm({ repository, onResult, cadSource, onReturnToCad }: CalculatorFormProps): React.JSX.Element {
-  const manufacturers = useMemo(() => repository.getManufacturers(), [repository]);
-  const [manufacturerId, setManufacturerId] = useState("");
-  const [materialId, setMaterialId] = useState("");
+export function CalculatorForm({ onResult, cadSource, onReturnToCad }: CalculatorFormProps): React.JSX.Element {
+  const [norm, setNorm] = useState("");
   const [area, setArea] = useState("");
   const [lossFactor, setLossFactor] = useState("1.10");
   const [errors, setErrors] = useState<FormErrors>({});
@@ -45,32 +31,22 @@ export function CalculatorForm({ repository, onResult, cadSource, onReturnToCad 
     setErrors({});
   }, [cadSource]);
 
-  const materials: Material[] = useMemo(
-    () => manufacturerId ? repository.getMaterialsByManufacturer(manufacturerId) : [],
-    [manufacturerId, repository],
-  );
-
+  const parsedNorm = parseNumberInput(norm);
   const parsedArea = parseNumberInput(area);
   const parsedLossFactor = parseNumberInput(lossFactor);
-  const isFormValid = manufacturerId !== "" && materialId !== "" && parsedArea !== null && parsedArea > 0 && parsedLossFactor !== null && parsedLossFactor >= 1;
+  const isFormValid = parsedNorm !== null && parsedNorm > 0 && parsedArea !== null && parsedArea > 0 && parsedLossFactor !== null && parsedLossFactor >= 1;
 
   function invalidateResult(): void { onResult(null); }
-
-  function handleManufacturerChange(value: string): void {
-    setManufacturerId(value);
-    setMaterialId("");
-    setErrors({});
-    invalidateResult();
-  }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
     const nextErrors: FormErrors = {};
+    const numericNorm = parseNumberInput(norm);
     const numericArea = parseNumberInput(area);
     const numericLoss = parseNumberInput(lossFactor);
 
-    if (!manufacturerId) nextErrors.manufacturer = "Выберите производителя.";
-    if (!materialId) nextErrors.material = "Выберите материал.";
+    if (norm.trim() === "") nextErrors.norm = "Введите норму расхода краски.";
+    else if (numericNorm === null || numericNorm <= 0) nextErrors.norm = "Введите положительное конечное число.";
     if (numericArea === null || numericArea <= 0) nextErrors.area = "Введите площадь больше нуля.";
     if (numericLoss === null || numericLoss < 1) nextErrors.lossFactor = "Коэффициент потерь не может быть меньше 1.";
 
@@ -80,42 +56,23 @@ export function CalculatorForm({ repository, onResult, cadSource, onReturnToCad 
       return;
     }
 
-    const manufacturer = repository.getManufacturer(manufacturerId);
-    const material = repository.getMaterial(materialId);
-    const norm = repository.getDefaultNorm(materialId);
-
-    if (!manufacturer) nextErrors.general = "Выбранный производитель не найден в базе.";
-    else if (!material) nextErrors.general = "Выбранный материал не найден в базе.";
-    else if (!norm) nextErrors.general = "Для выбранного материала не найдена активная норма расхода.";
-    else if (!Number.isFinite(norm.value_nominal) || norm.value_nominal <= 0) nextErrors.general = "Для выбранного материала указана некорректная норма расхода.";
-    else {
-      const unit = repository.getUnit(norm.unit_id);
-      if (!unit) nextErrors.general = "Для нормы расхода не найдена единица измерения.";
-      else {
-        try {
-          const calculation = calculateConsumption(numericArea as number, norm, numericLoss as number);
-          onResult({
-            manufacturerName: manufacturer.name,
-            materialName: material.name,
-            normValue: norm.value_nominal,
-            normUnit: unit.symbol,
-            resultUnit: resultUnitFromNormSymbol(unit.symbol),
-            area: numericArea as number,
-            lossFactor: numericLoss as number,
-            calculation,
-          });
-        } catch (error: unknown) {
-          nextErrors.general = error instanceof Error ? error.message : "Не удалось выполнить расчёт.";
-        }
-      }
+    try {
+      const calculation = calculateConsumption(numericArea as number, numericNorm as number, numericLoss as number);
+      onResult({
+        normKgPerM2: numericNorm as number,
+        area: numericArea as number,
+        lossFactor: numericLoss as number,
+        calculation,
+      });
+    } catch (error: unknown) {
+      nextErrors.general = error instanceof Error ? error.message : "Не удалось выполнить расчёт.";
     }
 
     setErrors(nextErrors);
   }
 
   function clearForm(): void {
-    setManufacturerId("");
-    setMaterialId("");
+    setNorm("");
     setArea("");
     setCadAreaOverridden(Boolean(cadSource));
     setLossFactor("1.10");
@@ -127,20 +84,13 @@ export function CalculatorForm({ repository, onResult, cadSource, onReturnToCad 
     <form onSubmit={handleSubmit} noValidate>
       <div className="fields-grid">
         <section className="field-card">
-          <h2 className="field-title">Материал</h2>
-          <label className="field-label" htmlFor="manufacturer">Производитель</label>
-          <select id="manufacturer" value={manufacturerId} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => handleManufacturerChange(event.target.value)} aria-invalid={Boolean(errors.manufacturer)} aria-describedby="manufacturer-error">
-            <option value="">Выберите производителя</option>
-            {manufacturers.map((manufacturer) => <option key={manufacturer.manufacturer_id} value={manufacturer.manufacturer_id}>{manufacturer.name}</option>)}
-          </select>
-          <span id="manufacturer-error" className="field-error">{errors.manufacturer}</span>
-
-          <label className="field-label" htmlFor="material">Наименование материала</label>
-          <select id="material" value={materialId} disabled={!manufacturerId || materials.length === 0} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => { setMaterialId(event.target.value); setErrors({}); invalidateResult(); }} aria-invalid={Boolean(errors.material)} aria-describedby="material-error">
-            <option value="">Выберите материал</option>
-            {materials.map((material) => <option key={material.material_id} value={material.material_id}>{material.name}</option>)}
-          </select>
-          <span id="material-error" className="field-error">{errors.material ?? (manufacturerId && materials.length === 0 ? "Для выбранного производителя нет доступных материалов." : "")}</span>
+          <h2 className="field-title">Норма расхода</h2>
+          <label className="field-label" htmlFor="consumption-norm">Норма расхода краски</label>
+          <div className="input-with-unit">
+            <input id="consumption-norm" type="text" inputMode="decimal" placeholder="Например, 0,20" value={norm} onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setNorm(event.target.value); setErrors({}); invalidateResult(); }} aria-invalid={Boolean(errors.norm)} aria-describedby="norm-error" />
+            <span aria-hidden="true">кг/м²</span>
+          </div>
+          <span id="norm-error" className="field-error">{errors.norm}</span>
         </section>
 
         <section className="field-card">

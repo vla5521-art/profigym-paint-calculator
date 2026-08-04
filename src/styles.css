@@ -40,6 +40,9 @@ h1 { margin: 0; text-align: center; font-size: clamp(1.45rem, 2vw, 2.2rem); line
 .field-label { font-size: .85rem; font-weight: 700; color: var(--muted); }
 input, select { width: 100%; border: 0; border-radius: 8px; padding: 12px 14px; color: #17212c; background: linear-gradient(#fff, #f3f3f3); box-shadow: inset 0 2px 7px rgba(0,0,0,.14); }
 input::placeholder { color: #858c94; }
+.input-with-unit { position: relative; }
+.input-with-unit input { padding-right: 76px; }
+.input-with-unit > span { position: absolute; top: 50%; right: 14px; transform: translateY(-50%); color: #4d5965; font-weight: 700; pointer-events: none; }
 input[aria-invalid="true"], select[aria-invalid="true"] { box-shadow: 0 0 0 3px rgba(255, 123, 91, .55); }
 select:disabled, button:disabled { opacity: .55; cursor: not-allowed; }
 .field-error { min-height: 1.1em; color: var(--danger); font-size: .78rem; text-align: left; }
@@ -126,34 +129,20 @@ select:disabled, button:disabled { opacity: .55; cursor: not-allowed; }
 .import-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; }
 .import-card h2 { margin: 0 0 5px; font-size: 1.05rem; }
 .import-card p { margin-top: 0; }
-.template-download { display: inline-flex; align-items: center; text-decoration: none; white-space: nowrap; }
-.import-contract { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 12px 0; }
-.import-contract span { padding: 8px 10px; border-radius: 8px; background: rgba(255,255,255,.065); color: var(--muted); font-size: .78rem; font-weight: 700; }
 .file-picker { display: inline-flex; align-items: center; gap: 10px; border-radius: 10px; padding: 11px 16px; cursor: pointer; color: #17212c; background: linear-gradient(#fff, #e8edf2); font-weight: 800; }
 .file-picker input { position: absolute; width: 1px; height: 1px; padding: 0; opacity: 0; pointer-events: none; }
-.import-limits { margin: 8px 0 0; }
 .import-file-name { margin: 12px 0 0 !important; }
-.import-result { margin-top: 12px; }
 .import-summary { padding: 9px 12px; border-radius: 9px; }
 .import-summary-ok { color: #d7ffe0; background: rgba(30, 104, 52, .35); border: 1px solid rgba(113, 214, 137, .45); }
-.import-summary-error { color: #ffd1c8; background: rgba(111, 25, 18, .35); border: 1px solid rgba(255, 123, 91, .55); }
-.import-preview-wrap { overflow-x: auto; }
-.import-preview { width: 100%; border-collapse: collapse; font-size: .78rem; }
-.import-preview th, .import-preview td { padding: 7px 8px; border: 1px solid rgba(190,211,230,.2); text-align: left; }
-.import-preview th { background: rgba(255,255,255,.075); }
-.import-issues { margin: 10px 0 0; padding-left: 22px; color: #ffd1c8; font-size: .82rem; }
-.import-issues li + li { margin-top: 5px; }
 
 @media (max-width: 860px) {
   .import-card-header { flex-direction: column; }
-  .import-contract { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 520px) {
-  .import-contract { grid-template-columns: 1fr; }
-  .template-download, .file-picker { width: 100%; justify-content: center; }
+  .file-picker { width: 100%; justify-content: center; }
 }
-.import-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}.import-apply{margin-top:18px}.danger-button{border-color:rgba(255,100,100,.55)}.secondary-button:disabled,.calculate-button:disabled{opacity:.45;cursor:not-allowed}
+.import-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}.secondary-button:disabled,.calculate-button:disabled{opacity:.45;cursor:not-allowed}
 @media(max-width:520px){.import-actions{flex-direction:column}.import-actions .secondary-button{width:100%}}
 .cad-upload-card { border-color: rgba(56,168,255,.45); }
 .cad-upload-card .calculate-button { max-width: 360px; }
@@ -161,6 +150,7 @@ select:disabled, button:disabled { opacity: .55; cursor: not-allowed; }
 .cad-report > *, .cad-upload-card, .cad-upload-card > * { min-width: 0; max-width: 100%; }
 .cad-report h3 { margin: 0; }
 .cad-metrics, .cad-diagnostic-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.cad-primary-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .cad-metrics > div, .cad-diagnostic-list > div { padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,.055); }
 .cad-metrics span, .cad-diagnostic-list dt { display: block; color: var(--muted); font-size: .75rem; }
 .cad-metrics strong { display: block; margin-top: 4px; color: #f7f9fb; font-size: 1.05rem; }
@@ -171,6 +161,13 @@ select:disabled, button:disabled { opacity: .55; cursor: not-allowed; }
 .cad-issues p { margin: 4px 0; }
 .cad-warnings { border: 1px solid rgba(228,195,102,.7); background: rgba(104,82,23,.3); color: #ffe9a6; }
 .cad-errors { border: 1px solid rgba(255,123,91,.55); background: rgba(111,25,18,.35); color: #ffd1c8; }
+.cad-details { min-width: 0; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.025); }
+.cad-details > summary { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 12px 14px; cursor: pointer; font-weight: 800; }
+.cad-details > summary::marker { color: var(--orange); }
+.cad-details > summary:focus-visible { outline: 3px solid #9fd7ff; outline-offset: 3px; border-radius: 8px; }
+.cad-review-indicator { margin-left: auto; padding: 5px 9px; border: 1px solid rgba(228,195,102,.7); border-radius: 999px; background: rgba(104,82,23,.42); color: #ffe9a6; font-size: .72rem; }
+.cad-details-content { display: grid; min-width: 0; gap: 18px; padding: 4px 14px 16px; }
+.cad-details-content > * { min-width: 0; max-width: 100%; }
 .cad-face-table-wrap { max-width: 100%; max-height: 320px; overflow: auto; margin-top: 10px; }
 .cad-face-table { width: 100%; border-collapse: collapse; font-size: .8rem; }
 .cad-face-table th, .cad-face-table td { padding: 8px; border-bottom: 1px solid var(--line); text-align: left; }
@@ -244,6 +241,7 @@ select:disabled, button:disabled { opacity: .55; cursor: not-allowed; }
 .table-actions { display: flex; flex-wrap: wrap; gap: 5px; }
 .table-actions button { border: 0; border-radius: 6px; padding: 6px 8px; color: #17212c; background: #eef2f5; cursor: pointer; font-size: .7rem; }
 .saved-detail { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+.saved-cad-details { margin-top: 14px; }
 .saved-review-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 12px 0; color: var(--muted); font-size: .78rem; }
 .saved-review-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
 .saved-review-grid section { min-width: 0; padding: 10px; border: 1px solid var(--line); border-radius: 10px; overflow-x: auto; }
@@ -261,9 +259,19 @@ select:disabled, button:disabled { opacity: .55; cursor: not-allowed; }
 
 @media(max-width:1024px){.cad-viewer-canvas{height:480px}.cad-metrics,.cad-diagnostic-list{grid-template-columns:repeat(2,minmax(0,1fr))}.saved-header{align-items:stretch;flex-direction:column}}
 @media(max-width:768px){.main-navigation{grid-template-columns:1fr}.cad-viewer-canvas{height:400px;min-height:320px}.cad-viewer-toolbar button{flex:1 1 120px}.cad-metrics,.cad-diagnostic-list{grid-template-columns:1fr}.saved-header form{align-items:stretch;flex-direction:column}}
+@media(max-width:768px){.cad-primary-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.cad-primary-metrics{grid-template-columns:1fr}.cad-details>summary{align-items:flex-start;flex-direction:column}.cad-review-indicator{margin-left:0}}
 @media(max-width:1024px){.saved-review-grid{grid-template-columns:1fr}}
 .auth-screen { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: #09121f; color: #eef6ff; }
 .auth-card { width: min(440px, 100%); display: grid; gap: 16px; padding: 28px; border: 1px solid #28537d; border-radius: 18px; background: #102239; box-shadow: 0 24px 70px rgba(0,0,0,.35); }
 .auth-card label { display: grid; gap: 8px; font-weight: 700; }
 .auth-card input { width: 100%; padding: 12px; border: 1px solid #52779a; border-radius: 8px; background: #07111e; color: #fff; }
 .auth-card button { padding: 12px 18px; border: 0; border-radius: 8px; background: #38a8ff; color: #07111e; font-weight: 800; cursor: pointer; }
+
+@media print {
+  .cad-details { display: block; border: 0; background: transparent; }
+  .cad-details > summary { display: none; }
+  .cad-details:not([open]) > .cad-details-content { display: grid !important; }
+  .cad-details-content { padding: 0; }
+  .cad-primary-metrics, .cad-secondary-metrics, .cad-diagnostic-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

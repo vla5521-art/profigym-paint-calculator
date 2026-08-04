@@ -2,14 +2,14 @@
   "config": {
     "argv": [
       "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
-      "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/node_modules/.bin/playwright",
+      "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/node_modules/.bin/playwright",
       "test",
       "--project=chromium",
       "--grep-invert",
       "@a11y"
     ],
-    "configFile": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/playwright.config.ts",
-    "rootDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/e2e",
+    "configFile": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/playwright.config.ts",
+    "rootDir": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/e2e",
     "failOnFlakyTests": false,
     "forbidOnly": false,
     "fullyParallel": false,
@@ -25,7 +25,7 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/test-results",
+        "outputDir": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -33,7 +33,7 @@
         },
         "id": "chromium",
         "name": "chromium",
-        "testDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/e2e",
+        "testDir": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/e2e",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -41,7 +41,7 @@
         "timeout": 120000
       },
       {
-        "outputDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/test-results",
+        "outputDir": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -49,7 +49,7 @@
         },
         "id": "firefox",
         "name": "firefox",
-        "testDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/e2e",
+        "testDir": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/e2e",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -57,7 +57,7 @@
         "timeout": 120000
       },
       {
-        "outputDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/test-results",
+        "outputDir": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -65,7 +65,7 @@
         },
         "id": "webkit",
         "name": "webkit",
-        "testDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/e2e",
+        "testDir": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/e2e",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -114,6 +114,116 @@
   },
   "suites": [
     {
+      "title": "legacy-indexeddb-cleanup.spec.ts",
+      "file": "legacy-indexeddb-cleanup.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "legacy material database is deleted once without breaking CAD or paint calculation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4545,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-04T13:09:09.081Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "68a4d5f73f98c6b85bbb-e2473b96d37542dc96e9",
+          "file": "legacy-indexeddb-cleanup.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "application renders when IndexedDB is unavailable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 468,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-04T13:09:13.757Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "68a4d5f73f98c6b85bbb-d66ce40c6bafe3339c87",
+          "file": "legacy-indexeddb-cleanup.spec.ts",
+          "line": 111,
+          "column": 1
+        },
+        {
+          "title": "application renders when reading localStorage throws",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 560,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-04T13:09:14.237Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "68a4d5f73f98c6b85bbb-93287a0344373601977f",
+          "file": "legacy-indexeddb-cleanup.spec.ts",
+          "line": 125,
+          "column": 1
+        }
+      ]
+    },
+    {
       "title": "stage5-browser.spec.ts",
       "file": "stage5-browser.spec.ts",
       "column": 0,
@@ -135,12 +245,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 13585,
+                  "duration": 2704,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:47:46.500Z",
+                  "startTime": "2026-08-04T13:09:14.829Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -169,12 +279,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5564,
+                  "duration": 2422,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:48:00.936Z",
+                  "startTime": "2026-08-04T13:09:17.550Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -203,12 +313,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 8404,
+                  "duration": 1895,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:48:06.602Z",
+                  "startTime": "2026-08-04T13:09:20.002Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -237,12 +347,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7113,
+                  "duration": 1943,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:48:15.104Z",
+                  "startTime": "2026-08-04T13:09:21.914Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -271,12 +381,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 8127,
+                  "duration": 2459,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:48:22.315Z",
+                  "startTime": "2026-08-04T13:09:23.865Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -305,12 +415,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7306,
+                  "duration": 2922,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:48:30.542Z",
+                  "startTime": "2026-08-04T13:09:26.334Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -339,12 +449,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 8544,
+                  "duration": 2900,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:48:37.877Z",
+                  "startTime": "2026-08-04T13:09:29.270Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -354,7 +464,7 @@
           ],
           "id": "a8bbca1a5df107f20683-78293eccbedf0866e91f",
           "file": "stage5-browser.spec.ts",
-          "line": 89,
+          "line": 90,
           "column": 1
         },
         {
@@ -373,12 +483,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7725,
+                  "duration": 1763,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:48:46.471Z",
+                  "startTime": "2026-08-04T13:09:32.187Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -388,7 +498,7 @@
           ],
           "id": "a8bbca1a5df107f20683-fc88c84f36957bba789a",
           "file": "stage5-browser.spec.ts",
-          "line": 104,
+          "line": 105,
           "column": 1
         },
         {
@@ -407,12 +517,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 12148,
+                  "duration": 3314,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:48:54.269Z",
+                  "startTime": "2026-08-04T13:09:33.964Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -422,7 +532,7 @@
           ],
           "id": "a8bbca1a5df107f20683-03a97f8ab98c8110240f",
           "file": "stage5-browser.spec.ts",
-          "line": 126,
+          "line": 127,
           "column": 1
         },
         {
@@ -441,12 +551,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6298,
+                  "duration": 1868,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:49:06.494Z",
+                  "startTime": "2026-08-04T13:09:37.287Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -456,7 +566,7 @@
           ],
           "id": "a8bbca1a5df107f20683-af901a82d6aa10a39e1c",
           "file": "stage5-browser.spec.ts",
-          "line": 147,
+          "line": 148,
           "column": 1
         },
         {
@@ -475,12 +585,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3220,
+                  "duration": 1673,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:49:12.845Z",
+                  "startTime": "2026-08-04T13:09:39.181Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -490,7 +600,7 @@
           ],
           "id": "a8bbca1a5df107f20683-ab665c9affcb9d05042c",
           "file": "stage5-browser.spec.ts",
-          "line": 160,
+          "line": 161,
           "column": 1
         },
         {
@@ -509,12 +619,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5311,
+                  "duration": 1534,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:49:16.121Z",
+                  "startTime": "2026-08-04T13:09:40.862Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -524,7 +634,7 @@
           ],
           "id": "a8bbca1a5df107f20683-78a290172bdf53cd9bab",
           "file": "stage5-browser.spec.ts",
-          "line": 171,
+          "line": 172,
           "column": 1
         },
         {
@@ -543,12 +653,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 8733,
+                  "duration": 3054,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:49:21.472Z",
+                  "startTime": "2026-08-04T13:09:42.406Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -558,7 +668,7 @@
           ],
           "id": "a8bbca1a5df107f20683-1a54d6ed87b40e3a10db",
           "file": "stage5-browser.spec.ts",
-          "line": 192,
+          "line": 193,
           "column": 4
         },
         {
@@ -577,12 +687,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7957,
+                  "duration": 3350,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:49:30.233Z",
+                  "startTime": "2026-08-04T13:09:45.469Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -592,7 +702,7 @@
           ],
           "id": "a8bbca1a5df107f20683-aa115dd94650c2f8f6b1",
           "file": "stage5-browser.spec.ts",
-          "line": 192,
+          "line": 193,
           "column": 4
         },
         {
@@ -611,12 +721,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7526,
+                  "duration": 3036,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:49:38.232Z",
+                  "startTime": "2026-08-04T13:09:48.836Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -626,8 +736,220 @@
           ],
           "id": "a8bbca1a5df107f20683-0bbe576f928e2826f25a",
           "file": "stage5-browser.spec.ts",
-          "line": 192,
+          "line": 193,
           "column": 4
+        }
+      ]
+    },
+    {
+      "title": "stage6-details-collapsed.spec.ts",
+      "file": "stage6-details-collapsed.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Stage 6 shows only the two primary areas until Подробнее is opened",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8890,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-04T13:09:51.902Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6fc126f45559be7497-453c6856d885b449297b",
+          "file": "stage6-details-collapsed.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "Stage 6 keeps review-required count visible while controls stay in details",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1070,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-04T13:10:00.815Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6fc126f45559be7497-bf9671d6181225c7e404",
+          "file": "stage6-details-collapsed.spec.ts",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "Stage 6 keeps CAD warnings visible outside the closed details",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 872,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-04T13:10:01.895Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6fc126f45559be7497-b894212ea529191d85c4",
+          "file": "stage6-details-collapsed.spec.ts",
+          "line": 41,
+          "column": 1
+        },
+        {
+          "title": "Stage 6 native summary supports Enter and Space",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1154,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-04T13:10:02.776Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6fc126f45559be7497-31fd43c62316513e3424",
+          "file": "stage6-details-collapsed.spec.ts",
+          "line": 49,
+          "column": 1
+        },
+        {
+          "title": "Stage 6 layout is responsive in closed and open states",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1207,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-04T13:10:03.944Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6fc126f45559be7497-72cecbf8d422e65bf019",
+          "file": "stage6-details-collapsed.spec.ts",
+          "line": 62,
+          "column": 1
+        },
+        {
+          "title": "Stage 6 print media exposes the full report even when details is closed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1257,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-04T13:10:05.162Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6fc126f45559be7497-24f949809fc71f0267d4",
+          "file": "stage6-details-collapsed.spec.ts",
+          "line": 83,
+          "column": 1
         }
       ]
     },
@@ -653,12 +975,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4675,
+                  "duration": 1517,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:49:45.878Z",
+                  "startTime": "2026-08-04T13:10:06.432Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -668,7 +990,7 @@
           ],
           "id": "24cde501357937273e23-82f269f7c2e402d52f19",
           "file": "stage6-quality.spec.ts",
-          "line": 7,
+          "line": 10,
           "column": 1
         },
         {
@@ -687,12 +1009,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2254,
+                  "duration": 528,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:49:50.624Z",
+                  "startTime": "2026-08-04T13:10:07.958Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -702,7 +1024,7 @@
           ],
           "id": "24cde501357937273e23-d18bfc1c9f0594adf357",
           "file": "stage6-quality.spec.ts",
-          "line": 14,
+          "line": 17,
           "column": 1
         },
         {
@@ -721,12 +1043,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1604,
+                  "duration": 425,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:49:52.963Z",
+                  "startTime": "2026-08-04T13:10:08.499Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -736,7 +1058,7 @@
           ],
           "id": "24cde501357937273e23-81c07485f1d4aab513c7",
           "file": "stage6-quality.spec.ts",
-          "line": 20,
+          "line": 23,
           "column": 1
         },
         {
@@ -755,12 +1077,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2434,
+                  "duration": 813,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:49:54.622Z",
+                  "startTime": "2026-08-04T13:10:08.932Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -770,7 +1092,7 @@
           ],
           "id": "24cde501357937273e23-263e9e04cb8050188c6a",
           "file": "stage6-quality.spec.ts",
-          "line": 25,
+          "line": 28,
           "column": 1
         },
         {
@@ -789,12 +1111,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4148,
+                  "duration": 1612,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:49:57.122Z",
+                  "startTime": "2026-08-04T13:10:09.756Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -804,7 +1126,7 @@
           ],
           "id": "24cde501357937273e23-ad9c1c3215ca63e2b0b2",
           "file": "stage6-quality.spec.ts",
-          "line": 32,
+          "line": 35,
           "column": 1
         },
         {
@@ -823,12 +1145,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3966,
+                  "duration": 1530,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:50:01.325Z",
+                  "startTime": "2026-08-04T13:10:11.377Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -838,7 +1160,7 @@
           ],
           "id": "24cde501357937273e23-5d0de064d1d0db415eed",
           "file": "stage6-quality.spec.ts",
-          "line": 38,
+          "line": 41,
           "column": 1
         },
         {
@@ -857,12 +1179,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2767,
+                  "duration": 1017,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:50:05.390Z",
+                  "startTime": "2026-08-04T13:10:12.922Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -872,7 +1194,7 @@
           ],
           "id": "24cde501357937273e23-bf7ca08319efbff0f7d0",
           "file": "stage6-quality.spec.ts",
-          "line": 43,
+          "line": 46,
           "column": 1
         },
         {
@@ -891,12 +1213,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5484,
+                  "duration": 1474,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:50:08.218Z",
+                  "startTime": "2026-08-04T13:10:13.951Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -906,7 +1228,7 @@
           ],
           "id": "24cde501357937273e23-877f14a338bd67fbada1",
           "file": "stage6-quality.spec.ts",
-          "line": 47,
+          "line": 50,
           "column": 1
         },
         {
@@ -925,12 +1247,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4970,
+                  "duration": 1543,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:50:13.767Z",
+                  "startTime": "2026-08-04T13:10:15.439Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -940,7 +1262,7 @@
           ],
           "id": "24cde501357937273e23-82cac36125e33015a28a",
           "file": "stage6-quality.spec.ts",
-          "line": 52,
+          "line": 55,
           "column": 1
         },
         {
@@ -959,12 +1281,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3228,
+                  "duration": 1538,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:50:18.772Z",
+                  "startTime": "2026-08-04T13:10:16.999Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -974,7 +1296,7 @@
           ],
           "id": "24cde501357937273e23-a956a67c353e09b4ddfd",
           "file": "stage6-quality.spec.ts",
-          "line": 56,
+          "line": 59,
           "column": 1
         },
         {
@@ -993,12 +1315,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4584,
+                  "duration": 1572,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:50:22.048Z",
+                  "startTime": "2026-08-04T13:10:18.548Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1008,7 +1330,7 @@
           ],
           "id": "24cde501357937273e23-2e76fced4218c09c512f",
           "file": "stage6-quality.spec.ts",
-          "line": 60,
+          "line": 63,
           "column": 1
         },
         {
@@ -1027,12 +1349,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4501,
+                  "duration": 1626,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:50:26.680Z",
+                  "startTime": "2026-08-04T13:10:20.129Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1042,7 +1364,219 @@
           ],
           "id": "24cde501357937273e23-aef1f776312b9f383e82",
           "file": "stage6-quality.spec.ts",
-          "line": 64,
+          "line": 67,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "stage7-saved-details-collapsed.spec.ts",
+      "file": "stage7-saved-details-collapsed.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Stage 7 keeps toolbar, Viewer and two primary areas visible while saved details toggle",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2714,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-04T13:10:21.778Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "93f8d7302650f8c28f1e-2ca44d13b87d3ac4c2ef",
+          "file": "stage7-saved-details-collapsed.spec.ts",
+          "line": 21,
+          "column": 1
+        },
+        {
+          "title": "Stage 7 keeps review-required indicator and saved warnings visible when closed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3644,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-04T13:10:24.506Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "93f8d7302650f8c28f1e-90d546575c8452ae0e87",
+          "file": "stage7-saved-details-collapsed.spec.ts",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "Stage 7 saved Confirm, Reject and Reset remain operational inside details",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6046,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-04T13:10:28.167Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "93f8d7302650f8c28f1e-3dff99a41c06b0d536dc",
+          "file": "stage7-saved-details-collapsed.spec.ts",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "Stage 7 saved Manual Feature remains operational inside details",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3337,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-04T13:10:34.225Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "93f8d7302650f8c28f1e-3907970c95160abcf514",
+          "file": "stage7-saved-details-collapsed.spec.ts",
+          "line": 76,
+          "column": 1
+        },
+        {
+          "title": "Stage 7 saved transfer, report, revisions and calculation management remain operational",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4807,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-04T13:10:37.578Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "93f8d7302650f8c28f1e-bfc66e0944d6c93bb06d",
+          "file": "stage7-saved-details-collapsed.spec.ts",
+          "line": 91,
+          "column": 1
+        },
+        {
+          "title": "Stage 7 saved details support keyboard, responsive layouts and full print output",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3047,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-04T13:10:42.400Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "93f8d7302650f8c28f1e-11c2dfce6ebcc86a4f4c",
+          "file": "stage7-saved-details-collapsed.spec.ts",
+          "line": 134,
           "column": 1
         }
       ]
@@ -1050,9 +1584,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-08-03T07:47:42.540Z",
-    "duration": 169500.01,
-    "expected": 27,
+    "startTime": "2026-08-04T13:09:07.560Z",
+    "duration": 97999.798,
+    "expected": 42,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

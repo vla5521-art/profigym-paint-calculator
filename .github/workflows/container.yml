@@ -46,7 +46,6 @@ jobs:
           npm run test:determinism
           npm run test:security
           npm run build
-          npm run verify:template
 
       - name: Supply-chain checks
         run: |

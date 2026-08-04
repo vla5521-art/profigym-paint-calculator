@@ -1,4 +1,4 @@
-# Deployment — PROFiGYM 2.0.4
+# Deployment — PROFiGYM 2.1.0
 
 ## Требования
 
@@ -35,7 +35,7 @@ Production image запускает API, worker, healthcheck и служебны
 ## Публикация image и deploy
 
 1. Загрузите проект в GitHub и дождитесь зелёных `quality` и `container`.
-2. Скачайте `stage7-container-evidence` и возьмите digest из `image-digest.txt`.
+2. Скачайте container evidence для релиза 2.1.0 и возьмите digest из `image-digest.txt`.
 3. Откройте Actions → deploy → Run workflow.
 4. Выберите `staging`, вставьте `sha256:...` и выполните smoke.
 5. Повторите для `production`; reviewer подтверждает GitHub Environment.
@@ -58,5 +58,7 @@ npm run smoke:production
 ```
 
 Smoke работает только через HTTP и проверяет liveness/readiness/auth/security headers, реальный `through_hole.step`, очередь/worker, площадь, mesh, JSON/HTML reports, CAD→ЛКМ, удаление, HTTP 415 и повреждённый STEP.
+
+После HTTP smoke выполните пользовательскую проверку: новый и повторно открытый сохранённый расчёт показывают две основные площади, блок «Подробнее» содержит диагностику и ручные действия, передача окрашиваемой площади завершается расчётом ЛКМ по ручной норме и коэффициенту потерь.
 
 Без фактического VPS-запуска статус остаётся `CI_FIXED_READY_FOR_GITHUB` или `CI_FIXED_DOCKER_VERIFIED`, но не `PRODUCTION_DEPLOYED`.

@@ -1,6 +1,6 @@
-# PROFiGYM — калькулятор расхода краски v2.0.4
+# PROFiGYM — калькулятор расхода краски v2.1.0
 
-Версия 2.0.4 устраняет пять исправляемых HIGH/CRITICAL CVE, находившихся не в зависимостях приложения, а во встроенном глобальном npm официального Node image. Production runtime запускает приложение и healthcheck напрямую через `node`, поэтому глобальные npm/corepack/yarn удалены только из финальной стадии; build/dependencies stages сохраняют npm и воспроизводимые `npm ci`. Container workflow проверяет npm-free runtime до неизменённой блокирующей последовательности Trivy. Используется актуальный patch-tag `node:24.18.1-bookworm-slim`. STEP-only CAD pipeline, OCCT/WASM, геометрические эталоны и версии алгоритмов `geometry 2.0 / contact 3.0 / feature 4.0` сохранены без изменений.
+Версия 2.1.0 завершает переход к ручному вводу нормы расхода и упрощённому представлению CAD-результата. Для нового и сохранённого расчёта сразу видны полная и окрашиваемая площади; диагностика, формула, контакты, технологические элементы, правила и ручные решения доступны через закрытый по умолчанию блок «Подробнее». Ошибки, предупреждения и количество объектов `review_required` остаются видимыми. STEP-only CAD pipeline, OCCT/WASM, геометрические эталоны и версии алгоритмов `geometry 2.0 / contact 3.0 / feature 4.0` сохранены без изменений.
 
 ## Архитектура
 
@@ -17,6 +17,13 @@ HTTPS reverse proxy
 ## Поддерживаемые форматы
 
 Только `.stp` и `.step`. Другие форматы, включая `.sldprt`/`.sldasm`/`.asm`, получают HTTP 415.
+
+## Основной рабочий процесс
+
+1. Загрузите STEP и дождитесь завершения CAD-расчёта.
+2. Проверьте полную и окрашиваемую площади. При наличии предупреждения или `review_required` откройте «Подробнее» и примите ручные решения.
+3. Сохраните расчёт либо откройте ранее сохранённый результат; обе страницы используют одинаковую структуру площадей и блока «Подробнее».
+4. Передайте окрашиваемую площадь в калькулятор ЛКМ, вручную введите норму расхода и коэффициент потерь, затем выполните расчёт.
 
 ## Разработка
 
@@ -53,7 +60,8 @@ npm run test:regression
 npm run test:determinism
 npm run test:security
 npm run build
-npm run verify:template
+npm run smoke:live
+npm run smoke:workflow
 npm run e2e:chromium
 npm run e2e:a11y
 npm run security:audit
@@ -61,15 +69,12 @@ npm run security:sbom
 npm run security:licenses
 npm run security:secrets
 npm run prod:local:verify
+npm run smoke:production
 ```
 
 Версии и официальные источники GitHub Actions зафиксированы в [CI_ACTIONS.md](CI_ACTIONS.md). Container workflow проверяет, что финальный image содержит Node, но не содержит глобальные npm/corepack/yarn, затем использует Trivy `v0.36.0` в последовательности `table → SARIF → validation → upload → enforce`, явно загружает pushed image обратно в runner перед scan/smoke и сохраняет digest/SARIF. Deploy запускается только вручную по immutable digest; отсутствие VPS secrets даёт контролируемый skip, а не красный workflow на обычном push.
 
 `prod:local:verify` поднимает app и worker как отдельные production-процессы, проверяет реальный HTTP workflow, остановку/restart worker, observability, backup/restore и rollback marker. Docker image/Compose считаются проверенными только после фактического запуска Docker.
-
-## Excel-шаблон
-
-Файл `public/templates/PROFiGYM_шаблон_импорта.xlsx` сохраняется с точным Unicode-именем. `npm run build` и `npm run verify:template` проверяют валидность XLSX, UTF-8 имя, отсутствие `PROFiGYM_#U*.xlsx` и совпадение SHA-256 с `dist`.
 
 ## Статус публикации
 

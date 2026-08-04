@@ -23,7 +23,6 @@
 - functionalE2E: PASS
 - a11y: PASS
 - build: PASS
-- unicodeTemplate: PASS
 - productionHttpSmoke: PASS
 - observabilitySmoke: PASS
 - backupRestoreSmoke: PASS

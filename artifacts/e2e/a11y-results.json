@@ -2,14 +2,14 @@
   "config": {
     "argv": [
       "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
-      "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/node_modules/.bin/playwright",
+      "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/node_modules/.bin/playwright",
       "test",
       "--project=chromium",
       "--grep",
       "@a11y"
     ],
-    "configFile": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/playwright.config.ts",
-    "rootDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/e2e",
+    "configFile": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/playwright.config.ts",
+    "rootDir": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/e2e",
     "failOnFlakyTests": false,
     "forbidOnly": false,
     "fullyParallel": false,
@@ -25,7 +25,7 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/test-results",
+        "outputDir": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -33,7 +33,7 @@
         },
         "id": "chromium",
         "name": "chromium",
-        "testDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/e2e",
+        "testDir": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/e2e",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -41,7 +41,7 @@
         "timeout": 120000
       },
       {
-        "outputDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/test-results",
+        "outputDir": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -49,7 +49,7 @@
         },
         "id": "firefox",
         "name": "firefox",
-        "testDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/e2e",
+        "testDir": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/e2e",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -57,7 +57,7 @@
         "timeout": 120000
       },
       {
-        "outputDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/test-results",
+        "outputDir": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -65,7 +65,7 @@
         },
         "id": "webkit",
         "name": "webkit",
-        "testDir": "/workspace/scratch/28999e3ac01a/stage7_ci_fix4_work/PROFiGYM_calculator_v2.0.4_STAGE7_CI_FIXED4/e2e",
+        "testDir": "/workspace/scratch/28999e3ac01a/stage8_work/PROFiGYM_calculator_v2.0.11_STAGE7_SAVED_RESULTS_DETAILS_COLLAPSED/e2e",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -137,12 +137,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10756,
+                  "duration": 5487,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:50:49.559Z",
+                  "startTime": "2026-08-04T13:10:47.556Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -173,12 +173,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6454,
+                  "duration": 2236,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-08-03T07:51:00.751Z",
+                  "startTime": "2026-08-04T13:10:53.194Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -196,8 +196,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-08-03T07:50:46.259Z",
-    "duration": 21816.436999999998,
+    "startTime": "2026-08-04T13:10:46.468Z",
+    "duration": 9161.234,
     "expected": 2,
     "skipped": 0,
     "unexpected": 0,

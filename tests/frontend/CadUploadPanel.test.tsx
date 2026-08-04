@@ -10,7 +10,7 @@ const diagnostics = {
   totalArea: { mm2: 600, cm2: 6, m2: 0.0006 },
   bodies: [],
   faces: [{ id: "face_123", index: 0, bodyId: "body_1", surfaceType: "plane", centerMm: [0, 5, 5], area: { mm2: 100, cm2: 1, m2: 0.0001 } }],
-  warnings: [],
+  warnings: [{ code: "MODEL_WARNING", message: "Проверьте геометрию модели" }],
   errors: [],
   validation: { isValid: true, openShellCount: 0, multiBody: false },
   contacts: {
@@ -97,7 +97,15 @@ describe("CadUploadPanel", () => {
     fireEvent.change(screen.getByLabelText("CAD-файл"), { target: { files: [file] } });
     fireEvent.click(screen.getByRole("button", { name: /Импортировать/ }));
     expect(await screen.findByRole("status")).toHaveTextContent("в очереди");
-    expect(await screen.findByText("Диагностический отчет")).toBeInTheDocument();
+    const details = await screen.findByTestId("cad-details");
+    expect(details).not.toHaveAttribute("open");
+    expect(screen.getByLabelText("Основные площади CAD-расчёта").children).toHaveLength(2);
+    expect(screen.getByTestId("cad-review-required-indicator")).toHaveTextContent("Требуют проверки: 1");
+    expect(screen.getByLabelText("Предупреждения")).not.toBe(details);
+    expect(screen.getByLabelText("Предупреждения").closest("details")).toBeNull();
+    fireEvent.click(screen.getByText("Подробнее"));
+    expect(details).toHaveAttribute("open");
+    expect(screen.getByText("Диагностический отчет")).toBeInTheDocument();
     expect(screen.getAllByText("0,0006 м²")).toHaveLength(2);
     expect(screen.getByText("face_123")).toBeInTheDocument();
     expect(screen.getByText("Контактные исключения")).toBeInTheDocument();
@@ -138,6 +146,7 @@ describe("CadUploadPanel", () => {
     render(<CadUploadPanel />);
     fireEvent.change(screen.getByLabelText("CAD-файл"), { target: { files: [new File(["STEP"], "gap.step")] } });
     fireEvent.click(screen.getByRole("button", { name: /Импортировать/ }));
+    fireEvent.click(await screen.findByText("Подробнее"));
     await screen.findByRole("button", { name: "Подтвердить исключение" });
     fireEvent.click(screen.getByRole("button", { name: "Подтвердить исключение" }));
     expect(await screen.findByRole("button", { name: "Сбросить решение" })).toBeInTheDocument();

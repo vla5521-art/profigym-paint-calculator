@@ -2,7 +2,10 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { test, expect, model, uploadStep, expectWebGl } from "./fixtures";
 
-test.beforeEach(async ({ page }) => { await page.goto("/"); });
+test.beforeEach(async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "CAD-расчёт площади" }).click();
+});
 
 test("16 corrupted STEP is handled in UI and a valid retry succeeds", async ({ page }) => {
   await page.getByTestId("cad-upload-input").setInputFiles(model("invalid.step", "golden"));

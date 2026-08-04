@@ -83,6 +83,7 @@ test("06 review-required cavity decision persists after reload and reopen", asyn
   await page.getByRole("button", { name: "Сохранённые CAD-расчёты" }).click();
   await page.getByTestId("cad-saved-calculations").getByRole("button", { name: "Открыть" }).first().click();
   await expect(page.getByTestId("cad-saved-detail")).toBeVisible();
+  await page.getByTestId("cad-saved-details").getByText("Подробнее", { exact: true }).click();
   await expect(page.getByTestId("cad-saved-detail").locator('tr[data-status="manually_confirmed"], tr:has-text("manually_confirmed")').first()).toBeVisible();
 });
 

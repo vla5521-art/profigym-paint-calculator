@@ -386,6 +386,7 @@ function Diagnostics({
   onFeatureRulesChange,
   selectedFaces,
   onSelectedFacesChange,
+  children,
 }: {
   data: CadDiagnostics;
   jobId: string;
@@ -395,7 +396,10 @@ function Diagnostics({
   onFeatureRulesChange: (rules: FeatureRules, result: FeatureResult) => void;
   selectedFaces: string[];
   onSelectedFacesChange: (ids: string[]) => void;
+  children: React.ReactNode;
 }): React.JSX.Element {
+  const detailsRef = useRef<HTMLDetailsElement | null>(null);
+  const detailsOpenStateBeforePrintRef = useRef<Array<{ element: HTMLDetailsElement; open: boolean }>>([]);
   const [manualPending, setManualPending] = useState(false);
   const [manualError, setManualError] = useState<string | null>(null);
   const [reviewTab, setReviewTab] = useState<"all" | "contacts" | "holes" | "cavities" | "manual" | "review" | "rejected" | "included">("all");
@@ -407,6 +411,27 @@ function Diagnostics({
   const [bulkPending, setBulkPending] = useState(false);
   const featureResult = data.features ?? stage3FeatureFallback(data);
   const summary = data.exclusions ?? featureResult.summary;
+  const reviewRequiredCount = data.contacts.contacts.filter((contact) => contact.status === "review_required").length
+    + featureResult.features.filter((feature) => feature.status === "review_required").length;
+  useEffect(() => {
+    const revealDetailsForPrint = () => {
+      if (!detailsRef.current) return;
+      if (detailsOpenStateBeforePrintRef.current.length > 0) return;
+      const elements = [detailsRef.current, ...detailsRef.current.querySelectorAll<HTMLDetailsElement>("details")];
+      detailsOpenStateBeforePrintRef.current = elements.map((element) => ({ element, open: element.open }));
+      elements.forEach((element) => { element.open = true; });
+    };
+    const restoreDetailsAfterPrint = () => {
+      detailsOpenStateBeforePrintRef.current.forEach(({ element, open }) => { element.open = open; });
+      detailsOpenStateBeforePrintRef.current = [];
+    };
+    window.addEventListener("beforeprint", revealDetailsForPrint);
+    window.addEventListener("afterprint", restoreDetailsAfterPrint);
+    return () => {
+      window.removeEventListener("beforeprint", revealDetailsForPrint);
+      window.removeEventListener("afterprint", restoreDetailsAfterPrint);
+    };
+  }, []);
   const search = reviewSearch.trim().toLocaleLowerCase("ru-RU");
   const matchesStatus = (status: string) => statusFilter === "all"
     || (statusFilter === "confirmed" && ["confirmed", "manually_confirmed"].includes(status))
@@ -470,38 +495,10 @@ function Diagnostics({
   );
   return (
     <section className="cad-report" aria-labelledby="cad-report-title">
-      <div className="cad-metrics">
+      <div className="cad-metrics cad-primary-metrics" aria-label="Основные площади CAD-расчёта">
         <div data-testid="cad-summary-total-area" data-area-m2={summary.totalArea.m2}><AreaMetric label="Полная площадь" value={summary.totalArea} /></div>
-        <AreaMetric label="Исключено по контактам" value={summary.confirmedContactExcludedArea} />
-        <AreaMetric label="Исключено по отверстиям" value={summary.confirmedHoleExcludedArea} />
-        <AreaMetric label="Исключено по внутренним полостям" value={summary.confirmedCavityExcludedArea} />
-        <AreaMetric label="Ручные исключения" value={summary.confirmedManualExcludedArea} />
-        <AreaMetric label="Перекрытие исключений" value={summary.overlapArea} />
-        <AreaMetric label="Уникально исключённая площадь" value={summary.uniqueConfirmedExcludedArea} />
-        <AreaMetric label="Требует проверки" value={summary.reviewRequiredFeatureArea} />
-        <div data-testid="cad-summary-paintable-area" data-area-m2={summary.paintableArea.m2}><AreaMetric label="Окрашиваемая площадь" value={summary.paintableArea} /></div>
+        <div data-testid="cad-summary-paintable-area" data-area-m2={summary.paintableArea.m2}><AreaMetric label="Площадь для окрашивания" value={summary.paintableArea} /></div>
       </div>
-      <p className="formula-line">Окрашиваемая площадь = Полная площадь − Уникальная подтверждённая площадь исключений</p>
-      {selectedFaces[0] && (() => {
-        const face = data.faces.find((item) => item.id === selectedFaces[0]);
-        return face ? <aside className="selected-face-properties" data-testid="cad-selected-face-properties" data-face-id={face.id} data-area-mm2={face.area.mm2} aria-live="polite">
-          <strong>Выбрана грань {face.id}</strong><span>{face.surfaceType}</span><span>{formatArea(face.area.mm2)} мм²</span>
-        </aside> : null;
-      })()}
-      <h3 id="cad-report-title">Диагностический отчет</h3>
-      <dl className="cad-diagnostic-list">
-        <div><dt>Оболочки</dt><dd>{data.counts.shells}</dd></div>
-        <div><dt>Ребра</dt><dd>{data.counts.edges}</dd></div>
-        <div><dt>Вершины</dt><dd>{data.counts.vertices}</dd></div>
-        <div><dt>Площадь, мм²</dt><dd>{formatArea(data.totalArea.mm2)}</dd></div>
-        <div><dt>Площадь, см²</dt><dd>{formatArea(data.totalArea.cm2)}</dd></div>
-        <div><dt>Импорт</dt><dd>{formatArea(data.performance.importMs)} мс</dd></div>
-        <div><dt>Расчет</dt><dd>{formatArea(data.performance.calculationMs)} мс</dd></div>
-        <div><dt>Полный цикл</dt><dd>{formatArea(data.performance.totalMs)} мс</dd></div>
-        <div><dt>Broad phase</dt><dd>{formatArea(data.contacts.statistics.broadPhaseMs)} мс</dd></div>
-        <div><dt>Narrow phase</dt><dd>{formatArea(data.contacts.statistics.narrowPhaseMs)} мс</dd></div>
-        <div><dt>Точных проверок</dt><dd>{data.contacts.statistics.exactCheckCount}</dd></div>
-      </dl>
       {data.warnings.length > 0 && (
         <div className="cad-issues cad-warnings" aria-label="Предупреждения">
           {data.warnings.map((issue) => <p key={issue.code}><strong>{issue.code}</strong>: {issue.message}</p>)}
@@ -512,7 +509,44 @@ function Diagnostics({
           {data.errors.map((issue) => <p key={issue.code}><strong>{issue.code}</strong>: {issue.message}</p>)}
         </div>
       )}
-      <section className="cad-review-controls" aria-labelledby="review-controls-title">
+      <details ref={detailsRef} className="cad-details" data-testid="cad-details">
+        <summary>
+          <span>Подробнее</span>
+          {reviewRequiredCount > 0 && <span className="cad-review-indicator" data-testid="cad-review-required-indicator" role="status" aria-live="polite">Требуют проверки: {reviewRequiredCount}</span>}
+        </summary>
+        <div className="cad-details-content" data-testid="cad-details-content">
+          {children}
+          <div className="cad-metrics cad-secondary-metrics" aria-label="Детальные площади CAD-расчёта">
+            <AreaMetric label="Исключено по контактам" value={summary.confirmedContactExcludedArea} />
+            <AreaMetric label="Исключено по отверстиям" value={summary.confirmedHoleExcludedArea} />
+            <AreaMetric label="Исключено по внутренним полостям" value={summary.confirmedCavityExcludedArea} />
+            <AreaMetric label="Ручные исключения" value={summary.confirmedManualExcludedArea} />
+            <AreaMetric label="Перекрытие исключений" value={summary.overlapArea} />
+            <AreaMetric label="Уникально исключённая площадь" value={summary.uniqueConfirmedExcludedArea} />
+            <AreaMetric label="Требует проверки" value={summary.reviewRequiredFeatureArea} />
+          </div>
+          <p className="formula-line">Окрашиваемая площадь = Полная площадь − Уникальная подтверждённая площадь исключений</p>
+          {selectedFaces[0] && (() => {
+            const face = data.faces.find((item) => item.id === selectedFaces[0]);
+            return face ? <aside className="selected-face-properties" data-testid="cad-selected-face-properties" data-face-id={face.id} data-area-mm2={face.area.mm2} aria-live="polite">
+              <strong>Выбрана грань {face.id}</strong><span>{face.surfaceType}</span><span>{formatArea(face.area.mm2)} мм²</span>
+            </aside> : null;
+          })()}
+          <h3 id="cad-report-title">Диагностический отчет</h3>
+          <dl className="cad-diagnostic-list">
+            <div><dt>Оболочки</dt><dd>{data.counts.shells}</dd></div>
+            <div><dt>Ребра</dt><dd>{data.counts.edges}</dd></div>
+            <div><dt>Вершины</dt><dd>{data.counts.vertices}</dd></div>
+            <div><dt>Площадь, мм²</dt><dd>{formatArea(data.totalArea.mm2)}</dd></div>
+            <div><dt>Площадь, см²</dt><dd>{formatArea(data.totalArea.cm2)}</dd></div>
+            <div><dt>Импорт</dt><dd>{formatArea(data.performance.importMs)} мс</dd></div>
+            <div><dt>Расчет</dt><dd>{formatArea(data.performance.calculationMs)} мс</dd></div>
+            <div><dt>Полный цикл</dt><dd>{formatArea(data.performance.totalMs)} мс</dd></div>
+            <div><dt>Broad phase</dt><dd>{formatArea(data.contacts.statistics.broadPhaseMs)} мс</dd></div>
+            <div><dt>Narrow phase</dt><dd>{formatArea(data.contacts.statistics.narrowPhaseMs)} мс</dd></div>
+            <div><dt>Точных проверок</dt><dd>{data.contacts.statistics.exactCheckCount}</dd></div>
+          </dl>
+          <section className="cad-review-controls" aria-labelledby="review-controls-title">
         <h3 id="review-controls-title">Проверка исключений</h3>
         <div className="review-tabs" role="tablist" aria-label="Категории исключений">
           {([['all', 'Все'], ['contacts', 'Контакты'], ['holes', 'Отверстия'], ['cavities', 'Полости'], ['manual', 'Ручные'], ['review', 'Требуют проверки'], ['rejected', 'Отклонённые'], ['included', 'Учтённые поверхности']] as const).map(([value, label]) => <button key={value} type="button" role="tab" aria-selected={reviewTab === value} className={reviewTab === value ? "is-active" : ""} onClick={() => setReviewTab(value)}>{label}</button>)}
@@ -524,8 +558,8 @@ function Diagnostics({
           <label>Площадь<select value={areaSort} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => setAreaSort(event.target.value === "asc" ? "asc" : "desc")}><option value="desc">Сначала большие</option><option value="asc">Сначала малые</option></select></label>
         </div>
         <div className="bulk-actions"><span>Выбрано: {selectedEntityIds.length}</span><button type="button" disabled={bulkPending || selectedEntityIds.length === 0} onClick={() => { void applyBulk("confirm"); }}>Подтвердить выбранные</button><button type="button" disabled={bulkPending || selectedEntityIds.length === 0} onClick={() => { void applyBulk("reject"); }}>Отклонить выбранные</button><button type="button" disabled={bulkPending || selectedEntityIds.length === 0} onClick={() => { void applyBulk("reset"); }}>Сбросить решения</button></div>
-      </section>
-      {reviewTab !== "holes" && reviewTab !== "cavities" && reviewTab !== "manual" && typeFilter !== "hole" && typeFilter !== "cavity" && typeFilter !== "manual" && <ContactsTable
+          </section>
+          {reviewTab !== "holes" && reviewTab !== "cavities" && reviewTab !== "manual" && typeFilter !== "hole" && typeFilter !== "cavity" && typeFilter !== "manual" && <ContactsTable
         jobId={jobId}
         result={{ ...data.contacts, contacts: visibleContacts }}
         onChange={onContactsChange}
@@ -533,10 +567,10 @@ function Diagnostics({
         onSelectFaceIds={onSelectedFacesChange}
         selectedEntityIds={selectedEntityIds}
         onToggleEntity={toggleEntity}
-      />}
-      {reviewTab !== "contacts" && typeFilter !== "contact" && <FeaturesTable jobId={jobId} result={{ ...featureResult, features: visibleFeatures }} onChange={onFeaturesChange} onSelectFaceIds={onSelectedFacesChange} selectedEntityIds={selectedEntityIds} onToggleEntity={toggleEntity} />}
-      <FeatureRulesPanel jobId={jobId} rules={featureRules} onChange={onFeatureRulesChange} />
-      <details open={selectedFaces.length > 0 ? true : undefined}>
+          />}
+          {reviewTab !== "contacts" && typeFilter !== "contact" && <FeaturesTable jobId={jobId} result={{ ...featureResult, features: visibleFeatures }} onChange={onFeaturesChange} onSelectFaceIds={onSelectedFacesChange} selectedEntityIds={selectedEntityIds} onToggleEntity={toggleEntity} />}
+          <FeatureRulesPanel jobId={jobId} rules={featureRules} onChange={onFeatureRulesChange} />
+          <details open={selectedFaces.length > 0 ? true : undefined}>
         <summary>Грани и ручное исключение</summary>
         <div className="cad-face-table-wrap">
           <table className="cad-face-table" data-testid="cad-face-table">
@@ -551,6 +585,8 @@ function Diagnostics({
         <button className="secondary-button manual-feature-button" type="button" disabled={manualPending || selectedFaces.length === 0} onClick={() => { void createManual(); }}>
           {manualPending ? "Создание…" : `Создать ручное исключение (${selectedFaces.length})`}
         </button>
+          </details>
+        </div>
       </details>
     </section>
   );
@@ -711,13 +747,6 @@ export function CadUploadPanel({ onPaintIntegration }: { onPaintIntegration?: (i
     {error && <div className="form-error" data-testid="cad-upload-error" role="alert">{error}</div>}
     <div className="import-actions"><button className="calculate-button" type="button" disabled={!file || loading || Boolean(error)} onClick={() => { void submit(); }}>{loading ? "Загрузка…" : "Импортировать и рассчитать"}</button></div>
     {job && !job.diagnostics && <div className="import-summary import-summary-ok" data-testid="cad-processing-status" role="status">Статус: <strong>{job.status === "queued" ? "в очереди" : "обработка модели"}</strong>.</div>}
-    {job?.status === "completed" && <div className="cad-result-toolbar" data-testid="cad-result-screen">
-      <label>Название расчёта<input value={calculationName} maxLength={160} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setCalculationName(event.target.value)} /></label>
-      <button className="secondary-button" data-testid="cad-save-button" type="button" disabled={actionPending} onClick={() => { void save(); }}>{calculation ? "Сохранено" : "Сохранить расчёт"}</button>
-      <button ref={transferButtonRef} className="secondary-button" data-testid="cad-transfer-paint-button" type="button" disabled={actionPending} onClick={() => { void transferToPaint(); }}>Передать площадь в расчёт ЛКМ</button>
-      {calculation && <><a className="secondary-button" data-testid="cad-report-button" target="_blank" rel="noreferrer" href={calculation.reportHtmlUrl}>Печатный отчёт</a><a className="secondary-button" href={calculation.reportJsonUrl} download>JSON-отчёт</a></>}
-    </div>}
-    {job?.diagnostics && <LazyCadViewer mesh={viewerMesh} selectedFaceIds={selectedFaces} onSelectFace={(faceId) => setSelectedFaces([faceId])} onPreview={(preview) => { void savePreview(preview); }} />}
     {job?.diagnostics && <Diagnostics
       data={job.diagnostics}
       jobId={job.id}
@@ -727,6 +756,14 @@ export function CadUploadPanel({ onPaintIntegration }: { onPaintIntegration?: (i
       onFeatureRulesChange={updateFeatureRules}
       selectedFaces={selectedFaces}
       onSelectedFacesChange={setSelectedFaces}
-    />}
+    >
+      {job.status === "completed" && <div className="cad-result-toolbar" data-testid="cad-result-screen">
+        <label>Название расчёта<input value={calculationName} maxLength={160} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setCalculationName(event.target.value)} /></label>
+        <button className="secondary-button" data-testid="cad-save-button" type="button" disabled={actionPending} onClick={() => { void save(); }}>{calculation ? "Сохранено" : "Сохранить расчёт"}</button>
+        <button ref={transferButtonRef} className="secondary-button" data-testid="cad-transfer-paint-button" type="button" disabled={actionPending} onClick={() => { void transferToPaint(); }}>Передать площадь в расчёт ЛКМ</button>
+        {calculation && <><a className="secondary-button" data-testid="cad-report-button" target="_blank" rel="noreferrer" href={calculation.reportHtmlUrl}>Печатный отчёт</a><a className="secondary-button" href={calculation.reportJsonUrl} download>JSON-отчёт</a></>}
+      </div>}
+      <LazyCadViewer mesh={viewerMesh} selectedFaceIds={selectedFaces} onSelectFace={(faceId) => setSelectedFaces([faceId])} onPreview={(preview) => { void savePreview(preview); }} />
+    </Diagnostics>}
   </section>;
 }

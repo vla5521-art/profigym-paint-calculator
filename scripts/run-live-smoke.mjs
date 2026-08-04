@@ -1,15 +1,24 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { createHash } from 'node:crypto';
 import { createServer as createViteServer } from 'vite';
 import { createApp } from '../server/app.js';
+import { cadConfig } from '../server/config.js';
 import { clearJobs } from '../server/jobs.js';
 import { closeCadKernel } from '../server/cad/kernel.js';
 
 const uploadDir = path.resolve('.tmp/live-smoke-uploads');
 await fs.rm(uploadDir, { recursive: true, force: true });
 
-const { app } = await createApp({ uploadDir });
+const { app } = await createApp({
+  uploadDir,
+  rateLimits: {
+    ...cadConfig.rateLimits,
+    upload: {
+      ...cadConfig.rateLimits.upload,
+      limit: Math.max(cadConfig.rateLimits.upload.limit, 20),
+    },
+  },
+});
 const apiServer = app.listen(8787, '127.0.0.1');
 await new Promise((resolve) => apiServer.once('listening', resolve));
 
@@ -20,25 +29,6 @@ const vite = await createViteServer({
 await vite.listen();
 
 try {
-  const templatePath = path.resolve('public/templates/PROFiGYM_шаблон_импорта.xlsx');
-  const templateSource = await fs.readFile(templatePath);
-  const templateResponse = await fetch('http://127.0.0.1:5173/templates/PROFiGYM_шаблон_импорта.xlsx');
-  if (!templateResponse.ok) {
-    throw new Error(`Excel template is unavailable: HTTP ${templateResponse.status}`);
-  }
-  const downloadedTemplate = Buffer.from(await templateResponse.arrayBuffer());
-  const sourceHash = createHash('sha256').update(templateSource).digest('hex');
-  const downloadedHash = createHash('sha256').update(downloadedTemplate).digest('hex');
-  if (sourceHash !== downloadedHash) {
-    throw new Error('Downloaded Excel template differs from public source');
-  }
-  console.log(JSON.stringify({
-    event: 'excel_template_available',
-    status: templateResponse.status,
-    size: downloadedTemplate.byteLength,
-    sha256: downloadedHash,
-  }));
-
   await import('./smoke-test.mjs');
 } finally {
   await vite.close();

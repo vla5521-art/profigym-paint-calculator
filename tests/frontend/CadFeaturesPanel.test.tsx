@@ -162,6 +162,7 @@ async function renderCompleted(extraResponses: Response[] = []) {
   render(<CadUploadPanel />);
   fireEvent.change(screen.getByLabelText("CAD-файл"), { target: { files: [new File(["STEP"], "feature.step")] } });
   fireEvent.click(screen.getByRole("button", { name: /Импортировать/ }));
+  fireEvent.click(await screen.findByText("Подробнее"));
   await screen.findByText("Технологические элементы");
   return fetchMock;
 }

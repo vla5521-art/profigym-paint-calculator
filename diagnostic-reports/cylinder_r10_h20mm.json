@@ -1,7 +1,7 @@
 {
-  "id": "564d3610-c65a-46f9-b691-f03c903c2732",
+  "id": "ee5c792f-f5a6-4fe9-8317-94b05244840e",
   "status": "completed",
-  "generatedAt": "2026-07-31T12:24:55.407Z",
+  "generatedAt": "2026-08-04T13:08:31.966Z",
   "source": {
     "name": "cylinder_r10_h20mm.step",
     "sizeBytes": 5661,
@@ -229,12 +229,12 @@
         }
       },
       "statistics": {
-        "candidateExtractionMs": 0.959167,
-        "holeRecognitionMs": 0.040841,
-        "cavityRecognitionMs": 0.122062,
-        "ruleEvaluationMs": 0.005018,
-        "overlapResolutionMs": 0.053059,
-        "totalFeatureProcessingMs": 1.205843,
+        "candidateExtractionMs": 0.976116,
+        "holeRecognitionMs": 0.016124,
+        "cavityRecognitionMs": 0.225594,
+        "ruleEvaluationMs": 0.004727,
+        "overlapResolutionMs": 0.049443,
+        "totalFeatureProcessingMs": 1.290011,
         "featureCandidateCount": 0,
         "confirmedFeatureCount": 0,
         "reviewRequiredCount": 0
@@ -311,20 +311,20 @@
       }
     },
     "performance": {
-      "importMs": 7.568739,
-      "calculationMs": 7.472446,
+      "importMs": 5.860383,
+      "calculationMs": 6.679957,
       "broadPhaseMs": 0,
       "narrowPhaseMs": 0,
       "contactClassificationMs": 0,
       "contactDetectionMs": 0,
-      "candidateExtractionMs": 0.959167,
-      "holeRecognitionMs": 0.040841,
-      "cavityRecognitionMs": 0.122062,
-      "featureRuleEvaluationMs": 0.005018,
-      "overlapResolutionMs": 0.053059,
-      "featureProcessingMs": 1.205843,
-      "uploadMs": 1.05,
-      "totalMs": 20.517
+      "candidateExtractionMs": 0.976116,
+      "holeRecognitionMs": 0.016124,
+      "cavityRecognitionMs": 0.225594,
+      "featureRuleEvaluationMs": 0.004727,
+      "overlapResolutionMs": 0.049443,
+      "featureProcessingMs": 1.290011,
+      "uploadMs": 0.996,
+      "totalMs": 18.447
     }
   },
   "contacts": [],
@@ -443,12 +443,12 @@
     }
   },
   "featureStatistics": {
-    "candidateExtractionMs": 0.959167,
-    "holeRecognitionMs": 0.040841,
-    "cavityRecognitionMs": 0.122062,
-    "ruleEvaluationMs": 0.005018,
-    "overlapResolutionMs": 0.053059,
-    "totalFeatureProcessingMs": 1.205843,
+    "candidateExtractionMs": 0.976116,
+    "holeRecognitionMs": 0.016124,
+    "cavityRecognitionMs": 0.225594,
+    "ruleEvaluationMs": 0.004727,
+    "overlapResolutionMs": 0.049443,
+    "totalFeatureProcessingMs": 1.290011,
     "featureCandidateCount": 0,
     "confirmedFeatureCount": 0,
     "reviewRequiredCount": 0
@@ -1863,8 +1863,8 @@
       "maxTriangles": 750000
     },
     "performance": {
-      "meshGenerationMs": 2.546,
-      "meshSerializationMs": 0.067
+      "meshGenerationMs": 2.548,
+      "meshSerializationMs": 0.061
     }
   }
 }

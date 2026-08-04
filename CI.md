@@ -15,7 +15,7 @@ npm run ci:validate
 
 ## container.yml
 
-Последовательность: checkout → Node/npm ci → CI validation → lint/typecheck/tests/build/template → supply-chain → Buildx → fork-safe GHCR login → metadata → build → digest → pull pushed image (или load для PR) → проверка Node и отсутствия npm/corepack/yarn в runtime → Trivy table → SARIF → SARIF validation → upload → Trivy enforce → image smoke → artifacts.
+Последовательность: checkout → Node/npm ci → CI validation → lint/typecheck/tests/build → supply-chain → Buildx → fork-safe GHCR login → metadata → build → digest → pull pushed image (или load для PR) → проверка Node и отсутствия npm/corepack/yarn в runtime → Trivy table → SARIF → SARIF validation → upload → Trivy enforce → image smoke → artifacts.
 
 - Pull request: `push=false`, `load=true`, login не выполняется.
 - Push/tag/manual: image публикуется, затем явно выполняется `docker pull` перед локальным Trivy/smoke.

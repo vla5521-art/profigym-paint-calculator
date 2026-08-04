@@ -1,12 +1,12 @@
 {
   "applicationVersion": "2.0.4",
-  "generatedAt": "2026-08-03T07:51:41.261Z",
+  "generatedAt": "2026-08-04T13:12:08.041Z",
   "baseUrl": "http://127.0.0.1:8899",
   "https": false,
   "localHttpException": true,
   "transport": "HTTP_ONLY",
   "status": "PASS",
-  "tests": 41,
+  "tests": 39,
   "results": [
     {
       "id": "https",
@@ -70,27 +70,17 @@
       "pass": true
     },
     {
-      "id": "http:/api/cad/job/97843534-dd6b-455d-bc8a-887c8ac77f4d:200",
+      "id": "http:/api/cad/job/1f5f0c07-5e70-4cb2-a9db-e3aba8acff39:200",
       "pass": true,
       "actual": 200
     },
     {
-      "id": "http:/api/cad/job/97843534-dd6b-455d-bc8a-887c8ac77f4d:200",
+      "id": "http:/api/cad/job/1f5f0c07-5e70-4cb2-a9db-e3aba8acff39:200",
       "pass": true,
       "actual": 200
     },
     {
-      "id": "http:/api/cad/job/97843534-dd6b-455d-bc8a-887c8ac77f4d:200",
-      "pass": true,
-      "actual": 200
-    },
-    {
-      "id": "http:/api/cad/job/97843534-dd6b-455d-bc8a-887c8ac77f4d:200",
-      "pass": true,
-      "actual": 200
-    },
-    {
-      "id": "http:/api/cad/job/97843534-dd6b-455d-bc8a-887c8ac77f4d:200",
+      "id": "http:/api/cad/job/1f5f0c07-5e70-4cb2-a9db-e3aba8acff39:200",
       "pass": true,
       "actual": 200
     },
@@ -120,7 +110,7 @@
       "pass": true
     },
     {
-      "id": "http:/api/cad/calculations/bda20a7f-69df-4837-b056-2c37346ed904:200",
+      "id": "http:/api/cad/calculations/84a5bc21-31ed-433f-b43e-7ef47d116283:200",
       "pass": true,
       "actual": 200
     },
@@ -129,7 +119,7 @@
       "pass": true
     },
     {
-      "id": "http:/api/cad/calculations/bda20a7f-69df-4837-b056-2c37346ed904/viewer-mesh:200",
+      "id": "http:/api/cad/calculations/84a5bc21-31ed-433f-b43e-7ef47d116283/viewer-mesh:200",
       "pass": true,
       "actual": 200
     },
@@ -138,7 +128,7 @@
       "pass": true
     },
     {
-      "id": "http:/api/cad/calculations/bda20a7f-69df-4837-b056-2c37346ed904/report.json:200",
+      "id": "http:/api/cad/calculations/84a5bc21-31ed-433f-b43e-7ef47d116283/report.json:200",
       "pass": true,
       "actual": 200
     },
@@ -147,7 +137,7 @@
       "pass": true
     },
     {
-      "id": "http:/api/cad/calculations/bda20a7f-69df-4837-b056-2c37346ed904/report.html:200",
+      "id": "http:/api/cad/calculations/84a5bc21-31ed-433f-b43e-7ef47d116283/report.html:200",
       "pass": true,
       "actual": 200
     },
@@ -156,7 +146,7 @@
       "pass": true
     },
     {
-      "id": "http:/api/cad/calculations/bda20a7f-69df-4837-b056-2c37346ed904/integrate-paint:200",
+      "id": "http:/api/cad/calculations/84a5bc21-31ed-433f-b43e-7ef47d116283/integrate-paint:200",
       "pass": true,
       "actual": 200
     },
@@ -165,7 +155,7 @@
       "pass": true
     },
     {
-      "id": "http:/api/cad/calculations/bda20a7f-69df-4837-b056-2c37346ed904:204",
+      "id": "http:/api/cad/calculations/84a5bc21-31ed-433f-b43e-7ef47d116283:204",
       "pass": true,
       "actual": 204
     },
@@ -185,12 +175,12 @@
       "actual": 202
     },
     {
-      "id": "http:/api/cad/job/436b37b0-febc-4236-a16d-20903f329e44:200",
+      "id": "http:/api/cad/job/9107e752-b699-47be-89bb-f26f80e0c69f:200",
       "pass": true,
       "actual": 200
     },
     {
-      "id": "http:/api/cad/job/436b37b0-febc-4236-a16d-20903f329e44:200",
+      "id": "http:/api/cad/job/9107e752-b699-47be-89bb-f26f80e0c69f:200",
       "pass": true,
       "actual": 200
     },

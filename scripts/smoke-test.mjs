@@ -30,6 +30,7 @@ async function uploadModel(file, expectedStatus = 'completed') {
   const report = (await reportResponse.json()).report;
   await fs.writeFile(path.join(reportDir, `${path.parse(file).name}.json`), `${JSON.stringify(report, null, 2)}\n`, 'utf8');
   return {
+    jobId: job.id,
     file,
     status: job.status,
     areaMm2: job.area?.mm2 ?? 0,
@@ -69,10 +70,38 @@ for (const name of ['part.sldprt', 'assembly.sldasm', 'notes.txt']) {
   rejectedFormats.push(await expectRejectedUpload(name, 'UNSUPPORTED_FILE_TYPE'));
 }
 
+const transferSource = results[0];
+const saveResponse = await fetch(`${apiBase}/api/cad/calculations`, {
+  method: 'POST',
+  headers: { 'content-type': 'application/json' },
+  body: JSON.stringify({ jobId: transferSource.jobId, name: 'Live smoke CAD → paint' }),
+});
+if (saveResponse.status !== 201) throw new Error(`Save calculation returned ${saveResponse.status}`);
+const savedCalculation = (await saveResponse.json()).calculation;
+const transferResponse = await fetch(`${apiBase}/api/cad/calculations/${savedCalculation.calculationId}/integrate-paint`, {
+  method: 'POST',
+  headers: { 'content-type': 'application/json' },
+  body: JSON.stringify({ confirmed: true }),
+});
+if (!transferResponse.ok) throw new Error(`Paint integration returned ${transferResponse.status}`);
+const paintIntegration = (await transferResponse.json()).integration;
+const expectedPaintableAreaM2 = savedCalculation.featureSummary.paintableAreaMm2 / 1_000_000;
+if (paintIntegration.source !== 'cad_calculation' || Math.abs(paintIntegration.paintableAreaM2 - expectedPaintableAreaM2) > 1e-12) {
+  throw new Error(`CAD-to-paint transfer mismatch: ${JSON.stringify(paintIntegration)}`);
+}
+const deleteResponse = await fetch(`${apiBase}/api/cad/calculations/${savedCalculation.calculationId}`, { method: 'DELETE' });
+if (deleteResponse.status !== 204) throw new Error(`Smoke calculation cleanup returned ${deleteResponse.status}`);
+
 const summary = {
   checkedAt: new Date().toISOString(),
   frontend: { url: frontendBase, status: frontendResponse.status, rootFound: true },
   backend: { url: apiBase, status: health.status },
+  paintTransfer: {
+    calculationId: savedCalculation.calculationId,
+    paintableAreaM2: paintIntegration.paintableAreaM2,
+    source: paintIntegration.source,
+    cleanedUp: true,
+  },
   results,
   rejectedFormats,
 };

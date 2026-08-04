@@ -3,11 +3,7 @@ import { formatNumber } from "../utils/formatNumber.ts";
 import { printCalculation } from "../utils/printCalculation.ts";
 
 export interface CalculationResultView {
-  manufacturerName: string;
-  materialName: string;
-  normValue: number;
-  normUnit: string;
-  resultUnit: string;
+  normKgPerM2: number;
   area: number;
   lossFactor: number;
   calculation: ConsumptionCalculation;
@@ -23,16 +19,15 @@ export function ResultCard({ result }: ResultCardProps): React.JSX.Element {
         <>
           <div className="result-value">
             <span>{formatNumber(result.calculation.totalConsumption, 2)}</span>
-            <span className="result-unit">{result.resultUnit}</span>
+            <span className="result-unit">кг</span>
           </div>
           <p className="result-caption">Необходимое количество материала</p>
           <dl className="result-details">
-            <div><dt>Производитель</dt><dd>{result.manufacturerName}</dd></div>
-            <div><dt>Материал</dt><dd>{result.materialName}</dd></div>
-            <div><dt>Норма расхода</dt><dd>{formatNumber(result.normValue, 3)} {result.normUnit}</dd></div>
             <div><dt>Площадь</dt><dd>{formatNumber(result.area, 2)} м²</dd></div>
+            <div><dt>Норма расхода</dt><dd>{formatNumber(result.normKgPerM2, 3)} кг/м²</dd></div>
             <div><dt>Коэффициент потерь</dt><dd>{formatNumber(result.lossFactor, 2)}</dd></div>
-            <div><dt>Теоретический расход</dt><dd>{formatNumber(result.calculation.theoreticalConsumption, 2)} {result.resultUnit}</dd></div>
+            <div><dt>Теоретический расход</dt><dd>{formatNumber(result.calculation.theoreticalConsumption, 2)} кг</dd></div>
+            <div><dt>Итоговый расход</dt><dd>{formatNumber(result.calculation.totalConsumption, 2)} кг</dd></div>
           </dl>
           <div className="result-actions no-print">
             <button className="print-button" type="button" onClick={printCalculation}>
@@ -45,7 +40,7 @@ export function ResultCard({ result }: ResultCardProps): React.JSX.Element {
       ) : (
         <>
           <div className="result-value placeholder-result"><span>0,00</span><span className="result-unit">кг</span></div>
-          <p className="result-caption">Выберите материал и выполните расчёт</p>
+          <p className="result-caption">Введите параметры и выполните расчёт</p>
         </>
       )}
     </section>

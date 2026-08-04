@@ -3,15 +3,23 @@ import path from "node:path";
 
 export const model = (name: string, group = "features") => path.join(process.cwd(), "test-models", group, name);
 
-export async function uploadStep(page: Page, filePath: string) {
+export async function uploadStep(page: Page, filePath: string, { expandDetails = true }: { expandDetails?: boolean } = {}) {
+  if (await page.getByTestId("cad-upload-input").count() === 0) {
+    await page.getByRole("button", { name: "CAD-расчёт площади" }).click();
+  }
   const importResponse = page.waitForResponse((response) => response.url().includes("/api/cad/import") && response.request().method() === "POST");
   await page.getByTestId("cad-upload-input").setInputFiles(filePath);
   await page.getByRole("button", { name: "Импортировать и рассчитать" }).click();
   const response = await importResponse;
   expect(response.status()).toBe(202);
   const payload = await response.json();
-  await expect(page.getByTestId("cad-result-screen")).toBeVisible({ timeout: 120_000 });
-  await expect(page.getByTestId("cad-summary-total-area")).toHaveAttribute("data-area-m2", /[1-9]/);
+  await expect(page.getByTestId("cad-summary-total-area")).toHaveAttribute("data-area-m2", /[1-9]/, { timeout: 120_000 });
+  const details = page.getByTestId("cad-details");
+  await expect(details).not.toHaveAttribute("open", "");
+  if (expandDetails) {
+    await details.getByText("Подробнее", { exact: true }).click();
+    await expect(page.getByTestId("cad-result-screen")).toBeVisible();
+  }
   return String(payload.job.id);
 }
 
