@@ -6,7 +6,7 @@ export function Header(): React.JSX.Element {
       </div>
       <div className="hero-title-row">
         <h1 id="page-title">КАЛЬКУЛЯТОР РАСХОДА КРАСКИ</h1>
-        <p className="version">Версия 2.0.4</p>
+        <p className="version">Версия 2.1.1</p>
       </div>
     </header>
   );

@@ -35,7 +35,7 @@ const exitCode = await new Promise((resolve, reject) => {
 const number = (label) => Number(output.match(new RegExp(`(?:ℹ|#) ${label} (\\d+)`))?.[1] ?? 0);
 await writeJson(path.join(reportsDir, 'node-test-results.json'), {
   schemaVersion: '1.0.0',
-  applicationVersion: '2.0.4',
+  applicationVersion: '2.1.1',
   generatedAt: new Date().toISOString(),
   files: testFiles.length,
   tests: number('tests'),

@@ -2,7 +2,15 @@
 FROM node:24.18.1-bookworm-slim AS build
 WORKDIR /build
 COPY package.json package-lock.json ./
-RUN --mount=type=cache,target=/root/.npm npm ci
+RUN --mount=type=cache,target=/root/.npm,sharing=locked \
+    npm ci \
+    --prefer-offline \
+    --maxsockets=1 \
+    --fetch-retries=10 \
+    --fetch-retry-factor=2 \
+    --fetch-retry-mintimeout=10000 \
+    --fetch-retry-maxtimeout=120000 \
+    --fetch-timeout=300000
 COPY tsconfig*.json vite.config.ts index.html ./
 COPY src ./src
 COPY public ./public
@@ -11,12 +19,20 @@ RUN npm run build
 FROM node:24.18.1-bookworm-slim AS dependencies
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN --mount=type=cache,target=/root/.npm npm ci --omit=dev --ignore-scripts
+RUN --mount=type=cache,target=/root/.npm,sharing=locked \
+    npm ci --omit=dev --ignore-scripts \
+    --prefer-offline \
+    --maxsockets=1 \
+    --fetch-retries=10 \
+    --fetch-retry-factor=2 \
+    --fetch-retry-mintimeout=10000 \
+    --fetch-retry-maxtimeout=120000 \
+    --fetch-timeout=300000
 
 FROM node:24.18.1-bookworm-slim AS runtime
 ARG VCS_REF=unknown
 LABEL org.opencontainers.image.title="PROFiGYM Calculator" \
-      org.opencontainers.image.version="2.0.4" \
+      org.opencontainers.image.version="2.1.1" \
       org.opencontainers.image.revision="$VCS_REF" \
       org.opencontainers.image.source="local-stage7-package"
 RUN apt-get update \

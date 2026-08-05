@@ -5,14 +5,14 @@ import { createBackup, restoreBackupTest } from '../server/production/backup.js'
 import { databaseStatus } from '../server/cad/calculations/migrations.js';
 const releaseDirectory = path.join(cadConfig.storageRoot, 'release-markers'); await fs.mkdir(releaseDirectory, { recursive: true, mode: 0o700 });
 const marker = path.join(releaseDirectory, 'active.json');
-await fs.writeFile(marker, JSON.stringify({ release: 'A', applicationVersion: '2.0.4-test-A' }));
+await fs.writeFile(marker, JSON.stringify({ release: 'A', applicationVersion: '2.1.1-test-A' }));
 const backup = await createBackup(cadConfig);
-await fs.writeFile(marker, JSON.stringify({ release: 'B', applicationVersion: '2.0.4-test-B' }));
+await fs.writeFile(marker, JSON.stringify({ release: 'B', applicationVersion: '2.1.1-test-B' }));
 const simulatedBFailure = true;
-if (simulatedBFailure) await fs.writeFile(marker, JSON.stringify({ release: 'A', applicationVersion: '2.0.4-test-A', rollbackFrom: 'B' }));
+if (simulatedBFailure) await fs.writeFile(marker, JSON.stringify({ release: 'A', applicationVersion: '2.1.1-test-A', rollbackFrom: 'B' }));
 const restored = await restoreBackupTest(cadConfig, backup.manifest.backupId);
 const active = JSON.parse(await fs.readFile(marker, 'utf8'));
 const db = databaseStatus(cadConfig.databasePath);
-const report = { applicationVersion: '2.0.4', generatedAt: new Date().toISOString(), status: active.release === 'A' && restored.ok && db.integrity === 'ok' ? 'PASS' : 'FAIL', releaseAStarted: true, releaseBStarted: true, simulatedBFailure, returnedToReleaseA: active.release === 'A', verifiedBackupRestore: restored.ok, dataIntegrity: db.integrity, binaryCompatibilityAcrossDistinctImages: 'NOT_TESTED_RELEASE_MARKERS_ONLY' };
+const report = { applicationVersion: '2.1.1', generatedAt: new Date().toISOString(), status: active.release === 'A' && restored.ok && db.integrity === 'ok' ? 'PASS' : 'FAIL', releaseAStarted: true, releaseBStarted: true, simulatedBFailure, returnedToReleaseA: active.release === 'A', verifiedBackupRestore: restored.ok, dataIntegrity: db.integrity, binaryCompatibilityAcrossDistinctImages: 'NOT_TESTED_RELEASE_MARKERS_ONLY' };
 await fs.mkdir('diagnostic-reports', { recursive: true }); await fs.writeFile(path.join('diagnostic-reports', 'rollback-smoke.json'), `${JSON.stringify(report, null, 2)}\n`);
 console.log(JSON.stringify(report, null, 2)); if (report.status !== 'PASS') process.exitCode = 1;

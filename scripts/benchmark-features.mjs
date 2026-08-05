@@ -42,7 +42,7 @@ try {
   }
   const report = {
     generatedAt: new Date().toISOString(),
-    version: '2.0.4',
+    version: '2.1.1',
     runtime: process.version,
     note: 'Измерения фактические; искусственный порог успеха не применяется.',
     measurements,

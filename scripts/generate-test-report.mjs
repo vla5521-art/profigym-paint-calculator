@@ -22,7 +22,7 @@ const overallStatus = failed.length ? 'FAIL' : missing.length ? 'PASS_WITH_LIMIT
 const manifestPath = path.join(root, 'test-models/golden/golden-manifest.json'); const manifest = await read('test-models/golden/golden-manifest.json');
 const dockerAvailable = await new Promise((resolve) => import('node:child_process').then(({ execFile }) => execFile('docker', ['version'], (error) => resolve(!error))));
 const report = {
-  applicationVersion: '2.0.4', testReportSchemaVersion: '1.2.0', generatedAt: new Date().toISOString(), nodeVersion: process.version, os: os.platform(), architecture: os.arch(), gitCommit: process.env.GITHUB_SHA ?? null,
+  applicationVersion: '2.1.1', testReportSchemaVersion: '1.2.0', generatedAt: new Date().toISOString(), nodeVersion: process.version, os: os.platform(), architecture: os.arch(), gitCommit: process.env.GITHUB_SHA ?? null,
   fixtureManifestHash: await sha256File(manifestPath), fixtureCount: manifest?.fixtures?.length ?? 0,
   testCounts: { nodeUnitIntegration: data.unit?.nodeTests ?? 0, frontendJsdom: data.unit?.frontendTests ?? 0, golden: data.golden?.total ?? 0, regression: data.regression?.total ?? 0, security: data.security?.total ?? 0, migrations: data.migrations?.total ?? 0, functionalBrowser: playwright(data.functionalE2E)?.tests ?? 0, accessibility: playwright(data.a11y)?.tests ?? 0, productionHttp: data.production?.tests ?? 0, observability: data.observability?.tests ?? 0 },
   critical, extended: { performance: resultStatus(data.performance), memory: resultStatus(data.memory), soak: resultStatus(data.soak) }, production: { http: data.production, observability: data.observability, backup: data.backup, rollback: data.rollback, orchestration: data.orchestration },
@@ -36,7 +36,7 @@ const deviations = data.golden?.results?.flatMap((item) => item.deviations ?? []
 const maxAbs = Math.max(0, ...deviations.map((item) => Number(item.absoluteDeviation) || 0)); const maxRel = Math.max(0, ...deviations.map((item) => Number.isFinite(item.relativeDeviation) ? item.relativeDeviation : 0));
 const medians = Object.fromEntries(Object.entries(data.performance?.results ?? {}).map(([key, value]) => [key, value.stages?.fullWorkflowMs?.median]));
 const memoryGrowth = Number(data.memory?.growthBytes ?? 0);
-const testReport = `# TEST_REPORT — PROFiGYM 2.0.4
+const testReport = `# TEST_REPORT — PROFiGYM 2.1.1
 
 Автоматически сформирован: ${report.generatedAt}. Итог: **${overallStatus}**.
 
@@ -61,7 +61,7 @@ await fs.writeFile(path.join(root, 'TEST_REPORT.md'), testReport, 'utf8');
 const stageStatus = overallStatus === 'FAIL' ? 'FAIL' : data.dockerVerification?.status === 'PASS' ? 'CI_FIXED_DOCKER_VERIFIED' : 'CI_FIXED_READY_FOR_GITHUB';
 const stage = `# STAGE7_REPORT
 
-Версия: 2.0.4. Итоговый статус: **${stageStatus}**.
+Версия: 2.1.1. Итоговый статус: **${stageStatus}**.
 
 ## Фактическая архитектура
 
