@@ -1,4 +1,4 @@
-# Deployment — PROFiGYM 2.1.0
+# Deployment — PROFiGYM 2.1.1
 
 ## Требования
 
@@ -35,7 +35,7 @@ Production image запускает API, worker, healthcheck и служебны
 ## Публикация image и deploy
 
 1. Загрузите проект в GitHub и дождитесь зелёных `quality` и `container`.
-2. Скачайте container evidence для релиза 2.1.0 и возьмите digest из `image-digest.txt`.
+2. Скачайте container evidence для релиза 2.1.1 и возьмите digest из `image-digest.txt`.
 3. Откройте Actions → deploy → Run workflow.
 4. Выберите `staging`, вставьте `sha256:...` и выполните smoke.
 5. Повторите для `production`; reviewer подтверждает GitHub Environment.

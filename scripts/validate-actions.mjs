@@ -150,6 +150,7 @@ const compose = parse(await fs.readFile(path.join(root, 'compose.yml'), 'utf8'))
 for (const service of ['volume-init', 'proxy', 'app', 'worker']) if (!compose.services?.[service]) fail(`compose.yml: service ${service} is missing`);
 if (compose.services?.app?.image !== compose.services?.worker?.image) fail('compose.yml: app and worker must use the same image reference');
 if (JSON.stringify(compose.services?.app?.command) === JSON.stringify(compose.services?.worker?.command)) fail('compose.yml: app and worker commands must differ');
+if (compose.services?.worker?.healthcheck?.disable !== true) fail('compose.yml: worker must disable the image HTTP healthcheck');
 if (!String(compose.services?.app?.image).includes('PROFIGYM_IMAGE')) fail('compose.yml: PROFIGYM_IMAGE interpolation is missing');
 if (!JSON.stringify(compose.services?.backup?.command ?? '').includes('scripts/backup-cli.mjs create')) fail('compose.yml: backup service must execute the packaged backup CLI');
 const nginxLocal = await fs.readFile(path.join(root, 'nginx/local.conf'), 'utf8');
@@ -222,7 +223,7 @@ for (const [action, policy] of actionPolicy) {
 const actionlint = JSON.parse(await fs.readFile(path.join(root, 'diagnostic-reports/actionlint-results.json'), 'utf8'));
 if (actionlint.status !== 'PASS') fail('actionlint result is not PASS');
 const report = {
-  applicationVersion: '2.0.4',
+  applicationVersion: '2.1.1',
   generatedAt: new Date().toISOString(),
   status: failures.length === 0 ? 'PASS' : 'FAIL',
   actionlint: actionlint.status,

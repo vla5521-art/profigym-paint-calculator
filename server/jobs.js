@@ -215,7 +215,7 @@ export function recoverStaleJobs(staleAfterMs, maxAttempts) {
   return stale.length;
 }
 
-export function updateWorkerHeartbeat(workerId, { concurrency, activeJobs, applicationVersion = '2.0.4', shutdownRequested = false }) {
+export function updateWorkerHeartbeat(workerId, { concurrency, activeJobs, applicationVersion = '2.1.1', shutdownRequested = false }) {
   if (!database) return;
   const now = nowIso();
   database.prepare(`INSERT INTO worker_heartbeats(worker_id,service_version,concurrency,active_jobs,started_at,heartbeat_at,shutdown_requested)

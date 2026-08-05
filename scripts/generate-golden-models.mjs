@@ -84,5 +84,5 @@ for (const file of files) {
   });
 }
 await closeCadKernel();
-if (shouldBootstrap) await writeJson(manifestPath, { schemaVersion: '1.0.0', applicationVersion: '2.0.4', generatedBy: 'scripts/generate-golden-models.mjs', fixtures: entries });
+if (shouldBootstrap) await writeJson(manifestPath, { schemaVersion: '1.0.0', applicationVersion: '2.1.1', generatedBy: 'scripts/generate-golden-models.mjs', fixtures: entries });
 console.log(JSON.stringify({ ok: true, fixtures: entries.length, manifest: path.relative(root, manifestPath), mode: shouldBootstrap ? 'bootstrapped' : 'verified' }, null, 2));

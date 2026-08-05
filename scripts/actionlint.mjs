@@ -20,7 +20,7 @@ for (const relativeFile of workflowFiles) {
 }
 
 const report = {
-  applicationVersion: '2.0.4',
+  applicationVersion: '2.1.1',
   validator: 'actionlint-wasm',
   validatorPackageVersion: '2.0.6',
   generatedAt: new Date().toISOString(),

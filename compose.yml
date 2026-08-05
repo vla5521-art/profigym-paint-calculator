@@ -99,6 +99,8 @@ services:
       args:
         VCS_REF: "${IMAGE_VCS_REF:-local}"
     command: ["node", "server/worker.js"]
+    healthcheck:
+      disable: true
     env_file:
       - path: "${PROFIGYM_ENV_FILE:-.env.production}"
         required: false
